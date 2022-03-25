@@ -1,0 +1,356 @@
+DATA_BLOCK  DB6004
+TITLE =        
+VERSION : 0.1
+
+
+  STRUCT     
+SDPF_A_ToHMI : WORD ;    
+SDPF_A_PFB : REAL ;    
+SDPF_K4_A1_ToHMI : WORD ;    
+SDPF_K4_A1_PFB : REAL ;    
+SDPF_YL_ToHMI : WORD ;    
+SDPF_YL_PFB : REAL ;    
+
+
+
+   AP_BMPSB_ToHMI : WORD ;    
+   AP_BMPSB_Level : INT ;    
+   AP_PSB_B_ToHMI : WORD ;    
+   AP_PSB_B_Level : INT ;    
+   AP_PSB_C_ToHMI : WORD ;    
+   AP_PSB_C_Level : INT ;      
+   AP_FSB_2_ToHMI : WORD ;    
+   AP_FSB_2_Level : INT ; 
+   YL_FSB_ToHMI : WORD ;    
+   YL_FSB_Level : INT ;     
+   AT_AYSB1_ToHMI1 : WORD ;    
+   AT_AYSB1_ToHMI2 : WORD ;    
+   AT_AYSB1_Level : INT ;    
+   AT_AYSB1_RT : REAL ;    
+   AT_AYSB1_FltNo : INT ;    
+   AT_AYSB2_ToHMI1 : WORD ;    
+   AT_AYSB2_ToHMI2 : WORD ;    
+   AT_AYSB2_Level : INT ;    
+   AT_AYSB2_RT : REAL ;    
+   AT_AYSB2_FltNo : INT ;    
+   AT_AYSB3_ToHMI1 : WORD ;    
+   AT_AYSB3_ToHMI2 : WORD ;    
+   AT_AYSB3_Level : INT ;    
+   AT_AYSB3_RT : REAL ;    
+   AT_AYSB3_FltNo : INT ;    
+   AT_AYSB4_ToHMI1 : WORD ;    
+   AT_AYSB4_ToHMI2 : WORD ;    
+   AT_AYSB4_Level : INT ;    
+   AT_AYSB4_RT : REAL ;    
+   AT_AYSB4_FltNo : INT ;    
+   YL_FSB1_ToHMI1 : WORD ;    
+YL_FSB1_ToHMI2 : WORD ;    
+YL_FSB1_Level : INT ;    
+   YL_FSB1_RT : REAL ;    
+   YL_FSB1_FltNo : INT ;    
+AT_QJFSB_ToHMI1 : WORD ;    
+AT_QJFSB_ToHMI2 : WORD ;    
+AT_QJFSB_Level : INT ;    
+AT_QJFSB_RT : REAL ;    
+AT_QJFSB_FltNo : INT ;    
+   YL_YSB_ToHMI1 : WORD ;    
+   YL_YSB_ToHMI2 : WORD ;    
+   YL_YSB_Level : INT ;    
+   YL_YSB_RT : REAL ;    
+   YL_YSB_FltNo : INT ;    
+   YL_YSB1_ToHMI1 : WORD ;    
+   YL_YSB1_ToHMI2 : WORD ;    
+   YL_YSB1_Level : INT ;    
+   YL_YSB1_RT : REAL ;    
+   YL_YSB1_FltNo : INT ;    
+C_A2_CO2:REAL ; 
+C_A3_CO2:REAL ; 
+C_A4_CO2:REAL ; 
+   YL_CO2 : REAL ;    
+
+H_A1_Humi:REAL;
+  H_A1_Temp : REAL ;    
+
+K4_H_A1_Humi:REAL;
+K4_H_A1_Temp : REAL ;    
+H_A3_Humi:REAL;
+  H_A3_Temp : REAL ;    
+H_A2_Humi:REAL;
+  H_A2_Temp : REAL ;    
+K4_T_A1_Humi:REAL;
+K4_T_A1_Temp : REAL ;    
+H_A4_Humi:REAL;
+  H_A4_Temp : REAL ;    
+H_A5_Humi:REAL;
+  H_A5_Temp : REAL ;    
+H_A7_Humi:REAL;
+  H_A7_Temp : REAL ;    
+H_A6_Humi:REAL;
+  H_A6_Temp : REAL ;    
+T_A2_Humi:REAL;
+  T_A2_Temp : REAL ;    
+   YL_TH1_Humi : REAL ;    
+   YL_TH1_Temp : REAL ;    
+   YL_TH2_Humi : REAL ;    
+   YL_TH2_Temp : REAL ;    
+   YL_TH3_Humi : REAL ;    
+   YL_TH3_Temp : REAL ;    
+   YL_TH4_Humi : REAL ;    
+   YL_TH4_Temp : REAL ;    
+   YL_TH5_Humi : REAL ;    
+   YL_TH5_Temp : REAL ;    
+   YL_TH6_Humi : REAL ;    
+   YL_TH6_Temp : REAL ;    
+
+   KT_A1_ToHMI1 : WORD ;    
+   KT_A1_ToHMI2 : WORD ;    
+   KT_A1_VFRT:DWORD;
+   KT_A1_RPM:INT;
+   KT_A1_MotrCurr:INT;
+   KT_A1_AxleT : INT ;    
+   KT_A1_WindT : INT ;    
+   KT_A1_VFFB : INT ;    
+   KT_A1_RealTP : INT ;    
+   KT_A1_ECSum : DWORD ;    
+   KT_A1_FltNo : INT ;    
+   KT_A1_RT : REAL ;    
+   YL_KT_A1_1 : WORD ;    
+   YL_KT_A1_2 : WORD ;    
+   YL_KT_A1_3 : WORD ;    
+   YL_KT_A1_4 : WORD ;    
+
+
+   HPF_A1_ToHMI1 : WORD ;    
+   HPF_A1_ToHMI2 : WORD ;    
+   HPF_A1_VFFB : INT ;    
+   HPF_A1_A_Pcurr : INT ;    
+   HPF_A1_B_Pcurr : INT ;    
+   HPF_A1_C_Pcurr : INT ;    
+   HPF_A1_A_Pvolt : INT ;    
+   HPF_A1_B_Pvolt : INT ;    
+   HPF_A1_C_Pvolt : INT ;    
+   HPF_A1_RT : REAL ;    
+   HPF_A1_FltNo : INT ;    
+   YL_HPF_A1_1 : WORD ;    
+   YL_HPF_A1_2 : WORD ;    
+   YL_HPF_A1_3 : WORD ;    
+   YL_HPF_A1_4 : WORD ;    
+
+
+
+   UOF_A1_ToHMI1 : WORD ;    
+   UOF_A1_ToHMI2 : WORD ;    
+   UOF_A1_VFFB : INT ;    
+   UOF_A1_A_Pcurr : INT ;    
+   UOF_A1_B_Pcurr : INT ;    
+   UOF_A1_C_Pcurr : INT ;    
+   UOF_A1_A_Pvolt : INT ;    
+   UOF_A1_B_Pvolt : INT ;    
+   UOF_A1_C_Pvolt : INT ;    
+   UOF_A1_FAxleT : INT ;    
+   UOF_A1_RAxleT : INT ;    
+   UOF_A1_A_WindT : INT ;    
+   UOF_A1_B_WindT : INT ;    
+   UOF_A1_C_WindT : INT ;    
+   UOF_A1_H_Vibr : INT ;    
+   UOF_A1_V_Vibr : INT ;    
+   UOF_A1_RT : REAL ;    
+   UOF_A1_FltNo : INT ;    
+   YL_UOF_A1_1 : WORD ;    
+   YL_UOF_A1_2 : WORD ;    
+   YL_UOF_A1_3 : WORD ;    
+   YL_UOF_A1_4 : WORD ;    
+
+
+
+
+
+
+
+   TVF_A1_ToHMI1 : WORD ;    
+   TVF_A1_ToHMI2 : WORD ;    
+   TVF_A1_A_Pcurr : INT ;    
+   TVF_A1_B_Pcurr : INT ;    
+   TVF_A1_C_Pcurr : INT ;    
+   TVF_A1_A_Pvolt : INT ;    
+   TVF_A1_B_Pvolt : INT ;    
+   TVF_A1_C_Pvolt : INT ;    
+   TVF_A1_FAxleT : INT ;    
+   TVF_A1_RAxleT : INT ;    
+   TVF_A1_A_WindT : INT ;    
+   TVF_A1_B_WindT : INT ;    
+   TVF_A1_C_WindT : INT ;    
+   TVF_A1_X_Vibr : INT ;    
+   TVF_A1_Y_Vibr : INT ;    
+   TVF_A1_RT : REAL ;    
+   TVF_A1_FltNo : INT ;    
+   YL_TVF_A1_1 : WORD ;    
+   YL_TVF_A1_2 : WORD ;    
+   YL_TVF_A1_3 : WORD ;    
+   YL_TVF_A1_4 : WORD ;    
+   TVF_A2_ToHMI1 : WORD ;    
+   TVF_A2_ToHMI2 : WORD ;    
+   TVF_A2_A_Pcurr : INT ;    
+   TVF_A2_B_Pcurr : INT ;    
+   TVF_A2_C_Pcurr : INT ;    
+   TVF_A2_A_Pvolt : INT ;    
+   TVF_A2_B_Pvolt : INT ;    
+   TVF_A2_C_Pvolt : INT ;    
+   TVF_A2_FAxleT : INT ;    
+   TVF_A2_RAxleT : INT ;    
+   TVF_A2_A_WindT : INT ;    
+   TVF_A2_B_WindT : INT ;    
+   TVF_A2_C_WindT : INT ;    
+   TVF_A2_H_Vibr : INT ;    
+   TVF_A2_V_Vibr : INT ;    
+   TVF_A2_RT : REAL ;    
+   TVF_A2_FltNo : INT ;    
+   YL_TVF_A2_1 : WORD ;    
+   YL_TVF_A2_2 : WORD ;    
+   YL_TVF_A2_3 : WORD ;    
+   YL_TVF_A2_4 : WORD ;    
+
+   SK4_DTS_A1_ToHMI : WORD ;    
+   SK4_DTS_A2_ToHMI : WORD ;
+  SK4_DTS_A3_ToHMI : WORD ;
+
+   ST6_D_A1_ToHMI : WORD ;    
+   ST6_D_A2_ToHMI : WORD ;    
+   ST7_D_A1_ToHMI : WORD ;    
+
+SDM_A1_ToHMI:WORD;
+SDM_A2_ToHMI:WORD;
+SDM_A3_ToHMI:WORD;
+SDM_A4_ToHMI:WORD;
+SDM_A5_ToHMI:WORD;
+SDM_A6_ToHMI:WORD;
+SDM_A7_ToHMI:WORD;
+SDM_A8_ToHMI:WORD;
+
+SUOF_DT_A1_ToHMI:WORD;
+SUOF_DT_A2_ToHMI:WORD;
+SUOF_DT_A3_ToHMI:WORD;
+SUOF_DT_A4_ToHMI:WORD;
+
+  SDTS_A1_ToHMI : WORD ;
+  SDTS_A2_ToHMI : WORD ;
+  SDTS_A3_ToHMI : WORD ;
+  SDTS_A4_ToHMI : WORD ;
+  SDTS_A5_ToHMI : WORD ;
+  SDTS_A6_ToHMI : WORD ;
+   SDT_RFS_A1_ToHMI : WORD ;
+
+
+   YL_D_1 : WORD ;    
+   YL_D_2 : WORD ;
+   YL_D_3 : WORD ;
+   YL_D_4 : WORD ;
+   YL_D_5 : WORD ;
+   YL_DT_1 : WORD ;    
+   YL_DT_2 : WORD ;    
+   YL_DT_3 : WORD ;    
+   YL_DT_4 : WORD ;    
+   YL_DT_5 : WORD ;    
+ T6_XSF_A1_ToHMI : WORD ;    
+ T6_XSF_A1_A_Pcurr : INT ;    
+ T6_XSF_A1_B_Pcurr : INT ;    
+ T6_XSF_A1_C_Pcurr : INT ;    
+ T6_XSF_A1_RT : REAL ;    
+ T6_XSF_A1_FltNo : INT ;    
+
+RFS_A_ToHMI : WORD ;    
+RFS_A_A_Pcurr : INT ;    
+RFS_A_B_Pcurr : INT ;    
+RFS_A_C_Pcurr : INT ;    
+RFS_A_RT : REAL ;    
+RFS_A_FltNo : INT ;    
+
+T6_XPF_A1_ToHMI : WORD ;    
+T6_XPF_A1_A_Pcurr : INT ;    
+T6_XPF_A1_B_Pcurr : INT ;    
+T6_XPF_A1_C_Pcurr : INT ;    
+T6_XPF_A1_RT : REAL ;    
+T6_XPF_A1_FltNo : INT ;    
+
+
+T7_XPF_A1_ToHMI : WORD ;    
+T7_XPF_A1_A_Pcurr : INT ;    
+T7_XPF_A1_B_Pcurr : INT ;    
+T7_XPF_A1_C_Pcurr : INT ;    
+T7_XPF_A1_RT : REAL ;    
+T7_XPF_A1_FltNo : INT ;    
+
+
+ K4_XK_A1_ToHMI : WORD ;    
+ K4_XK_A1_A_Pcurr : INT ;    
+ K4_XK_A1_B_Pcurr : INT ;    
+ K4_XK_A1_C_Pcurr : INT ;    
+ K4_XK_A1_RT : REAL ;    
+ K4_XK_A1_FltNo : INT ;    
+
+ K4_HPF_A1_ToHMI : WORD ;    
+ K4_HPF_A1_A_Pcurr : INT ;    
+ K4_HPF_A1_B_Pcurr : INT ;    
+ K4_HPF_A1_C_Pcurr : INT ;    
+ K4_HPF_A1_RT : REAL ;    
+ K4_HPF_A1_FltNo : INT ;    
+
+
+   YL_IMCC_FJ_1_ToHMI : WORD ;    
+   YL_IMCC_FJ_1_Pcurr : INT ;    
+   YL_IMCC_FJ_1_RunTime : REAL ;    
+   YL_IMCC_FJ_1_FltNo : INT ;    
+   YL_IMCC_FJ_2_ToHMI : WORD ;    
+   YL_IMCC_FJ_2_Pcurr : INT ;    
+   YL_IMCC_FJ_2_RunTime : REAL ;    
+   YL_IMCC_FJ_2_FltNo : INT ;    
+   YL_IMCC_FJ_3_ToHMI : WORD ;    
+   YL_IMCC_FJ_3_Pcurr : INT ;    
+   YL_IMCC_FJ_3_RunTime : REAL ;    
+   YL_IMCC_FJ_3_FltNo : INT ;    
+   YL_IMCC_FJ_4_ToHMI : WORD ;    
+   YL_IMCC_FJ_4_Pcurr : INT ;    
+   YL_IMCC_FJ_4_RunTime : REAL ;    
+   YL_IMCC_FJ_4_FltNo : INT ;    
+   YL_IMCC_FJ_5_ToHMI : WORD ;    
+   YL_IMCC_FJ_5_Pcurr : INT ;    
+   YL_IMCC_FJ_5_RunTime : REAL ;    
+   YL_IMCC_FJ_5_FltNo : INT ;    
+
+
+
+
+
+   RFM_ToHMI : WORD ;    
+   JH_YC_A_ToHMI : WORD ;    
+
+   E420_01_N_ToHMI : WORD ;    
+   E420_05_K_ToHMI : WORD ;    
+   E420_06_K_ToHMI : WORD ;    
+   E420_07_K_ToHMI : WORD ;
+   YL_FT1_ToHMI : WORD ;    
+  H420_01_N_ToHMI : WORD ;  
+      H420_01_N_FLOOR : WORD ;    
+
+   EPS21_ToHMI1 : WORD ;    
+   EPS21_ToHMI : ARRAY  [0 .. 15 ] OF INT  :=0;  
+   EPS11_ToHMI1 : WORD ;    
+   EPS11_ToHMI : ARRAY  [0 .. 15 ] OF INT ;    
+
+   WLE_1_ToHMI : WORD ;    
+   WLE_2_ToHMI : WORD ;    
+   WLE_3_ToHMI : WORD ;    
+   WLE_4_ToHMI : WORD ; 
+    IMCC_Com_A:WORD;    
+
+  END_STRUCT ;    
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+
+
+
+

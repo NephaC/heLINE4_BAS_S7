@@ -1,0 +1,127 @@
+DATA_BLOCK  DB6003        
+TITLE =        
+VERSION : 0.1        
+STRUCT        
+AN_DPF_A1_SCtrl:WORD := 16#00        ;
+NOT_AN_DPF_A1_KpTm:INT := 0      ;
+NOT_AN_DPF_A1_KiTm:int := 0      ;
+NOT_AN_DPF_A1_SPTm:int := 0      ;
+NOT_AN_DPF_A1_OMS:int := 0      ;
+AN_K1_DPF_A1_SCtrl:WORD := 16#00        ;
+NOT_AN_K1_DPF_A1_KpTm:int := 0      ;
+NOT_AN_K1_DPF_A1_KiTm:int := 0      ;
+NOT_AN_K1_DPF_A1_SPTm:int := 0      ;
+NOT_AN_K1_DPF_A1_OMS:int := 0      ;
+YL_SDF_SCtrl:WORD := 16#00        ;
+YL_SDF_KpTm:int := 0      ;
+YL_SDF_KiTm:int := 0      ;
+YL_SDF_SPTm:int := 0      ;
+YL_SDF_OMS:int := 0      ;
+XV_225_A1_SCtrl:WORD := 16#00        ;
+XV_225_A2_SCtrl:WORD := 16#00        ;
+AT_A10_SCtrl:WORD := 16#00        ;
+AT_A11_SCtrl:WORD := 16#00        ;
+AT_A12_SCtrl:WORD := 16#00        ;
+AT_A13_SCtrl:WORD := 16#00        ;
+YL_AT_01_SCtrl:WORD := 16#00        ;
+YL_AT_02_SCtrl:WORD := 16#00        ;
+YL_AT_03_SCtrl:WORD := 16#00        ;
+TVF_A1_SCtrl:WORD := 16#00        ;
+TVF_A2_SCtrl:WORD := 16#00        ;
+KT_A1_SCtrl:WORD := 16#00        ;
+NOT_USED_KT_A1_KpTm:int := 0      ;
+NOT_USED_KT_A1_KiTm:int := 0      ;
+NOT_USED_KT_A1_SPTm:int := 0      ;
+NOT_USED_KT_A1_OMS:int := 0      ;
+HPF_A1_SCtrl:WORD := 16#00        ;
+NOT_USED_HPF_A1_KpTm:int := 0      ;
+NOT_USED_HPF_A1_KiTm:int := 0      ;
+NOT_USED_HPF_A1_SPTm:int := 0      ;
+NOT_USED_HPF_A1_OMS:int := 0      ;
+TEF_A1_SCtrl:WORD := 16#00        ;
+NOT_USED_TEF_A1_KpTm:int := 0      ;
+NOT_USED_TEF_A1_KiTm:int := 0      ;
+NOT_USED_TEF_A1_SPTm:int := 0      ;
+NOT_USED_TEF_A1_OMS:int := 0      ;
+RF_A1_SCtrl:WORD := 16#00        ;
+XXF_A1_SCtrl:WORD := 16#00        ;
+K1_HPF_A1_SCtrl:WORD := 16#00        ;
+T1_SF_A1_SCtrl:WORD := 16#00        ;
+T1_PF_A1_SCtrl:WORD := 16#00        ;
+K1_KT_A1_SCtrl:WORD := 16#00        ;
+YL_01_SCtrl:WORD := 16#00        ;
+YL_02_SCtrl:WORD := 16#00        ;
+YL_03_SCtrl:WORD := 16#00        ;
+DT_225_A1_SCtrl:WORD := 16#00        ;
+DT_225_A2_SCtrl:WORD := 16#00        ;
+DT_225_A3_SCtrl:WORD := 16#00        ;
+DT_225_A4_SCtrl:WORD := 16#00        ;
+DT_A4_SCtrl:WORD := 16#00        ;
+DT_A5_SCtrl:WORD := 16#00        ;
+DZ_225_A1_SCtrl:WORD := 16#00        ;
+DZ_225_A2_SCtrl:WORD := 16#00        ;
+DZ_225_A3_SCtrl:WORD := 16#00        ;
+DZ_225_A4_SCtrl:WORD := 16#00        ;
+DZ_225_A5_SCtrl:WORD := 16#00        ;
+DZ_225_A6_SCtrl:WORD := 16#00        ;
+DZ_225_A7_SCtrl:WORD := 16#00        ;
+DZ_225_A8_SCtrl:WORD := 16#00        ;
+D_A5_SCtrl:WORD := 16#00        ;
+DT_A1_SCtrl:WORD := 16#00        ;
+DT_A2_SCtrl:WORD := 16#00        ;
+DT_A3_SCtrl:WORD := 16#00        ;
+DT_A6_SCtrl:WORD := 16#00        ;
+DT_A7_SCtrl:WORD := 16#00        ;
+DT_A8_SCtrl:WORD := 16#00        ;
+K1_DT_A1_SCtrl:WORD := 16#00        ;
+K1_DT_A2_SCtrl:WORD := 16#00        ;
+K1_DT_A3_SCtrl:WORD := 16#00        ;
+D_A1_SCtrl:WORD := 16#00        ;
+D_A2_SCtrl:WORD := 16#00        ;
+D_A3_SCtrl:WORD := 16#00        ;
+K1_D_A1_SCtrl:WORD := 16#00        ;
+K1_D_A2_SCtrl:WORD := 16#00        ;
+T1_D_A1_SCtrl:WORD := 16#00        ;
+T1_D_A2_SCtrl:WORD := 16#00        ;
+YL_IMCC_D1_SCtrl:WORD := 16#00        ;
+YL_IMCC_D2_SCtrl:WORD := 16#00        ;
+YL_IMCC_D3_SCtrl:WORD := 16#00        ;
+YL_IMCC_D4_SCtrl:WORD := 16#00        ;
+YL_IMCC_D5_SCtrl:WORD := 16#00        ;
+EPSA_1_SCtrl:WORD := 16#00        ;
+EPSA_2_SCtrl:WORD := 16#00        ;
+EPSA_3_SCtrl:WORD := 16#00        ;
+EPSA_4_SCtrl:WORD := 16#00        ;
+YL_DATA1:ARRAY[0..10] OF WORD;
+
+
+AN_DPF_A1_KpTm:INT := 0      ;
+AN_DPF_A1_KiTm:int := 0      ;
+AN_DPF_A1_SPTm:int := 0      ;
+AN_DPF_A1_OMS:int := 0      ;
+
+AN_K1_DPF_A1_KpTm:int := 0      ;
+AN_K1_DPF_A1_KiTm:int := 0      ;
+AN_K1_DPF_A1_SPTm:int := 0      ;
+AN_K1_DPF_A1_OMS:INT := 0      ;
+
+KT_A1_KpTm:int := 0      ;
+KT_A1_KiTm:int := 0      ;
+KT_A1_SPTm:int := 0      ;
+KT_A1_OMS:int := 0      ;
+
+HPF_A1_KpTm:int := 0      ;
+HPF_A1_KiTm:int := 0      ;
+HPF_A1_SPTm:int := 0      ;
+HPF_A1_OMS:int := 0      ;
+
+TEF_A1_KpTm:int := 0      ;
+TEF_A1_KiTm:int := 0      ;
+TEF_A1_SPTm:int := 0      ;
+TEF_A1_OMS:int := 0      ;
+
+YL_DATA2:ARRAY[0..178]OF WORD;
+
+END_STRUCT        
+BEGIN        
+END_DATA_BLOCK        

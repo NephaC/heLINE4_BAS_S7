@@ -1,0 +1,87 @@
+
+DATA_BLOCK DB7006
+
+ STRUCT
+BigA_ModeRefuse:BOOL;    //大系统模式不符
+TubA_ModeRefuse:BOOL;    //隧道通风模式不符
+A1_ModeRefuse:BOOL;    //A1小系统模式不符
+A2_ModeRefuse:BOOL;    //A2小系统模式不符
+A3_ModeRefuse:BOOL;    //A3小系统模式不符
+A4_ModeRefuse:BOOL;    //A4小系统模式不符
+A5_ModeRefuse:BOOL;    //A5小系统模式不符
+A6_ModeRefuse:BOOL;    //A6小系统模式不符
+A7_ModeRefuse:BOOL;    //A7小系统模式不符
+A8_ModeRefuse:BOOL;    //A8小系统模式不符
+A9_ModeRefuse:BOOL;    //A9小系统模式不符
+A10_ModeRefuse:BOOL;    //A10小系统模式不符
+A11_ModeRefuse:BOOL;    //A11小系统模式不符
+A12_ModeRefuse:BOOL;    //A12小系统模式不符
+
+(*A端大系统模式不符*)
+KT_A1_Refuse:BOOL;
+HPF_A1_Refuse:BOOL;
+DTS_A1_Refuse:BOOL;
+DTS_A2_Refuse:BOOL;
+DTS_A3_Refuse:BOOL;
+DTS_A4_Refuse:BOOL;
+DTS_A5_Refuse:BOOL;
+DTS_A6_Refuse:BOOL;
+AP21_WP8_Refuse:BOOL;
+SDPF_A1_Refuse:BOOL;
+SDPF_A2_Refuse:BOOL;
+
+
+
+(*A端隧道通风模式不符*)
+TVF_A1_Refuse:BOOL;
+TVF_A2_Refuse:BOOL;
+UOF_A1_Refuse:BOOL;
+DM_A1_Refuse:BOOL;
+DM_A2_Refuse:BOOL;
+DM_A3_Refuse:BOOL;
+DM_A4_Refuse:BOOL;
+DM_A5_Refuse:BOOL;
+DM_A6_Refuse:BOOL;
+DM_A7_Refuse:BOOL;
+DM_A8_Refuse:BOOL;
+UOF_DT_A1_Refuse:BOOL;
+UOF_DT_A2_Refuse:BOOL;
+UOF_DT_A3_Refuse:BOOL;
+UOF_DT_A4_Refuse:BOOL;
+AT_ZSL1_Refuse:BOOL;
+AT_ZSL2_Refuse:BOOL;
+AT_ZSL3_Refuse:BOOL;
+AT_ZSL4_Refuse:BOOL;
+
+
+
+
+(*A1小系统模式不符*)
+K4_XK_A1_Refuse:BOOL;
+K4_HPF_A1_Refuse:BOOL;
+K4_DTS_A1_Refuse:BOOL;
+K4_DTS_A2_Refuse:BOOL;
+K4_DTS_A3_Refuse:BOOL;
+
+(*A2小系统模式不符*)
+K5_XK_A1_Refuse:BOOL;
+K5_HPF_A1_Refuse:BOOL;
+K5_DTS_A1_Refuse:BOOL;
+K5_DTS_A2_Refuse:BOOL;
+K5_DTS_A3_Refuse:BOOL;
+
+(*A3小系统模式不符*)
+T5_XSF_A1_Refuse:BOOL;
+T5_XPF_A1_Refuse:BOOL;
+T5_D_A1_Refuse:BOOL;
+T5_D_A2_Refuse:BOOL;
+
+(*A4小系统模式不符*)
+T8_XPF_A1_Refuse:BOOL;
+T8_D_A1_Refuse:BOOL;
+
+
+   END_STRUCT
+BEGIN
+
+END_DATA_BLOCK

@@ -1,0 +1,101 @@
+DATA_BLOCK DB2292
+TITLE =
+VERSION : 0.1
+
+
+  STRUCT 
+ BAS_To_IMCC: WORD ;
+ Fire_To_IMCC: WORD ;
+reserve_1:WORD;
+reserve_2:WORD;
+T1_XSF_B1_qnWR : WORD ;
+reserve_3:WORD;
+reserve_4:WORD;
+reserve_5:WORD;
+RFP_B_qnWR : WORD ;
+K1_HPF_B1_qnWR : WORD ;
+K2_HPF_B1_qnWR : WORD ;
+K3_HPF_B1_qnWR : WORD ;
+reserve_6:WORD;
+reserve_7:WORD;
+reserve_8:WORD;
+T5_XPF_B1_qnWR : WORD ;
+T1_XPF_B1_qnWR : WORD ;
+T4_XPF_B1_qnWR : WORD ;
+K1_XK_B1_qnWR : WORD ;
+K2_XK_B1_qnWR : WORD ;
+K3_XK_B1_qnWR : WORD ;
+reserve_9:ARRAY[0..24]OF WORD;
+
+
+
+TVF_B1_qnWR : WORD ;
+TVF_B2_qnWR : WORD ;
+reserve_10:WORD;
+reserve_11:WORD;
+UOF_B1_qnWR :ARRAY[0..1]OF WORD ;
+reserve_12 :ARRAY[0..1]OF WORD ;
+HPF_B1_qnWR :ARRAY[0..1]OF WORD ;
+reserve_13 :ARRAY[0..1]OF WORD ;
+KT_B1_qnWR :ARRAY[0..1]OF WORD ;
+reserve_14 :ARRAY[0..1]OF WORD ;
+
+K1_DTS_B1_qnWR : WORD ;
+K1_DTS_B2_qnWR : WORD ;
+K1_DTS_B3_qnWR : WORD ;
+K2_DTS_B1_qnWR : WORD ;
+K2_DTS_B2_qnWR : WORD ;
+K2_DTS_B3_qnWR : WORD ;
+K3_DTS_B1_qnWR : WORD ;
+K3_DTS_B2_qnWR : WORD ;
+K3_DTS_B3_qnWR : WORD ;
+T1_D_B2_qnWR : WORD ;
+T1_D_B1_qnWR : WORD ;
+T1_D_B3_qnWR : WORD ;
+T2_D_B1_qnWR : WORD ;
+T3_D_B1_qnWR : WORD ;
+T2_D_B2_qnWR : WORD ;
+T4_D_B1_qnWR : WORD ;
+T5_D_B1_qnWR : WORD ;
+
+
+reserve_15 :ARRAY[0..6]OF WORD ;
+
+
+DM_B1_qnWR : WORD ;
+DM_B2_qnWR : WORD ;
+DM_B3_qnWR : WORD ;
+DM_B4_qnWR : WORD ;
+DM_B5_qnWR : WORD ;
+DM_B6_qnWR : WORD ;
+DM_B7_qnWR : WORD ;
+DM_B8_qnWR : WORD ;
+
+
+UOF_DT_B1_qnWR : WORD ;
+UOF_DT_B2_qnWR : WORD ;
+UOF_DT_B3_qnWR : WORD ;
+UOF_DT_B4_qnWR : WORD ;
+
+
+DTS_B1_qnWR : WORD ;
+DTS_B2_qnWR : WORD ;
+DTS_B3_qnWR : WORD ;
+DTS_B4_qnWR : WORD ;
+DTS_B5_qnWR : WORD ;
+DTS_B6_qnWR : WORD ;
+
+
+
+reserve_16 :ARRAY[0..55]OF WORD ;
+
+
+
+
+
+YL1_reserved:WORD;
+YL2_reserved:WORD;
+
+  END_STRUCT ;
+BEGIN
+END_DATA_BLOCK

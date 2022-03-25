@@ -1,0 +1,51 @@
+
+FUNCTION FC3011 : INT
+
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+
+DB7006.BigA_ModeRefuse :=     DB7006.KT_A1_Refuse       OR
+    DB7006.HPF_A1_Refuse      OR
+         
+    DB7006.DTS_A1_Refuse       OR
+    DB7006.DTS_A2_Refuse       OR
+    DB7006.DTS_A3_Refuse       OR
+    DB7006.DTS_A4_Refuse       OR
+    DB7006.DTS_A5_Refuse       OR
+    DB7006.DTS_A6_Refuse       OR
+ 
+    DB7006.DPH_A1_Refuse ;
+
+        
+DB7006.TubA_ModeRefuse :=    DB7006.TVF_A1_Refuse OR
+    DB7006.TVF_A2_Refuse      OR
+    DB7006.UOF_A1_Refuse      OR
+    DB7006.DM_A1_Refuse       OR
+    DB7006.DM_A2_Refuse       OR
+    DB7006.DM_A3_Refuse       OR
+    DB7006.DM_A4_Refuse       OR
+    DB7006.DM_A5_Refuse       OR
+    DB7006.DM_A6_Refuse       OR
+    DB7006.DM_A7_Refuse       OR
+    DB7006.DM_A8_Refuse       OR
+    DB7006.UOF_DT_A1_Refuse   OR
+    DB7006.UOF_DT_A2_Refuse   OR
+    DB7006.UOF_DT_A3_Refuse   OR
+    DB7006.UOF_DT_A4_Refuse  ;
+  DB7006.A1_ModeRefuse:=    DB7006.K4_XK_A1_Refuse   OR
+    DB7006.K4_HPF_A1_Refuse     OR
+        DB7006.K4_DTS_A1_Refuse      OR
+    DB7006.K4_DTS_A2_Refuse      OR
+    DB7006.K4_DTS_A3_Refuse      ;
+ DB7006.A2_ModeRefuse:=    DB7006.T6_XSF_A1_Refuse  OR
+    DB7006.T6_XPF_A1_Refuse     OR
+    DB7006.T6_D_A1_Refuse       OR
+    DB7006.T6_D_A2_Refuse       ;
+     DB7006.A3_ModeRefuse:=    DB7006.T7_XPF_A1_Refuse  OR
+    DB7006.T7_D_A1_Refuse       ;
+;
+
+    FC3011 := 100;
+END_FUNCTION

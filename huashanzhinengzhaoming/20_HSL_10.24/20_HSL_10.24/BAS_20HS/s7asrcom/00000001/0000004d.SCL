@@ -1,0 +1,74 @@
+
+DATA_BLOCK DB7006
+
+ STRUCT
+BigA_ModeRefuse:BOOL;    //大系统模式不符
+TubA_ModeRefuse:BOOL;    //隧道通风模式不符
+A1_ModeRefuse:BOOL;    //A1小系统模式不符
+A2_ModeRefuse:BOOL;    //A2小系统模式不符
+A3_ModeRefuse:BOOL;    //A3小系统模式不符
+A4_ModeRefuse:BOOL;    //A4小系统模式不符
+A5_ModeRefuse:BOOL;    //A5小系统模式不符
+A6_ModeRefuse:BOOL;    //A6小系统模式不符
+A7_ModeRefuse:BOOL;    //A7小系统模式不符
+A8_ModeRefuse:BOOL;    //A8小系统模式不符
+A9_ModeRefuse:BOOL;    //A9小系统模式不符
+A10_ModeRefuse:BOOL;    //A10小系统模式不符
+A11_ModeRefuse:BOOL;    //A11小系统模式不符
+A12_ModeRefuse:BOOL;    //A12小系统模式不符
+
+(*A端大系统模式不符*)
+XXF_A1_Refuse:BOOL; 
+KT_A1_Refuse:BOOL;
+HPF_A1_Refuse:BOOL;
+D_A1_Refuse:BOOL;
+D_A2_Refuse:BOOL;
+D_A3_Refuse:BOOL;
+DT_A1_Refuse:BOOL;
+DT_A2_Refuse:BOOL;
+DT_A3_Refuse:BOOL;
+DT_A4_Refuse:BOOL;
+DT_A5_Refuse:BOOL;
+DT_A6_Refuse:BOOL;
+DT_A7_Refuse:BOOL;
+DT_A8_Refuse:BOOL;
+
+
+(*A端隧道通风模式不符*)
+TVF_A1_Refuse:BOOL;
+TVF_A2_Refuse:BOOL;
+TEF_A1_Refuse:BOOL;
+DZ_225_A1_Refuse:BOOL;
+DZ_225_A2_Refuse:BOOL;
+DZ_225_A3_Refuse:BOOL;
+DZ_225_A4_Refuse:BOOL;
+DZ_225_A5_Refuse:BOOL;
+DZ_225_A6_Refuse:BOOL;
+DZ_225_A7_Refuse:BOOL;
+DZ_225_A8_Refuse:BOOL;
+DT_225_A1_Refuse:BOOL;
+DT_225_A2_Refuse:BOOL;
+DT_225_A3_Refuse:BOOL;
+DT_225_A4_Refuse:BOOL;
+
+(*A1小系统*)
+K1_KT_A1_Refuse:BOOL;
+K1_HPF_A1_Refuse:BOOL;
+K1_D_A1_Refuse:BOOL;
+K1_D_A2_Refuse:BOOL;
+K1_DT_A1_Refuse:BOOL;
+K1_DT_A2_Refuse:BOOL;
+K1_DT_A3_Refuse:BOOL;
+
+(*A2小系统*)
+T1_SF_A1_Refuse:BOOL;
+T1_PF_A1_Refuse:BOOL;
+T1_D_A1_Refuse:BOOL;
+T1_D_A2_Refuse:BOOL;
+
+
+   END_STRUCT
+BEGIN
+
+END_DATA_BLOCK
+

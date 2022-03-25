@@ -1,0 +1,50 @@
+FUNCTION  FC2001:VOID
+
+VAR_INPUT
+    IN:INT;       //输入值
+    HI_LIM:REAL;  //转换的上限值
+    LO_LIM:REAL;  //转换的下限值
+    K_H:REAL;    //输入值上限
+    K_L:REAL;    //输入值下限
+
+END_VAR
+
+VAR_OUTPUT
+    RET_VAL:WORD;    //返回字
+    OUT:REAL;         //输出转换值
+END_VAR
+
+VAR_TEMP
+    IN_TEMP:REAL;
+END_VAR
+
+IN_TEMP:=DINT_TO_REAL(INT_TO_DINT(IN));
+
+// 转换部分//
+   IF IN_TEMP<=K_H AND IN_TEMP>=K_L THEN
+     OUT:=(IN_TEMP-K_L)/(K_H-K_L)*(HI_LIM-LO_LIM)+LO_LIM;
+     RET_VAL:=16#0;
+     OK:=TRUE;
+     END_IF;
+  
+  
+   IF IN_TEMP>K_H THEN 
+        IN_TEMP:=K_H;          //钳位
+        OUT:=(IN_TEMP-K_L)/(K_H-K_L)*(HI_LIM-LO_LIM)+LO_LIM;
+        RET_VAL:=16#8;             //超过上限
+        OK:=FALSE;
+    END_IF;
+    
+    IF IN_TEMP<K_L THEN 
+        IN_TEMP:=K_L;          //钳位
+        OUT:=(IN_TEMP-K_L)/(K_H-K_L)*(HI_LIM-LO_LIM)+LO_LIM;
+        RET_VAL:=16#1;     //低于下限
+        OK:=FALSE;
+    END_IF;
+    
+END_FUNCTION
+
+
+
+
+

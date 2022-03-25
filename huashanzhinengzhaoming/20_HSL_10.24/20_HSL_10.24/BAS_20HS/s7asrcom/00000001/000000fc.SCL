@@ -1,0 +1,74 @@
+DATA_BLOCK  DB2555
+TITLE =
+VERSION : 0.1
+
+  STRUCT 
+KT_B1_Stop: bool ;
+HPF_B1_Stop: bool ;
+DTS_B1_Open: bool ;
+DTS_B2_Open: bool ;
+DTS_B3_Open: bool ;
+DTS_B4_Open: bool ;
+DTS_B5_Open: bool ;
+DTS_B6_Open: bool ;
+
+TVF_B1_Stop: bool ;
+TVF_B2_Stop: bool ;
+UOF_B1_Stop: bool ;
+DM_B1_Open: bool ;
+DM_B2_Open: bool ;
+DM_B3_Open: bool ;
+DM_B4_Open: bool ;
+DM_B5_Open: bool ;
+DM_B6_Open: bool ;
+DM_B7_Open: bool ;
+DM_B8_Open: bool ;
+U0F_DT_B1_Open: bool ;
+U0F_DT_B2_Open: bool ;
+U0F_DT_B3_Open: bool ;
+U0F_DT_B4_Open: bool ;
+
+K1_XK_B1_Stop: bool ;
+K1_HPF_B1_Stop: bool ;
+K1_DT_B1_Open: bool ;
+K1_DT_B2_Open: bool ;
+K1_DT_B3_Open: bool ;
+
+K2_XK_B1_Stop: bool ;
+K2_HPF_B1_Stop: bool ;
+K2_DT_B1_Open: bool ;
+K2_DT_B2_Open: bool ;
+K2_DT_B3_Open: bool ;
+
+K3_XK_B1_Stop: bool ;
+K3_HPF_B1_Stop: bool ;
+K3_DT_B1_Open: bool ;
+K3_DT_B2_Open: bool ;
+K3_DT_B3_Open: bool ;
+
+T1_XPF_B1_Stop: bool ;
+T1_XSF_B1_Stop: bool ;
+T1_D_B1_Open: bool ;
+T1_D_B2_Open: BOOL ;
+
+T4_XPF_B1_Stop: bool ;
+T4_D_B1_Open: bool ;
+
+T5_XPF_B1_Stop: bool ;
+T5_D_B1_Open: bool ;
+
+
+
+
+  END_STRUCT ;
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+
+
+
+
+

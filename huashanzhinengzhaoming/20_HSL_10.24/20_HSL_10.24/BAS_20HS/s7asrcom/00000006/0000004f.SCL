@@ -1,0 +1,488 @@
+
+FUNCTION_BLOCK FB3020
+
+VAR_TEMP
+   
+END_VAR
+VAR_INPUT  
+ BigA_Act_Mode : STRUCT         
+ BigA_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;     
+   END_STRUCT ;        
+    TubA_Act_Mode : STRUCT         
+ TubA_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ; 
+    WORD6 : WORD ;        
+    WORD7 : WORD ;          
+   END_STRUCT ;        
+   A1_Act_Mode : STRUCT         
+ A1_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A2_Act_Mode : STRUCT         
+ A2_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;  
+    WORD6 : WORD ;        
+    WORD7 : WORD ;         
+   END_STRUCT ;        
+A3_Act_Mode : STRUCT         
+ A3_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;    
+    WORD6 : WORD ;        
+    WORD7 : WORD ;       
+   END_STRUCT ;        
+A4_Act_Mode : STRUCT         
+ A4_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A5_Act_Mode : STRUCT         
+ A5_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;    
+    WORD6 : WORD ;        
+    WORD7 : WORD ;       
+   END_STRUCT ;        
+A6_Act_Mode : STRUCT         
+ A6_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;    
+    WORD6 : WORD ;        
+    WORD7 : WORD ;       
+   END_STRUCT ;        
+A7_Act_Mode : STRUCT         
+ A7_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;  
+    WORD6 : WORD ;        
+    WORD7 : WORD ;         
+   END_STRUCT ;        
+A8_Act_Mode : STRUCT         
+ A8_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ; 
+    WORD6 : WORD ;        
+    WORD7 : WORD ;          
+   END_STRUCT ;        
+A9_Act_Mode : STRUCT         
+ A9_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A10_Act_Mode : STRUCT         
+ A10_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;  
+    WORD6 : WORD ;        
+    WORD7 : WORD ;         
+   END_STRUCT ;        
+A11_Act_Mode : STRUCT         
+ A11_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A12_Act_Mode : STRUCT         
+ A12_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;
+    WORD6 : WORD ;        
+    WORD7 : WORD ;           
+   END_STRUCT ;        
+ 
+    
+END_VAR
+
+VAR_OUTPUT
+     //A端大系统分解 
+
+
+ KT_A1_Mctrl:ARRAY [0..3]OF BOOL;
+HPF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+ 
+DTS_A1_Mctrl:ARRAY [0..3]OF BOOL;
+DTS_A2_Mctrl:ARRAY [0..3]OF BOOL;
+DTS_A3_Mctrl:ARRAY [0..3]OF BOOL;
+DTS_A4_Mctrl:ARRAY [0..3]OF BOOL;
+DTS_A5_Mctrl:ARRAY [0..3]OF BOOL;
+DTS_A6_Mctrl:ARRAY [0..3]OF BOOL;
+
+DPH_A1_Mctrl:ARRAY [0..3]OF BOOL;
+      
+    //A端隧道系统分解  
+   TVF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+TVF_A2_Mctrl:ARRAY [0..3]OF BOOL;
+UOF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A1_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A2_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A3_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A4_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A5_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A6_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A7_Mctrl:ARRAY [0..3]OF BOOL;
+DM_A8_Mctrl:ARRAY [0..3]OF BOOL;
+UOF_DT_A1_Mctrl:ARRAY [0..3]OF BOOL;
+UOF_DT_A2_Mctrl:ARRAY [0..3]OF BOOL;
+UOF_DT_A3_Mctrl:ARRAY [0..3]OF BOOL;
+UOF_DT_A4_Mctrl:ARRAY [0..3]OF BOOL;
+      
+   //A1端小系统分解  
+   
+  
+    K4_XK_A1_Mctrl:ARRAY [0..3]OF BOOL;
+K4_HPF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+K4_DTS_A1_Mctrl:ARRAY [0..3]OF BOOL;
+K4_DTS_A2_Mctrl:ARRAY [0..3]OF BOOL;
+K4_DTS_A3_Mctrl:ARRAY [0..3]OF BOOL;
+
+
+       //A2端小系统分解  
+     
+    T6_XSF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+
+    T6_XPF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+T6_D_A1_Mctrl:ARRAY [0..3]OF BOOL;
+T6_D_A2_Mctrl:ARRAY [0..3]OF BOOL;
+          //A3端小系统分解  
+
+
+    T7_XPF_A1_Mctrl:ARRAY [0..3]OF BOOL;
+T7_D_A1_Mctrl:ARRAY [0..3]OF BOOL;
+
+
+
+       END_VAR
+VAR
+    BigA_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    BigA_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    BigA_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    BigA_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    TubA_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubA_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubA_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubA_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    A1_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    A1_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    A1_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    A1_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    A2_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    A2_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    A2_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    A2_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+       A3_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    A3_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    A3_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    A3_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+
+             
+
+END_VAR     
+HF3_W_T_B_FC54(WORD1 :=  BigA_Act_Mode.WORD0
+               ,bool1 := BigA_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  BigA_Act_Mode.WORD1
+               ,bool1 := BigA_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  BigA_Act_Mode.WORD2
+               ,bool1 := BigA_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  BigA_Act_Mode.WORD3
+               ,bool1 := BigA_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  TubA_Act_Mode.WORD0
+               ,bool1 := TubA_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubA_Act_Mode.WORD1
+               ,bool1 := TubA_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubA_Act_Mode.WORD2
+               ,bool1 := TubA_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubA_Act_Mode.WORD3
+               ,bool1 := TubA_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  A1_Act_Mode.WORD0
+               ,bool1 := A1_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A1_Act_Mode.WORD1
+               ,bool1 := A1_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A1_Act_Mode.WORD2
+               ,bool1 := A1_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A1_Act_Mode.WORD3
+               ,bool1 := A1_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  A2_Act_Mode.WORD0
+               ,bool1 := A2_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A2_Act_Mode.WORD1
+               ,bool1 := A2_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A2_Act_Mode.WORD2
+               ,bool1 := A2_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A2_Act_Mode.WORD3
+               ,bool1 := A2_Word3_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A3_Act_Mode.WORD0
+               ,bool1 := A3_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A3_Act_Mode.WORD1
+               ,bool1 := A3_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A3_Act_Mode.WORD2
+               ,bool1 := A3_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  A3_Act_Mode.WORD3
+               ,bool1 := A3_Word3_Temp);
+
+
+(*A端大系统*)
+
+     KT_A1_MCtrl[0]:=BigA_Word0_Temp[0];
+     KT_A1_MCtrl[1]:=BigA_Word0_Temp[1];
+     KT_A1_MCtrl[2]:=BigA_Word0_Temp[2];
+     KT_A1_MCtrl[3]:=BigA_Word0_Temp[3];
+
+     HPF_A1_MCtrl[0]:=BigA_Word0_Temp[4];
+     HPF_A1_MCtrl[1]:=BigA_Word0_Temp[5];
+     HPF_A1_MCtrl[2]:=BigA_Word0_Temp[6];
+     HPF_A1_MCtrl[3]:=BigA_Word0_Temp[7];
+
+
+
+     DTS_A1_MCtrl[0]:=BigA_Word0_Temp[8];
+     DTS_A1_MCtrl[1]:=BigA_Word0_Temp[9];
+     DTS_A1_MCtrl[2]:=BigA_Word0_Temp[10];
+     DTS_A1_MCtrl[3]:=BigA_Word0_Temp[11];
+
+     DTS_A2_MCtrl[0]:=BigA_Word0_Temp[12];
+     DTS_A2_MCtrl[1]:=BigA_Word0_Temp[13];
+     DTS_A2_MCtrl[2]:=BigA_Word0_Temp[14];
+     DTS_A2_MCtrl[3]:=BigA_Word0_Temp[15];
+
+     DTS_A3_MCtrl[0]:=BigA_Word1_Temp[0];
+     DTS_A3_MCtrl[1]:=BigA_Word1_Temp[1];
+     DTS_A3_MCtrl[2]:=BigA_Word1_Temp[2];
+     DTS_A3_MCtrl[3]:=BigA_Word1_Temp[3];
+
+     DTS_A4_MCtrl[0]:=BigA_Word1_Temp[4];
+     DTS_A4_MCtrl[1]:=BigA_Word1_Temp[5];
+     DTS_A4_MCtrl[2]:=BigA_Word1_Temp[6];
+     DTS_A4_MCtrl[3]:=BigA_Word1_Temp[7];
+
+     DTS_A5_MCtrl[0]:=BigA_Word1_Temp[8];
+     DTS_A5_MCtrl[1]:=BigA_Word1_Temp[9];
+     DTS_A5_MCtrl[2]:=BigA_Word1_Temp[10];
+     DTS_A5_MCtrl[3]:=BigA_Word1_Temp[11];
+
+     DTS_A6_MCtrl[0]:=BigA_Word1_Temp[12];
+     DTS_A6_MCtrl[1]:=BigA_Word1_Temp[13];
+     DTS_A6_MCtrl[2]:=BigA_Word1_Temp[14];
+     DTS_A6_MCtrl[3]:=BigA_Word1_Temp[15];
+
+     DPH_A1_MCtrl[0]:=BigA_Word2_Temp[0];
+     DPH_A1_MCtrl[1]:=BigA_Word2_Temp[1];
+     DPH_A1_MCtrl[2]:=BigA_Word2_Temp[2];
+     DPH_A1_MCtrl[3]:=BigA_Word2_Temp[3];
+     
+
+     (*A端隧道通风系统*)
+     TVF_A1_MCtrl[0]:=TubA_Word0_Temp[0];
+     TVF_A1_MCtrl[1]:=TubA_Word0_Temp[1];
+     TVF_A1_MCtrl[2]:=TubA_Word0_Temp[2];
+     TVF_A1_MCtrl[3]:=TubA_Word0_Temp[3];
+
+     TVF_A2_MCtrl[0]:=TubA_Word0_Temp[4];
+     TVF_A2_MCtrl[1]:=TubA_Word0_Temp[5];
+     TVF_A2_MCtrl[2]:=TubA_Word0_Temp[6];
+     TVF_A2_MCtrl[3]:=TubA_Word0_Temp[7];
+
+     UOF_A1_MCtrl[0]:=TubA_Word0_Temp[8];
+     UOF_A1_MCtrl[1]:=TubA_Word0_Temp[9];
+     UOF_A1_MCtrl[2]:=TubA_Word0_Temp[10];
+     UOF_A1_MCtrl[3]:=TubA_Word0_Temp[11];
+
+     DM_A1_MCtrl[0]:=TubA_Word0_Temp[12];
+     DM_A1_MCtrl[1]:=TubA_Word0_Temp[13];
+     DM_A1_MCtrl[2]:=TubA_Word0_Temp[14];
+     DM_A1_MCtrl[3]:=TubA_Word0_Temp[15];
+
+     DM_A2_MCtrl[0]:=TubA_Word1_Temp[0];
+     DM_A2_MCtrl[1]:=TubA_Word1_Temp[1];
+     DM_A2_MCtrl[2]:=TubA_Word1_Temp[2];
+     DM_A2_MCtrl[3]:=TubA_Word1_Temp[3];
+
+     DM_A3_MCtrl[0]:=TubA_Word1_Temp[4];
+     DM_A3_MCtrl[1]:=TubA_Word1_Temp[5];
+     DM_A3_MCtrl[2]:=TubA_Word1_Temp[6];
+     DM_A3_MCtrl[3]:=TubA_Word1_Temp[7];
+
+     DM_A4_MCtrl[0]:=TubA_Word1_Temp[8];
+     DM_A4_MCtrl[1]:=TubA_Word1_Temp[9];
+     DM_A4_MCtrl[2]:=TubA_Word1_Temp[10];
+     DM_A4_MCtrl[3]:=TubA_Word1_Temp[11];
+
+     DM_A5_MCtrl[0]:=TubA_Word1_Temp[12];
+     DM_A5_MCtrl[1]:=TubA_Word1_Temp[13];
+     DM_A5_MCtrl[2]:=TubA_Word1_Temp[14];
+     DM_A5_MCtrl[3]:=TubA_Word1_Temp[15];
+
+     DM_A6_MCtrl[0]:=TubA_Word2_Temp[0];
+     DM_A6_MCtrl[1]:=TubA_Word2_Temp[1];
+     DM_A6_MCtrl[2]:=TubA_Word2_Temp[2];
+     DM_A6_MCtrl[3]:=TubA_Word2_Temp[3];
+
+     DM_A7_MCtrl[0]:=TubA_Word2_Temp[4];
+     DM_A7_MCtrl[1]:=TubA_Word2_Temp[5];
+     DM_A7_MCtrl[2]:=TubA_Word2_Temp[6];
+     DM_A7_MCtrl[3]:=TubA_Word2_Temp[7];
+   
+   DM_A8_MCtrl[0]:=TubA_Word2_Temp[8];
+     DM_A8_MCtrl[1]:=TubA_Word2_Temp[9];
+     DM_A8_MCtrl[2]:=TubA_Word2_Temp[10];
+     DM_A8_MCtrl[3]:=TubA_Word2_Temp[11];
+
+
+
+     UOF_DT_A1_MCtrl[0]:=TubA_Word2_Temp[12];
+     UOF_DT_A1_MCtrl[1]:=TubA_Word2_Temp[13];
+     UOF_DT_A1_MCtrl[2]:=TubA_Word2_Temp[13];
+     UOF_DT_A1_MCtrl[3]:=TubA_Word2_Temp[15];
+
+     UOF_DT_A2_MCtrl[0]:=TubA_Word3_Temp[0];
+     UOF_DT_A2_MCtrl[1]:=TubA_Word3_Temp[1];
+     UOF_DT_A2_MCtrl[2]:=TubA_Word3_Temp[2];
+     UOF_DT_A2_MCtrl[3]:=TubA_Word3_Temp[3];
+
+     UOF_DT_A3_MCtrl[0]:=TubA_Word3_Temp[4];
+     UOF_DT_A3_MCtrl[1]:=TubA_Word3_Temp[5];
+     UOF_DT_A3_MCtrl[2]:=TubA_Word3_Temp[6];
+     UOF_DT_A3_MCtrl[3]:=TubA_Word3_Temp[7];
+
+     UOF_DT_A4_MCtrl[0]:=TubA_Word3_Temp[8];
+     UOF_DT_A4_MCtrl[1]:=TubA_Word3_Temp[9];
+     UOF_DT_A4_MCtrl[2]:=TubA_Word3_Temp[10];
+     UOF_DT_A4_MCtrl[3]:=TubA_Word3_Temp[11];
+
+
+
+
+     
+     
+     
+     (*A1小系统*)
+      K4_XK_A1_MCtrl[0]:=A1_Word0_Temp[0];
+     K4_XK_A1_MCtrl[1]:=A1_Word0_Temp[1];
+     K4_XK_A1_MCtrl[2]:=A1_Word0_Temp[2];
+     K4_XK_A1_MCtrl[3]:=A1_Word0_Temp[3];
+
+     K4_HPF_A1_MCtrl[0]:=A1_Word0_Temp[4];
+     K4_HPF_A1_MCtrl[1]:=A1_Word0_Temp[5];
+     K4_HPF_A1_MCtrl[2]:=A1_Word0_Temp[6];
+     K4_HPF_A1_MCtrl[3]:=A1_Word0_Temp[7];
+
+     K4_DTS_A1_MCtrl[0]:=A1_Word0_Temp[8];
+     K4_DTS_A1_MCtrl[1]:=A1_Word0_Temp[9];
+     K4_DTS_A1_MCtrl[2]:=A1_Word0_Temp[10];
+     K4_DTS_A1_MCtrl[3]:=A1_Word0_Temp[11];
+
+     K4_DTS_A2_MCtrl[0]:=A1_Word0_Temp[12];
+     K4_DTS_A2_MCtrl[1]:=A1_Word0_Temp[13];
+     K4_DTS_A2_MCtrl[2]:=A1_Word0_Temp[14];
+     K4_DTS_A2_MCtrl[3]:=A1_Word0_Temp[15];
+
+     K4_DTS_A3_MCtrl[0]:=A1_Word1_Temp[0];
+     K4_DTS_A3_MCtrl[1]:=A1_Word1_Temp[1];
+     K4_DTS_A3_MCtrl[2]:=A1_Word1_Temp[2];
+     K4_DTS_A3_MCtrl[3]:=A1_Word1_Temp[3];
+         (*A2小系统*)
+     T6_XSF_A1_MCtrl[0]:=A2_Word0_Temp[0];
+     T6_XSF_A1_MCtrl[1]:=A2_Word0_Temp[1];
+     T6_XSF_A1_MCtrl[2]:=A2_Word0_Temp[2];
+     T6_XSF_A1_MCtrl[3]:=A2_Word0_Temp[3];
+
+     T6_XPF_A1_MCtrl[0]:=A2_Word0_Temp[4];
+     T6_XPF_A1_MCtrl[1]:=A2_Word0_Temp[5];
+     T6_XPF_A1_MCtrl[2]:=A2_Word0_Temp[6];
+     T6_XPF_A1_MCtrl[3]:=A2_Word0_Temp[7];
+
+     T6_D_A1_MCtrl[0]:=A2_Word0_Temp[8];
+     T6_D_A1_MCtrl[1]:=A2_Word0_Temp[9];
+     T6_D_A1_MCtrl[2]:=A2_Word0_Temp[10];
+     T6_D_A1_MCtrl[3]:=A2_Word0_Temp[11];
+
+     T6_D_A2_MCtrl[0]:=A2_Word0_Temp[12];
+     T6_D_A2_MCtrl[1]:=A2_Word0_Temp[13];
+     T6_D_A2_MCtrl[2]:=A2_Word0_Temp[14];
+     T6_D_A2_MCtrl[3]:=A2_Word0_Temp[15];  
+              (*A3小系统*)
+         T7_XPF_A1_MCtrl[0]:=A3_Word0_Temp[0];
+     T7_XPF_A1_MCtrl[1]:=A3_Word0_Temp[1];
+     T7_XPF_A1_MCtrl[2]:=A3_Word0_Temp[2];
+     T7_XPF_A1_MCtrl[3]:=A3_Word0_Temp[3];
+
+     T7_D_A1_MCtrl[0]:=A3_Word0_Temp[4];
+     T7_D_A1_MCtrl[1]:=A3_Word0_Temp[5];
+     T7_D_A1_MCtrl[2]:=A3_Word0_Temp[6];
+     T7_D_A1_MCtrl[3]:=A3_Word0_Temp[7];
+  
+END_FUNCTION_BLOCK

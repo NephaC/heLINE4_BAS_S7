@@ -1,0 +1,39 @@
+
+FUNCTION FC2842:VOID
+VAR_INPUT
+   
+    DB_NO:INT;
+   STR_ADR:int;
+    DEV_NO:int;
+   POS:int;
+    
+END_VAR
+
+VAR_IN_OUT
+    STATE:ARRAY[0..24] OF INT;
+END_VAR
+
+
+
+
+VAR_TEMP
+   I:INT;
+
+END_VAR
+IF POS=0 THEN
+    i:=0;
+    FOR I:=0 TO 24 BY 1 DO
+     STATE[I]:=0;
+    END_FOR;
+END_IF;
+   
+    
+i:=0;
+   FOR I:=POS TO POS+DEV_NO-1 BY 1 DO
+    STATE[I]:=WORD_TO_INT(WORD_TO_BLOCK_DB(INT_TO_WORD(DB_NO)).DW[STR_ADR+(I-pos)*2]);
+END_FOR;
+
+    
+END_FUNCTION
+
+

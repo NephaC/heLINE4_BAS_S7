@@ -1,0 +1,75 @@
+DATA_BLOCK DB2292    
+TITLE =    
+VERSION : 0.1    
+    
+    
+    
+  STRUCT     
+BAS_To_IMCC: WORD ;    //40401
+Fire_To_IMCC: WORD ;    
+Reserve_1:WORD;    //40403
+T6_XSF_A1_qnWR : WORD ;    //40404
+Reserve_2:WORD;    
+Reserve_3:WORD;    //40406
+K4_HPF_A1_qnWR:WORD;    
+RFS_A_qnWR : WORD ;    //40408
+T6_XPF_A1_qnWR : WORD ;    
+T7_XPF_A1_qnWR:WORD;    
+K4_XK_A1_qnWR  : WORD ;    //40411
+Reserve_4 :WORD ;    
+Reserve_5: WORD ;    //40413
+Reserve_6 :WORD ;    
+Reserve_61 : WORD ;    
+Reserve_62 : WORD ;    //40416
+Reserve_8 :ARRAY[0..29]OF WORD ;    
+    
+TVF_A1_qnWR : WORD ;    //40447
+TVF_A2_qnWR : WORD ;    
+Reserve_9 :ARRAY[0..1]OF WORD ;    
+    
+UOF_A1_qnWR :ARRAY[0..1]OF WORD ;    //40451
+Reserve_10 :ARRAY[0..1]OF WORD ;    
+HPF_A1_qnWR :ARRAY[0..1]OF WORD ;    //40455
+Reserve_11 :ARRAY[0..1]OF WORD ;    
+KT_A1_qnWR :ARRAY[0..1]OF WORD ;    //40459
+Reserve_12 :ARRAY[0..1]OF WORD ;    
+    
+K4_DTS_A1_qnWR : WORD ;    //40463
+K4_DTS_A2_qnWR : WORD ;    
+K4_DTS_A3_qnWR : WORD ;    
+T6_D_A1_qnWR : WORD ;    
+T6_D_A2_qnWR : WORD ;
+T7_D_A1_qnWR : WORD ;   
+T8_D_A1_qnWR : WORD ;    
+T8_D_A2_qnWR : WORD ;  
+    
+Reserve_14 :ARRAY[0..15]OF WORD ;    //40471
+    
+DM_A1_qnWR : WORD ;    
+DM_A2_qnWR : WORD ;    
+DM_A3_qnWR : WORD ;    
+DM_A4_qnWR : WORD ;    
+DM_A5_qnWR : WORD ;    
+DM_A6_qnWR : WORD ;    
+DM_A7_qnWR : WORD ;    
+DM_A8_qnWR : WORD ;    
+UOF_DTS_A1_qnWR : WORD ;    
+UOF_DTS_A2_qnWR : WORD ;    
+UOF_DTS_A3_qnWR : WORD ;    
+UOF_DTS_A4_qnWR : WORD ;    
+DTS_A1_qnWR : WORD ;    //40499
+DTS_A2_qnWR : WORD ;    
+DTS_A3_qnWR : WORD ;    
+DTS_A4_qnWR : WORD ;    
+DTS_A5_qnWR : WORD ;    
+DTS_A6_qnWR : WORD ;    
+    
+Reserve_15 :ARRAY[0..55]OF WORD ;    
+    
+LY1_inRD : WORD:= W#16#0 ;    
+LY2_inRD : WORD:= W#16#0 ;    
+    
+  END_STRUCT ;    
+BEGIN    
+END_DATA_BLOCK    
+

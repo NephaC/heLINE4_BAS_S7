@@ -1,0 +1,76 @@
+
+FUNCTION FC3010 : INT
+
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+(*大端模式不符*)
+DB7004.BigB_ModeRefuse :=      DB7004.KT_B1_Refuse       OR
+    DB7004.HPF_B1_Refuse      OR
+    DB7004.DTS_B1_Refuse       OR
+    DB7004.DTS_B2_Refuse       OR
+    DB7004.DTS_B3_Refuse       OR
+    DB7004.DTS_B4_Refuse       OR
+    DB7004.DTS_B5_Refuse       OR
+    DB7004.DTS_B6_Refuse        ;   
+        
+DB7004.TubB_ModeRefuse :=    DB7004.TVF_B1_Refuse OR
+    DB7004.TVF_B2_Refuse      OR
+    DB7004.UOF_B1_Refuse      OR
+    DB7004.DM_B1_Refuse       OR
+    DB7004.DM_B2_Refuse       OR
+    DB7004.DM_B3_Refuse       OR
+    DB7004.DM_B4_Refuse       OR
+    DB7004.DM_B5_Refuse       OR
+    DB7004.DM_B6_Refuse       OR
+    DB7004.DM_B7_Refuse       OR
+    DB7004.DM_B8_Refuse       OR
+       DB7004.UOF_DT_B1_Refuse   OR
+    DB7004.UOF_DT_B2_Refuse   OR
+    DB7004.UOF_DT_B3_Refuse   OR
+    DB7004.UOF_DT_B4_Refuse     ;
+    
+  DB7004.B1_ModeRefuse:=    DB7004.K1_XK_B1_Refuse   OR
+    DB7004.K1_HPF_B1_Refuse     OR
+       DB7004.K1_DTS_B1_Refuse      OR
+    DB7004.K1_DTS_B2_Refuse      OR
+    DB7004.K1_DTS_B3_Refuse      ;
+  DB7004.B2_ModeRefuse:=    DB7004.K2_XK_B1_Refuse   OR
+    DB7004.K2_HPF_B1_Refuse     OR
+       DB7004.K2_DTS_B1_Refuse      OR
+    DB7004.K2_DTS_B2_Refuse      OR
+    DB7004.K2_DTS_B3_Refuse      ;
+    
+    
+  DB7004.B3_ModeRefuse:=    DB7004.K3_XK_B1_Refuse   OR
+    DB7004.K3_HPF_B1_Refuse     OR
+       DB7004.K3_DTS_B1_Refuse      OR
+    DB7004.K3_DTS_B2_Refuse      OR
+    DB7004.K3_DTS_B3_Refuse      ;
+    
+ DB7004.B4_ModeRefuse:=    DB7004.T1_XSF_B1_Refuse      OR
+    DB7004.T1_XPF_B1_Refuse      OR
+    DB7004.T1_D_B1_Refuse       OR
+    DB7004.T1_D_B2_Refuse      ;
+    
+
+                              
+DB7004.B5_ModeRefuse:=        DB7004.T4_XPF_B1_Refuse     OR
+                              DB7004.T4_D_B1_Refuse;
+                              
+DB7004.B6_ModeRefuse:=        DB7004.T5_XPF_B1_Refuse     OR
+                              DB7004.T5_D_B1_Refuse;
+                             
+                              
+(*小端模式不符传到7004*)
+DB7004.BigA_ModeRefuse:=DB7006.BigA_ModeRefuse;
+DB7004.TubA_ModeRefuse:=DB7006.TubA_ModeRefuse;
+DB7004.A1_ModeRefuse:=DB7006.A1_ModeRefuse;
+DB7004.A2_ModeRefuse:=DB7006.A2_ModeRefuse;
+DB7004.A3_ModeRefuse:=DB7006.A3_ModeRefuse;
+DB7004.A4_ModeRefuse:=DB7006.A4_ModeRefuse;
+DB7004.A5_ModeRefuse:=DB7006.A5_ModeRefuse;
+
+    FC3010 := 100;
+END_FUNCTION

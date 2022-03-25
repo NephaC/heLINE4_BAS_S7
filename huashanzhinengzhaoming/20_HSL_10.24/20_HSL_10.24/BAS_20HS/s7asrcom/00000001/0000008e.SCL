@@ -1,0 +1,28 @@
+FUNCTION Fc204 : void
+
+VAR_TEMP
+    I:INT;
+    J:INT;
+END_VAR;
+
+////////////////////////模块故障打包////////////////////////////
+FOR I:=0 TO 49 BY 1 DO
+    
+    FOR J:=0 TO 9 BY 1 DO
+        
+        IF "DP_ERROR_RACK0".STATE[I*10+J+1]=1 OR "DP_ERROR_RACK1".STATE[I*10+J+1]=1 THEN
+            DB6007.DBX[I*2+J/8,J MOD 8]:=1;
+        ELSE
+            DB6007.DBX[I*2+J/8,J MOD 8]:=0;
+        END_IF;
+        
+    END_FOR;
+    
+    ////////////////////////总线故障打包//////////////////////////// 
+    DB6007.DBX[101+I*2,0]:=DETAIL_DIAG_DB_RACK0.DX[1208+(I+2)/8,(I+2) MOD 8];
+    DB6007.DBX[201+I*2,0]:=DETAIL_DIAG_DB_RACK1.DX[1208+(I+2)/8,(I+2) MOD 8];
+          
+END_FOR;
+
+
+END_FUNCTION

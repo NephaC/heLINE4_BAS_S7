@@ -1,0 +1,12 @@
+
+DATA_BLOCK DB234
+//
+// Block Comment ...
+//
+    STRUCT
+        RECORD_ARCHIVED:INT;    //传给综合监控的操作记录
+
+    END_STRUCT
+BEGIN
+
+END_DATA_BLOCK

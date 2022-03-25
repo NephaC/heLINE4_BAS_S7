@@ -1,0 +1,57 @@
+DATA_BLOCK  DB2555
+TITLE =
+VERSION : 0.1
+
+  STRUCT 
+KT_A1_Stop: bool ;
+HPF_A1_Stop: bool ;
+DTS_A1_Open: bool ;
+DTS_A2_Open: bool ;
+DTS_A3_Open: bool ;
+DTS_A4_Open: bool ;
+DTS_A5_Open: bool ;
+DTS_A6_Open: bool ;
+
+TVF_A1_Stop: bool ;
+TVF_A2_Stop: bool ;
+UOF_A1_Stop: bool ;
+DM_A1_Open: bool ;
+DM_A2_Open: bool ;
+DM_A3_Open: bool ;
+DM_A4_Open: bool ;
+DM_A5_Open: bool ;
+DM_A6_Open: bool ;
+DM_A7_Open: bool ;
+DM_A8_Open: bool ;
+U0F_DT_A1_Open: bool ;
+U0F_DT_A2_Open: bool ;
+U0F_DT_A3_Open: bool ;
+U0F_DT_A4_Open: bool ;
+
+K4_XK_A1_Stop: bool ;
+K4_HPF_A1_Stop: bool ;
+K4_DT_A1_Open: bool ;
+K4_DT_A2_Open: bool ;
+K4_DT_A3_Open: bool ;
+
+
+T6_XPF_A1_Stop: bool ;
+T6_XSF_A1_Stop: bool ;
+T6_D_A1_Open: bool ;
+T6_D_A2_Open: BOOL ;
+
+T7_XPF_A1_Stop: BOOL ;
+T7_D_A1_Open: BOOL ;
+
+END_STRUCT ;
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+
+
+
+
+

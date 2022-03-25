@@ -1,0 +1,128 @@
+FUNCTION_BLOCK FB2643
+VERSION: '1.1'
+AUTHOR: SUNWIN_G
+NAME: FAS_CAL
+FAMILY: FAS
+
+VAR_INPUT
+    FAS_WORK_DB:INT;  //FASwork_db号
+   
+END_VAR
+VAR_OUTPUT
+    qnRD1:INT;                             //根据FAS状态点输出模式号
+END_VAR
+
+VAR
+    FAS_inRD1:ARRAY [0..2] OF WORD;             //读取到的FAS状态点
+    DI_FAS1 AT FAS_inRD1:ARRAY [0..47] OF BOOL;
+   FAS_CODE:INT;                           //执行的FAS模式号
+   FAS_Encode:ARRAY [0..47] OF INT;      //FAS模式号初始化变量
+   i:INT;
+   
+END_VAR
+
+
+  //右侧m模式号根据各站FAS点表填写 填好模式名//
+         
+                   // FAS模式号初始化
+FAS_Encode[0]:=1141;(*站厅公共区火灾模式*)
+    FAS_Encode[1]:=1142;(*站台公共区火灾模式*)
+    FAS_Encode[2]:=1143;(*车站轨行区左线火灾模式*)
+    FAS_Encode[3]:=1144;(*车站轨行区右线火灾模式*)
+    FAS_Encode[4]:=4141;(*厅B通风空调电控室火灾模式*)
+    FAS_Encode[5]:=4142;(*厅B照明配电兼蓄电池室火灾模式*)
+    FAS_Encode[6]:=4143;(*专用通信电源室火灾模式*)
+    FAS_Encode[7]:=4144;(*专用通信设备室火灾模式*)
+    FAS_Encode[8]:=4145;(*公安通信设备室火灾模式*)
+    FAS_Encode[9]:=4146;(*民用通信设备室火灾模式*)
+    FAS_Encode[10]:=4147;(*信号设备室火灾模式*)
+    FAS_Encode[11]:=4148;(*综合监控设备室火灾模式*)
+    FAS_Encode[12]:=4149;(*台B照明配电兼蓄电池室火灾模式*)
+    FAS_Encode[13]:=4150;(*控制室火灾模式*)
+    FAS_Encode[14]:=4151;(*站台门控制室火灾模式*)
+    FAS_Encode[15]:=4152;(*AFC设备室火灾模式*)
+    FAS_Encode[16]:=4153;(*0.4KV开关柜室火灾模式*)
+    FAS_Encode[17]:=4154;(*交直流开关柜室火灾模式*)
+    FAS_Encode[18]:=4155;(*再生能源设备室火灾模式*)
+    FAS_Encode[19]:=4156;(*整流变压器室1火灾模式*)
+    FAS_Encode[20]:=4157;(*整流变压器室2火灾模式*)
+    FAS_Encode[21]:=2142;(*厅A通风空调电控室火灾模式*)
+    FAS_Encode[22]:=2141;(*厅A照明配电兼蓄电池室火灾模式*)
+    FAS_Encode[23]:=4159;(*厅B通风机房防烟分区5火灾模式*)
+    FAS_Encode[24]:=4160;(*厅B走道、非气灭房间防烟分区3火灾模式*)
+    FAS_Encode[25]:=4161;(*厅B走道、非气灭房间防烟分区4火灾模式*)
+    FAS_Encode[26]:=2274;(*A端站台照明配电室兼蓄电池室火灾模式*)
+    FAS_Encode[27]:=2274;(*厅A走道、非气灭房间防烟分区6火灾模式*)
+    FAS_Encode[28]:=0;
+    FAS_Encode[29]:=0;
+    FAS_Encode[30]:=0;
+    FAS_Encode[31]:=0;
+    FAS_Encode[32]:=0;
+    FAS_Encode[33]:=0;
+    FAS_Encode[34]:=0;
+    FAS_Encode[35]:=0;
+
+
+
+  
+    
+    
+    
+FAS_Code:=0;    (* FAS模式号清零复位 *)
+
+    (* 西门子400系列高位优先 word型高位部分在BYTE1中 低位在BYTE0*)
+                         //FAS命令分解
+               //讲对应DB中的数据传递给中间变量
+  FOR i:=0 TO 2 BY 1 do     
+ FAS_inRD1[i] := WORD_TO_BLOCK_DB(INT_TO_WORD(FAS_WORK_DB+4)).DW[2*i+4];  // 新修改 读寄存器的第一个地址在DB块中DBW4
+ END_FOR;
+
+                 
+FOR i:=8 TO 15 BY 1 DO
+    IF DI_FAS1[i] AND FAS_Encode[i-8]<>0 THEN
+      FAS_Code:=FAS_Encode[i-8];  //执行的FAS模式号word1_byte1
+    END_IF;
+END_FOR;
+
+FOR i:=0 TO 7 BY 1 DO
+    IF DI_FAS1[i] AND FAS_Encode[i+8]<>0 THEN
+      FAS_Code:=FAS_Encode[i+8];  //执行的FAS模式号word1_byte2
+    END_IF;
+END_FOR;
+
+FOR i:=24 TO 31 BY 1 DO
+    IF DI_FAS1[i] AND FAS_Encode[i-8]<>0 THEN
+      FAS_Code:=FAS_Encode[i-8];  //执行的FAS模式号word2_byte1                       
+    END_IF;
+END_FOR;
+
+FOR i:=16 TO 23 BY 1 DO
+    IF DI_FAS1[i] AND FAS_Encode[i+8]<>0 THEN
+      FAS_Code:=FAS_Encode[i+8];  //执行的FAS模式号word2_byte2
+    END_IF;
+END_FOR;
+
+
+FOR i:=40 TO 47 BY 1 DO
+    IF DI_FAS1[i] AND FAS_Encode[i-8]<>0 THEN
+      FAS_Code:=FAS_Encode[i-8];  //执行的FAS模式号word3_byte1
+    END_IF;
+END_FOR;  
+
+
+FOR i:=32 TO 39 BY 1 DO
+    IF DI_FAS1[i] AND FAS_Encode[i+8]<>0 THEN
+      FAS_Code:=FAS_Encode[i+8];  //执行的FAS模式号word3_byte2
+    END_IF;
+END_FOR;  
+                //FAS命令分解
+                
+                
+    qnRD1:=FAS_Code;    //模式号赋给输出值
+    IF qnRD1<>0 THEN      //管理BR
+        OK:=TRUE;
+    ELSE
+        OK:=FALSE;
+        END_IF;
+END_FUNCTION_BLOCK
+

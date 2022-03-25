@@ -1,0 +1,75 @@
+DATA_BLOCK DB2291    
+TITLE =    
+VERSION : 0.1    
+    
+    
+  STRUCT     
+   IMCC_TO_BAS : WORD ;    //40001
+   Fire_To_BAS : WORD ;    //40002
+   Reserve_1:ARRAY[0..3]OF WORD;    //40003
+   T6_XSF_A1_inRD : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    //40007
+   Reserve_2:ARRAY[0..3]OF WORD;    //40011
+   Reserve_3:ARRAY[0..3]OF WORD;    //40015
+   K4_HPF_A1_inRD:ARRAY[0..3]OF WORD;    //40019
+   Reserve_4 : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    //40023
+   T6_XPF_A1_inRD : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    //40027
+   T7_XPF_A1:ARRAY[0..3]OF WORD;    //40031
+   K4_XK_A1_inRD : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    //40035
+   Reserve_5:ARRAY[0..3]OF WORD;    //40039
+   Reserve_6 : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    //40043
+   Reserve_7:ARRAY[0..3]OF WORD;    //40047
+   Reserve_61 : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    //40051
+  Reserve_62 : ARRAY  [0 .. 3 ] OF WORD  := W#16#0;    
+   Reserve_8:ARRAY[0..3]OF WORD;    
+   Reserve_9:ARRAY[0..3]OF WORD;    //40063
+   Reserve_10:ARRAY[0..3]OF WORD;    
+   Reserve_11:ARRAY[0..3]OF WORD;    //40071
+   Reserve_12:ARRAY[0..103]OF WORD;    //4075_40178
+   TVF_A1_inRD : ARRAY  [0 .. 13 ] OF WORD  := W#16#0;    //40179
+   TVF_A2_inRD : ARRAY  [0 .. 13 ] OF WORD  := W#16#0;    //40193
+   Reserve_13:ARRAY[0..13]OF WORD;    //40207
+   Reserve_14:ARRAY[0..13]OF WORD;    
+   UOF_A1_inRD : ARRAY  [0 .. 14 ] OF WORD  := W#16#0;    //40235
+   Reserve_15:ARRAY[0..14]OF WORD;    
+   HPF_A1_inRD : ARRAY  [0 .. 7 ] OF WORD  := W#16#0;       
+   Reserve_16 : ARRAY  [0 .. 7 ] OF WORD  := W#16#0;       
+   KT_A1_inRD : ARRAY  [0 .. 10 ] OF WORD  := W#16#0;    
+   Reserve_17 : ARRAY  [0 .. 10 ] OF WORD  := W#16#0;       //40292
+K4_DTS_A1_inRD : WORD:= W#16#0 ;    //40303
+K4_DTS_A2_inRD : WORD:= W#16#0 ;    
+K4_DTS_A3_inRD : WORD:= W#16#0 ;    
+T6_D_A1_inRD : WORD:= W#16#0 ;    
+T6_D_A2_inRD : WORD:= W#16#0 ;    //40307
+T7_D_A1_inRD : WORD:= W#16#0 ; 
+T8_D_A1_inRD : WORD:= W#16#0 ; 
+T8_D_A2_inRD : WORD:= W#16#0 ; 
+   Reserve_18 : ARRAY  [0 .. 15] OF WORD  := W#16#0;       //40311
+    
+DM_A1_inRD : WORD:= W#16#0 ;    //40327
+DM_A2_inRD : WORD:= W#16#0 ;    
+DM_A3_inRD : WORD:= W#16#0 ;    
+DM_A4_inRD : WORD:= W#16#0 ;    
+DM_A5_inRD : WORD:= W#16#0 ;    
+DM_A6_inRD : WORD:= W#16#0 ;    
+DM_A7_inRD : WORD:= W#16#0 ;    
+DM_A8_inRD : WORD:= W#16#0 ;    
+UOF_DTS_A1_inRD : WORD:= W#16#0 ;    
+UOF_DTS_A2_inRD : WORD:= W#16#0 ;    
+UOF_DTS_A3_inRD : WORD:= W#16#0 ;    
+UOF_DTS_A4_inRD : WORD:= W#16#0 ;    
+DTS_A1_inRD : WORD:= W#16#0 ;    
+DTS_A2_inRD : WORD:= W#16#0 ;    
+DTS_A3_inRD : WORD:= W#16#0 ;    
+DTS_A4_inRD : WORD:= W#16#0 ;    
+DTS_A5_inRD : WORD:= W#16#0 ;    
+DTS_A6_inRD : WORD:= W#16#0 ;    
+    
+Reserve_21 : ARRAY  [0 .. 55] OF WORD  := W#16#0;     //40345
+LY1_inRD : WORD:= W#16#0 ;    
+LY2_inRD : WORD:= W#16#0 ;    
+    
+       
+  END_STRUCT ;    
+BEGIN    
+END_DATA_BLOCK    
+

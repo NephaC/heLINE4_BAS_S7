@@ -1,0 +1,448 @@
+
+FUNCTION_BLOCK FB3001
+
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+
+VAR_inPUT
+    Hour_Minute:int;(*转化后时间格式*)                               //变量修改
+    //SJBCF:BOOL;(*时间表*)
+    //H_P_Tim_Mod1:ARRAY[0..399] OF INT;(*时间表-正在执行*)
+    H_P_Tim_Mod2:ARRAY[0..399] OF INT;(*时间表-将要执行*)
+    
+   TTCode: ARRAY[0..40] OF INT;
+   SectIndex:ARRAY[0..40] OF INT;
+   
+   
+   Fire:ARRAY[0..63] OF BOOL;   
+   Fire_RE:ARRAY[0..63] OF BOOL;
+   Fire_RE1:ARRAY[0..63] OF BOOL;
+   Fire_RE2:ARRAY[0..63] OF BOOL;
+   
+   Block:ARRAY[0..63] OF BOOL;   
+   ActCode:ARRAY[0..40] OF INT;
+   
+   
+   P_H_Stu_Grp:ARRAY [0..59] OF WORD;   
+      
+   IBP_Man:BOOL;(*IBP盘手动模式*)
+   IBP_Auto:BOOL;(*IBP盘自动模式*)
+   IBP_Recovery:BOOL;(*IBP盘灾后恢复*)
+   IBP_Code:INT;(*IBP盘模式号*)
+   
+   FAS_Code:INT;(*FAS主机发送模式号*)
+   
+   H_P_OCC_Code:INT;(*控制中心紧急模式号*)
+   H_P_Man_Mod:int;(*ISCS模式号*)
+   H_P_All_Ctrl:WORD;(*全局命令*)
+   TimeReach:BOOL;   
+END_VAR
+VAR_IN_OUT
+    H_P_Tim_Mod1:ARRAY[0..399] OF INT;(*时间表-正在执行*)    //新加输入输出变量
+    SJBCF:BOOL;
+end_var
+VAR_OUTPUT
+    CalcCode:ARRAY[0..40] OF INT;
+    ActSRC_raw:ARRAY[0..40] OF WORD;   
+    FireAlarm:BOOL;(*火灾模式*)
+    BlockAlarm:BOOL;(*阻塞模式*)
+
+END_VAR
+VAR
+  u:INT;  
+ I:INT;
+ I1:INT;
+ J:INT;
+ J1:INT;
+ Remainder:INT;
+ RemainderT:INT; 
+  P_H_Stu_Grp_Temp:ARRAY [0..59]  OF  STRUCT 
+                   array_Bool:ARRAY [0..15]  OF  BOOL;
+                   END_STRUCT;
+
+ 
+ H_P_All_Ctrl_Temp:ARRAY  [0..15]  OF  BOOL;
+ 
+ ISCS_Rocovery:BOOL;(*灾后恢复*)
+
+END_VAR
+   (* 每天在零点更新今天时间表 *)
+IF   Hour_Minute=16#0000 OR  SJBCF  THEN
+     H_P_Tim_Mod1:=H_P_Tim_Mod2;
+     SJBCF:=0;                                     //修改 新加SJBCF复位
+END_IF;
+
+(* 每个扫描周期，将时间表的模式编码清零。*)
+
+FOR  I:=0 TO 40  BY 1  DO
+     TTCode[I]:=0;
+END_FOR;
+
+
+(* 初始化计算模式号与模式来源*)
+FOR  I:=0 TO 40  BY 1  DO
+     CalcCode[I]:=0;
+     ActSRC_raw[I]:=0;
+END_FOR;
+
+(*     [2x]    模式编号*)
+(*     [2x+1]    时:分*)
+FOR  I:=0 TO 199 BY 1 DO                                //修改      从0开始
+     IF  Hour_Minute=H_P_Tim_Mod1[2*I+1] AND (H_P_Tim_Mod1[2*I] MOD 100)<11 AND H_P_Tim_Mod1[2*I]<>0 THEN
+        FOR J1:=0 TO 40  BY 1  DO
+            IF SectIndex[J1]=(H_P_Tim_Mod1[2*I]/100) THEN
+                TTCode[J1]:=H_P_Tim_Mod1[2*I];
+            END_IF;
+        END_FOR;
+     END_IF;
+END_FOR;
+(*处理FAS模式号
+FOR I:=0 TO 134 DO
+    IF (NOM_FAS_RDDate[I]  MOD 100)>40 AND (NOM_FAS_RDDate[I]>1100)  THEN
+    FAS_Code:=NOM_FAS_RDDate[I];
+         Exit;
+    Else
+    FAS_Code:=0;
+    END_IF;
+END_FOR;*)
+(*处理IBP盘模式号
+IBP_Code:=WORD_TO_INT(L_P_Man_Dev[1]);*)
+
+(*总火灾上升沿*)
+Fire_RE[63]:=Fire_RE[0] OR Fire_RE[1] OR Fire_RE[2] OR Fire_RE[3] OR Fire_RE[4] ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[5] OR Fire_RE[6] OR Fire_RE[7] OR Fire_RE[8] OR Fire_RE[9]     ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[10] OR Fire_RE[11] OR Fire_RE[12] OR Fire_RE[13] OR Fire_RE[14] ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[15] OR Fire_RE[16] OR Fire_RE[17] OR Fire_RE[18] OR Fire_RE[19] ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[20] OR Fire_RE[21] OR Fire_RE[22] OR Fire_RE[23] OR Fire_RE[24] ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[25] OR Fire_RE[26] OR Fire_RE[27] OR Fire_RE[28] OR Fire_RE[29] ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[30] OR Fire_RE[31] OR Fire_RE[32] OR Fire_RE[33] OR Fire_RE[34] ;
+Fire_RE[63]:=Fire_RE[63] OR Fire_RE[35] OR Fire_RE[36] OR Fire_RE[37] OR Fire_RE[38];
+
+(*总火灾报警*)
+Fire[63]:=Fire[0] OR Fire[1] OR Fire[2] OR Fire[3] OR Fire[4] ;    
+Fire[63]:=Fire[63] OR Fire[5] OR Fire[6] OR Fire[7] OR Fire[8] OR Fire[9]     ;
+Fire[63]:=Fire[63] OR Fire[10] OR Fire[11] OR Fire[12] OR Fire[13] OR Fire[14] ;    
+Fire[63]:=Fire[63] OR Fire[15] OR Fire[16] OR Fire[17] OR Fire[18] OR Fire[19] ;    
+Fire[63]:=Fire[63] OR Fire[20] OR Fire[21] OR Fire[22] OR Fire[23] OR Fire[24] ;    
+Fire[63]:=Fire[63] OR Fire[25] OR Fire[26] OR Fire[27] OR Fire[28] OR Fire[29] ;    
+Fire[63]:=Fire[63] OR Fire[30] OR Fire[31] OR Fire[32] OR Fire[33] OR Fire[34] ;    
+Fire[63]:=Fire[63] OR Fire[35] OR Fire[36] OR Fire[37] OR Fire[38]     ;
+
+(*总阻塞*)
+FireAlarm:=Fire[63];
+BlockAlarm:= Block[2] OR Block[3] ;
+
+
+(*同端的系统紧急模式的联动*)
+(*AB端大系统火灾，BA端大系统执行相同火灾*)
+IF  Fire_RE1[0]   THEN
+    CalcCode[1]:=SectIndex[1]*100+ (ActCode[0] MOD 100);
+    ActSRC_raw[1]:=16;
+ELSIF Fire_RE1[1]   THEN
+    CalcCode[0]:=SectIndex[0]*100+ (ActCode[1] MOD 100);
+    ActSRC_raw[0]:=16;
+END_IF;
+
+
+(*AB端隧道系统火灾、阻塞,BA端隧道系统执行相同火灾*)
+IF  Fire_RE1[2]  OR Block[2] THEN
+    CalcCode[3]:=SectIndex[3]*100+ (ActCode[2] MOD 100);
+    ActSRC_raw[3]:=16;
+    
+ ELSIF Fire_RE1[3]  OR Block[3] THEN
+    CalcCode[2]:=SectIndex[2]*100+ (ActCode[3] MOD 100);
+    ActSRC_raw[2]:=16;
+END_IF;
+
+
+(*A端小系统火灾，同端小系统执行相同的火灾*)
+
+    //  IF Fire_RE1[4] THEN
+     //    FOR I:=5 TO 15  BY 1  DO
+     //        CalcCode[I]:=SectIndex[I]*100+ (ActCode[4] MOD 100);
+      //       ActSRC_raw[I]:=16;    
+       //   END_FOR;
+     //  END_IF;
+     
+(*A端小系统火灾，同端小系统执行相同的火灾*)
+
+FOR u:=4 TO 15 BY 1 DO
+    IF Fire_RE1[u]=TRUE THEN                                                   //新修改 一端任意一小系统均可触发火灾模式联动
+        FOR I:=4 TO 15 BY 1 DO
+            IF I<>U  THEN
+              CalcCode[I]:=SectIndex[I]*100+ (ActCode[U] MOD 100);
+              ActSRC_raw[I]:=16;  
+            ELSE
+                CONTINUE;
+            END_IF;
+        END_FOR;
+        EXIT;
+    END_IF;
+END_FOR;
+
+    
+    
+
+(*B端小系统火灾，同端小系统执行相同的火灾*)
+   //   IF Fire_RE1[16] THEN
+    //     FOR I:=17 TO 27  BY 1  DO
+     //        CalcCode[I]:=SectIndex[I]*100+ (ActCode[16] MOD 100);
+      //       ActSRC_raw[I]:=16;    
+       //   END_FOR;
+     //  END_IF;
+     
+     (*B端小系统火灾，同端小系统执行相同的火灾*)
+     FOR u:=16 TO 27 BY 1 DO                                                    //新修改 一端任意一小系统均可触发火灾模式联动
+
+    IF Fire_RE1[u]=TRUE THEN
+        FOR I:=16 TO 27 BY 1 DO
+            IF I<>U  THEN
+              CalcCode[I]:=SectIndex[I]*100+ (ActCode[U] MOD 100);
+              ActSRC_raw[I]:=16;  
+            ELSE
+                CONTINUE;
+            END_IF;
+        END_FOR;
+        EXIT;
+    END_IF;
+END_FOR;
+
+     
+
+
+//(*C端小系统火灾,同端小系统执行相同的火灾*)
+//IF Fire_RE1[34] THEN
+ //  FOR I:=35 TO 38   BY 1  DO 
+  //     CalcCode[I]:=SectIndex[I]*100+ (ActCode[34] MOD 100);
+     //  ActSRC_raw[I]:=16;
+   //END_FOR;
+//END_IF;
+
+(*火灾联锁关系*)
+(*区间执行火灾，大系统执行火灾联动模式，尾号99,小系统不处理*)
+(*车站区间火灾，大系统执行站台火灾，小系统执行火灾联动模式，尾号99*)
+(*大系统站厅火灾，隧道系统、小系统执行火灾联动模式，尾号99*)
+(*大系统站台火灾, 隧道系统执行站台火灾模式，小系统执行火灾联动模式，尾号99*)
+(*小系统火灾，隧道系统和大系统执行火灾联动模式,尾号99*)
+
+(*大系统执行火灾模式，小系统执行火灾联动模式*)
+IF (Fire_RE1[0] OR Fire_RE1[1])  THEN  
+    FOR I:=4 TO 38  BY 1  DO
+        IF NOT Fire[I] THEN
+            CalcCode[I]:=SectIndex[I]*100+99;
+            ActSRC_raw[I]:=16;
+        END_IF;
+    END_FOR; 
+END_IF;
+
+(* 大系统执行站台火灾，隧道系统执行车站区间站台火灾首选模式 *)
+IF Fire_RE2[0] THEN
+    IF NOT Fire[2] THEN
+       CalcCode[2]:=SectIndex[2]*100+(ActCode[0] MOD 100);
+       ActSRC_raw[2]:=16;
+    END_IF;
+    IF NOT Fire[3] THEN
+       CalcCode[3]:=SectIndex[3]*100+(ActCode[0] MOD 100);
+       ActSRC_raw[3]:=16;
+    END_IF;
+END_IF;
+
+
+
+(* 大系统执行其他火灾模式，隧道系统执行火灾联动模式*)
+IF (Fire_RE1[0] AND (NOT Fire_RE2[0])) THEN
+   IF NOT Fire[2] THEN
+      CalcCode[2]:=SectIndex[2]*100+99;
+      ActSRC_raw[2]:=16;
+   END_IF;
+   IF NOT Fire[3] THEN
+      CalcCode[3]:=SectIndex[3]*100+99;
+      ActSRC_raw[3]:=16;
+   END_IF;
+END_IF;
+
+(*隧道系统执行车站区间火灾模式，大系统执行站台火灾模式，小系统执行火灾联动模式*)
+IF Fire_RE2[2] OR Fire_RE2[3] THEN
+   IF NOT Fire[0] THEN
+     CalcCode[0]:=SectIndex[0]*100+(ActCode[2] MOD 100);
+     ActSRC_raw[0]:=16;
+   END_IF;
+   IF NOT Fire[1] THEN
+     CalcCode[1]:=SectIndex[1]*100+(ActCode[2] MOD 100); 
+     ActSRC_raw[1]:=16;
+   END_IF;
+   FOR I:=4 TO 38  BY 1  DO 
+       IF NOT Fire[I] THEN
+          CalcCode[I]:=SectIndex[I]*100+99;
+          ActSRC_raw[I]:=16; 
+       END_IF;
+   END_FOR;
+END_IF;
+
+(*隧道系统执行区间火灾模式,大系统和小系统执行火灾联动模式*)
+IF Fire_RE1[2] AND (NOT Fire_RE2[2])THEN
+    FOR I:=0 TO 1  BY 1  DO 
+       IF NOT Fire[I] THEN
+          CalcCode[I]:=SectIndex[I]*100+99; 
+          ActSRC_raw[I]:=16;
+       END_IF;
+   END_FOR;
+   FOR J:=4 TO 38  BY 1  DO 
+       IF NOT Fire[J] THEN
+          CalcCode[J]:=SectIndex[J]*100+99; 
+          ActSRC_raw[J]:=16;
+       END_IF;
+   END_FOR;
+END_IF;
+
+(*A端小系统执行火灾，其他小系统和大系统和隧道系统执行火灾联动模式*)
+IF Fire_RE1[4]  THEN
+   FOR I:=0 TO 3  BY 1  DO
+     IF NOT Fire[I] THEN
+        CalcCode[I]:=SectIndex[I]*100+99;  
+    ActSRC_raw[I]:=16;
+     END_IF;   
+   END_FOR;
+   FOR J:=16 TO 38 BY 1  DO
+     IF NOT Fire[J] THEN
+        CalcCode[J]:=SectIndex[J]*100+99;  
+    ActSRC_raw[J]:=16;
+     END_IF;
+   END_FOR;  
+END_IF;
+
+(*B端小系统执行火灾，其他小系统和大系统和隧道系统执行火灾联动模式*)
+IF Fire_RE1[16]     THEN
+   FOR I:=0 TO 15 BY 1  DO
+     IF NOT Fire[I] THEN
+        CalcCode[I]:=SectIndex[I]*100+99;  
+    ActSRC_raw[I]:=16; 
+     END_IF;  
+   END_FOR;
+   FOR J:=34 TO 38 BY 1  DO
+     IF NOT Fire[J] THEN
+        CalcCode[J]:=SectIndex[J]*100+99;  
+    ActSRC_raw[J]:=16;
+     END_IF;
+   END_FOR;  
+END_IF;
+
+(*C端小系统执行火灾，其他小系统和大系统和隧道系统执行火灾联动模式*)
+(*IF Fire_RE1[34]     THEN
+   FOR I:=0 TO 33 BY 1  DO
+     IF NOT Fire[I] THEN
+        CalcCode[I]:=SectIndex[I]*100+99;  
+    ActSRC_raw[I]:=16;  
+     END_IF;  
+   END_FOR;     
+END_IF;*)
+
+(*模式编码后两位区分正常模式，阻塞及灾害模式;1..10表正常，11.40表阻塞，41..99表火灾*)
+IF IBP_Man THEN
+    (*IBP手动模式*)
+    FOR I:=0 TO 38 BY 1  DO
+        IF IBP_Code/100=SectIndex[I] AND IBP_Code<>0 THEN
+            CalcCode[I]:=IBP_Code;
+            ActSRC_raw[I]:=1;
+            EXIT;
+        END_IF;
+    END_FOR;
+END_IF;
+
+IF  IBP_Auto THEN
+       (*FAS主机*)
+    IF NOT  Fire[63] AND FAS_Code<>0 THEN
+            Remainder:=FAS_Code MOD 100;
+        FOR I1:=0 TO 38  BY 1  DO
+            IF FAS_Code/100=SectIndex[I1] AND Remainder>40 THEN
+                CalcCode[I1]:=FAS_Code;
+                ActSRC_raw[I1]:=2;
+                EXIT;
+            END_IF;
+        END_FOR;
+    END_IF;    
+
+    (*以下处理中心隧道模式下发*)
+    IF H_P_OCC_Code>0 THEN
+       Remainder:=H_P_OCC_Code MOD 100;
+           IF H_P_OCC_Code/100=SectIndex[2] AND (Remainder>10 AND Remainder<40) AND (NOT Fire[2]) AND (NOT Block[2]) THEN
+          (*隧道阻塞模式号大10*)
+          CalcCode[2]:=H_P_OCC_Code; 
+          ActSRC_raw[I]:=256;
+       END_IF;
+    END_IF;
+
+    (*以下处理时间表指令*)
+    FOR I:=0 TO 40 BY 1  DO
+         HF3_W_T_B_FC54(WORD1 :=P_H_Stu_Grp[I]
+                        ,bool1 := P_H_Stu_Grp_Temp[I].array_Bool);         
+       RemainderT:=TTCode[I] MOD 100;
+       IF  P_H_Stu_Grp_Temp[I].array_Bool[2] AND TTCode[I]<>0 AND RemainderT<11 AND NOT Fire[I] THEN
+           CalcCode[I]:=TTCode[I];
+           ActSRC_raw[I]:=4;
+       END_IF;
+    END_FOR;
+
+    (*以下处理ISCS发出的模式指令--H_P_Man_Mod[0]*)
+    IF H_P_Man_Mod>0 THEN
+       FOR I:=0 TO 40 BY 1  DO
+           Remainder:=H_P_Man_Mod MOD 100;
+           IF H_P_Man_Mod/100=SectIndex[I] THEN
+           (*火灾模式的编码后两位大于等于41，直接执行*)
+            IF Remainder>40 THEN
+               CalcCode[I]:=H_P_Man_Mod;
+               ActSRC_raw[I]:=8;
+                      EXIT;                    
+            END_IF;
+           (*下发的模式号码为阻塞，且未在火灾工况，则执行*)
+                IF Remainder>10 AND NOT Fire[I] THEN
+                   CalcCode[I]:=H_P_Man_Mod;
+               ActSRC_raw[I]:=8;
+                   EXIT;
+            END_IF;
+           (*下发的模式号码为正常工况，且未在火灾，无阻塞工况，则执行*)
+            IF Remainder>0 AND Remainder<11 AND NOT Fire[I] AND NOT Block[I] THEN
+                     CalcCode[I]:=H_P_Man_Mod;
+               ActSRC_raw[I]:=8;
+               EXIT;
+            END_IF;
+         END_IF;
+        END_FOR;
+    END_IF;
+    (*以下处理自动模式*)
+  // IF TimeReach AND NOT Fire[63] THEN
+   //  FOR I:=0 TO 38 DO
+   //        IF P_H_Stu_Grp[I].4 THEN
+   //       CalcCode[I]:=SectIndex[I]*100+AutoCode[I];
+   //       ActSRC_raw[I]:=512; 
+    //       END_IF;
+    //     END_FOR;
+   // END_IF;
+END_IF;
+
+(*灾后恢复*)
+
+HF3_W_T_B_FC54(WORD1 :=  H_P_All_Ctrl
+               ,bool1 := H_P_All_Ctrl_Temp);
+ISCS_Rocovery:= H_P_All_Ctrl_Temp[1];
+
+IF (IBP_Man AND IBP_Recovery) OR  ISCS_Rocovery THEN
+    FOR I:=0 TO 40  BY 1  DO
+        IF Block[I] OR Fire[I] THEN
+           CalcCode[I]:=SectIndex[I]*100+10;
+           IF IBP_Man AND IBP_Recovery THEN
+              ActSRC_raw[I]:=1024; (*IBP盘恢复*)
+             ELSE
+              ActSRC_raw[I]:=2048; (*HMI恢复*)
+           END_IF;
+        END_IF;
+    END_FOR;
+END_IF;
+END_FUNCTION_BLOCK
+
+
+
+
+

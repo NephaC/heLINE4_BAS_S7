@@ -1,0 +1,333 @@
+DATA_BLOCK  DB7004           
+TITLE =            
+VERSION : 0.1            
+STRUCT            
+(*mode_Look_Up*)    
+CalcCode:array [0..40]  of  int;    //计算模式号
+ActSRC_raw:array [0..40]  of  word;    //未确认模式来源
+ActSRC:array [0..40]  of  word;    //模式来源
+ActCode:array [0..40]  of  int;    //当前执行模式号
+Fire:array [0..63]  of  bool;    
+Block:array [0..63]  of  bool;    
+    
+(*WG_Mode_BE*)     
+PT_Mode:array [0..40]  of  time;    
+ActSTAT:array [0..40]  of  int;    
+BigA_Mode:array [0..15]  of bool;    
+BigB_Mode:array [0..15]  of bool;    
+TubA_Mode:array [0..15]  of bool;    
+TubB_Mode:array [0..15]  of bool;    
+A1_Mode:array [0..15]  of bool;    
+A2_Mode:array [0..15]  of bool;    
+A3_Mode:array [0..15]  of bool;    
+A4_Mode:array [0..15]  of bool;    
+A5_Mode:array [0..15]  of bool;    
+A6_Mode:array [0..15]  of bool;    
+A7_Mode:array [0..15]  of bool;    
+A8_Mode:array [0..15]  of bool;    
+A9_Mode:array [0..15]  of bool;    
+A10_Mode:array [0..15]  of bool;    
+A11_Mode:array [0..15]  of bool;    
+A12_Mode:array [0..15]  of bool;    
+B1_Mode:array [0..15]  of bool;    
+B2_Mode:array [0..15]  of bool;    
+B3_Mode:array [0..15]  of bool;    
+B4_Mode:array [0..15]  of bool;    
+B5_Mode:array [0..15]  of bool;    
+B6_Mode:array [0..15]  of bool;    
+B7_Mode:array [0..15]  of bool;    
+B8_Mode:array [0..15]  of bool;    
+B9_Mode:array [0..15]  of bool;    
+B10_Mode:array [0..15]  of bool;    
+B11_Mode:array [0..15]  of bool;    
+B12_Mode:array [0..15]  of bool;    
+Fire_RE:array [0..63]  of bool;    
+Fire_RE1:array [0..63]  of bool;    
+Fire_RE2:array [0..63]  of bool;    
+BigA_ModeRefuse:BOOL;    
+BigB_ModeRefuse:BOOL;    
+TubA_ModeRefuse:BOOL;  
+TubB_ModeRefuse:BOOL;    
+A1_ModeRefuse:BOOL;    
+A2_ModeRefuse:BOOL;    
+A3_ModeRefuse:BOOL;    //小端模式不符在DB7006 
+
+A4_ModeRefuse:BOOL;    
+A5_ModeRefuse:BOOL;    
+A6_ModeRefuse:BOOL;    
+A7_ModeRefuse:BOOL;    
+A8_ModeRefuse:BOOL;    
+A9_ModeRefuse:BOOL;    
+A10_ModeRefuse:BOOL;    
+A11_ModeRefuse:BOOL;    
+A12_ModeRefuse:BOOL; 
+B1_ModeRefuse:BOOL;    
+B2_ModeRefuse:BOOL;    
+B3_ModeRefuse:BOOL;    
+B4_ModeRefuse:BOOL;    
+B5_ModeRefuse:BOOL;    
+B6_ModeRefuse:BOOL;    
+B7_ModeRefuse:BOOL;    
+B8_ModeRefuse:BOOL;    
+B9_ModeRefuse:BOOL;    
+B10_ModeRefuse:BOOL;    
+B11_ModeRefuse:BOOL;    
+B12_ModeRefuse:BOOL;    
+(*WG_Mode_BE*)    
+H_P_Man_Grp:ARRAY [0..40]  OF  WORD;    //0-单控制；1-模控制；2-时间表
+
+TTCode:ARRAY [0..40]  OF  INT;    //时间表模式号
+   
+H_P_Man_Mod:INT;    //模式控制指令
+H_P_All_Ctrl:WORD;    //全局控制命令
+IBP_Man:BOOL;    //IBP盘手动
+IBP_Recovery:BOOL;    //IBP盘灾后恢复
+ 
+P_H_Stu_Grp:ARRAY[0..59] OF WORD;    //模式来源及状态
+BigA_All:ARRAY [0..15]  OF BOOL;    
+BigB_All:ARRAY [0..15]  OF BOOL;    
+TubA_All:ARRAY [0..15]  OF BOOL;    
+TubB_All:ARRAY [0..15]  OF BOOL;    
+A1_All:ARRAY [0..15]  OF BOOL;    
+A2_All:ARRAY [0..15]  OF BOOL;    
+A3_All:ARRAY [0..15]  OF BOOL;    
+A4_All:ARRAY [0..15]  OF BOOL;    
+A5_All:ARRAY [0..15]  OF BOOL;    
+A6_All:ARRAY [0..15]  OF BOOL;    
+A7_All:ARRAY [0..15]  OF BOOL;    
+A8_All:ARRAY [0..15]  OF BOOL;    
+A9_All:ARRAY [0..15]  OF BOOL;    
+A10_All:ARRAY [0..15]  OF BOOL;    
+A11_All:ARRAY [0..15]  OF BOOL;    
+A12_All:ARRAY [0..15]  OF BOOL;    
+B1_All:ARRAY [0..15]  OF BOOL;    
+B2_All:ARRAY [0..15]  OF BOOL;    
+B3_All:ARRAY [0..15]  OF BOOL;    
+B4_All:ARRAY [0..15]  OF BOOL;    
+B5_All:ARRAY [0..15]  OF BOOL;    
+B6_All:ARRAY [0..15]  OF BOOL;    
+B7_All:ARRAY [0..15]  OF BOOL;    
+B8_All:ARRAY [0..15]  OF BOOL;    
+B9_All:ARRAY [0..15]  OF BOOL;    
+B10_All:ARRAY [0..15]  OF BOOL;    
+B11_All:ARRAY [0..15]  OF BOOL;    
+B12_All:ARRAY [0..15]  OF BOOL;    
+       
+(*Mode_Condition*)    
+
+Auto_mode:ARRAY [0..31]  OF  BOOL;    
+TimeReach:BOOL;    
+    
+(*Mode_Call*)    
+    Hour_Minute:WORD;    (*转化后时间格式*)
+    SJBCF:BOOL;    (*时间表*)
+    H_P_Tim_Mod1:ARRAY[0..399] OF INT;    (*时间表-正在执行*)
+    H_P_Tim_Mod2:ARRAY[0..399] OF INT;    (*时间表-将要执行*)
+    
+    
+FireAlarm:BOOL;    (*火灾信号*)
+BlockAlarm:BOOL;    (*阻塞信号*)
+
+(*Mode_explode*)    
+        //B端大系统设备分解 
+
+      
+     KT_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+     DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B4_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B5_MCtrl:ARRAY  [0..3]  OF  BOOL;    
+     DTS_B6_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+   
+
+         
+      
+    //B端隧道系统分解  
+    TVF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;
+    TVF_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;     
+    UOF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    DM_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B4_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B5_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B6_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B7_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DM_B8_MCtrl:ARRAY  [0..3]  OF  BOOL;
+    UOF_DT_B1_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+  UOF_DT_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;
+    UOF_DT_B3_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+    UOF_DT_B4_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+           
+ 
+ 
+  //B1端小系统分解  
+    K1_XK_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;      
+    K1_HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    K1_DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K1_DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+    K1_DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     
+    //B2端小系统分解  
+     
+    K2_XK_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;  
+    K2_HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    K2_DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K2_DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+    K2_DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     
+      
+
+
+    //B3端小系统分解  
+   
+ K3_XK_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;  
+    K3_HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    K3_DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K3_DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+    K3_DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;      
+    //B4端小系统分解  
+    T1_XPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    T1_XSF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;
+   T1_D_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    T1_D_B2_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+             
+  
+    //B5端小系统分解   
+    T4_XPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+
+    T4_D_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+  
+    
+     //B6端小系统分解   
+        T5_XPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+
+    T5_D_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;         
+    
+   
+
+
+
+    
+    
+
+//B端大系统设备模式不符
+         KT_B1_Refuse: BOOL;        
+     HPF_B1_Refuse: BOOL; 
+     DTS_B1_Refuse: BOOL;        
+     DTS_B2_Refuse: BOOL;        
+     DTS_B3_Refuse: BOOL;        
+     DTS_B4_Refuse: BOOL;        
+     DTS_B5_Refuse: BOOL;    
+     DTS_B6_Refuse: BOOL;        
+   
+
+         
+      
+    //B端隧道系统设备模式不符  
+    TVF_B1_Refuse: BOOL;
+    TVF_B2_Refuse: BOOL;     
+    UOF_B1_Refuse: BOOL;   
+    DM_B1_Refuse: BOOL;        
+    DM_B2_Refuse: BOOL;        
+    DM_B8_Refuse: BOOL;        
+    DM_B3_Refuse: BOOL;        
+    DM_B4_Refuse: BOOL;        
+    DM_B5_Refuse: BOOL;        
+    DM_B6_Refuse: BOOL;        
+     DM_B7_Refuse: BOOL; 
+    UOF_DT_B1_Refuse: BOOL; 
+  UOF_DT_B2_Refuse: BOOL;
+    UOF_DT_B3_Refuse: BOOL; 
+    UOF_DT_B4_Refuse: BOOL; 
+           
+ 
+ 
+  //B1端小系统设备模式不符 
+    K1_XK_B1_Refuse: BOOL;      
+    K1_HPF_B1_Refuse: BOOL;   
+    K1_DTS_B1_Refuse: BOOL;        
+    K1_DTS_B2_Refuse: BOOL; 
+    K1_DTS_B3_Refuse: BOOL;        
+     
+    //B2端小系统设备模式不符  
+     
+    K2_XK_B1_Refuse: BOOL;  
+    K2_HPF_B1_Refuse: BOOL;   
+    K2_DTS_B1_Refuse: BOOL;        
+    K2_DTS_B2_Refuse: BOOL; 
+    K2_DTS_B3_Refuse: BOOL;        
+     
+      
+
+
+    //B3端小系统设备模式不符  
+   
+ K3_XK_B1_Refuse: BOOL;  
+    K3_HPF_B1_Refuse: BOOL;   
+    K3_DTS_B1_Refuse: BOOL;        
+    K3_DTS_B2_Refuse: BOOL; 
+    K3_DTS_B3_Refuse: BOOL;      
+    //B4端小系统设备模式不符   
+    T1_XPF_B1_Refuse: BOOL;        
+    T1_XSF_B1_Refuse: BOOL;
+      T1_XPF_B2_Refuse: BOOL;        
+    T1_XSF_B2_Refuse: BOOL;  
+    T1_D_B1_Refuse: BOOL;   
+    T1_D_B2_Refuse: BOOL; 
+    T1_D_B4_Refuse: BOOL;   
+    T1_D_B5_Refuse: BOOL;   
+    T1_D_B6_Refuse: BOOL;                
+  
+    //B5端小系统设备模式不符    
+    T4_XPF_B1_Refuse: BOOL; 
+
+    T4_D_B1_Refuse: BOOL;        
+  
+    
+     //B6端小系统设备模式不符    
+        T5_XPF_B1_Refuse: BOOL; 
+
+    T5_D_B1_Refuse: BOOL;         
+    
+     //B7端小系统设备模式不符   
+    T7_XPF_B1_Refuse: BOOL;        
+    T7_XSF_B1_Refuse: BOOL;
+    T7_D_B1_Refuse: BOOL;        
+    T7_D_B2_Refuse: BOOL; 
+    
+    
+
+
+
+     END_STRUCT        
+BEGIN        
+END_DATA_BLOCK        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

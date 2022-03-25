@@ -1,0 +1,87 @@
+
+FUNCTION_BLOCK FB3013
+VAR_INPUT
+    Tub_mode_Table:ARRAY [0..49] OF STRUCT
+    Mode_Num:INT;
+    word0:WORD;
+    word1:WORD;
+    word2:WORD;
+    word3:WORD;
+    word4:WORD;
+    word5:WORD;
+    word6:WORD;
+    word7:WORD;
+END_STRUCT;
+
+   CalcCode:INT ;   (*待执行模式号*)
+   Mode_Source_Raw:WORD;(*模式来源/未经确认*)
+   
+END_VAR
+
+VAR_OUTPUT
+Mode_Source:WORD;(*模式来源*)
+ActCode:INT;(*当前执行模式号*)
+
+ Tub_Act_mode_Table: STRUCT
+    Mode_Num:INT;
+    word0:WORD;
+    word1:WORD;
+    word2:WORD;
+    word3:WORD;
+    word4:WORD;
+    word5:WORD;
+    word6:WORD;
+    word7:WORD;
+END_STRUCT;
+
+Fire:BOOL;(*火灾*)
+Block:BOOL;(*阻塞*)
+
+END_VAR
+
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+VAR
+   I:INT;
+   Remainder1:INT;(*余数*)
+   Norml:BOOL;
+
+END_VAR
+
+   
+FOR I:=0 TO 49 DO
+    (* 如模式编码无效，则退出 *)
+    IF Tub_mode_Table[I].Mode_Num=  CalcCode AND CalcCode> 0 THEN
+       Tub_Act_mode_Table:=Tub_mode_Table[I];  (*如找到相应的模式则直接退出*)
+       Mode_Source:=Mode_Source_Raw;
+      EXIT;
+    END_IF;
+END_FOR;
+
+(* ActSEQ[0]--当前执行的模式号 *)
+Remainder1 :=Tub_Act_mode_Table.Mode_Num MOD 100;
+Norml:=(Remainder1>=1) AND (Remainder1<=10);                                                     
+Fire:=(Remainder1>=41);
+Block:=(Remainder1>=11) AND (Remainder1<=40);
+ActCode:=  Tub_Act_mode_Table.Mode_Num;
+HF3_B_T_W_FC51(Bit_0 := 0 // IN: BOOL
+              ,Bit_1 := 0 // IN: BOOL
+              ,Bit_2 := 0 // IN: BOOL
+              ,Bit_3 := 0 // IN: BOOL
+              ,Bit_4 := 0 // IN: BOOL
+              ,Bit_5 :=Norml  // IN: BOOL
+              ,Bit_6 :=Block  // IN: BOOL
+              ,Bit_7 :=Fire  // IN: BOOL
+              ,Bit_8 := 0 // IN: BOOL
+              ,Bit_9 := 0 // IN: BOOL
+              ,Bit_10 :=0  // IN: BOOL
+              ,Bit_11 := 0 // IN: BOOL
+              ,Bit_12 := 0 // IN: BOOL
+              ,Bit_13 :=0  // IN: BOOL
+              ,Bit_14 :=0  // IN: BOOL
+              ,Bit_15 :=0  // IN: BOOL
+              ,Word1 :=Mode_Source  // OUT: WORD
+              ); // VOID
+END_FUNCTION_BLOCK

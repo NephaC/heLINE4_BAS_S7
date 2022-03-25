@@ -1,0 +1,208 @@
+DATA_BLOCK  DB7005        
+TITLE =            
+VERSION : 0.1            
+STRUCT            
+BigA_Mode:array [0..15]  of bool;    
+TubA_Mode:array [0..15]  of bool;    
+A1_Mode:array [0..15]  of bool;    
+A2_Mode:array [0..15]  of bool;    
+A3_Mode:array [0..15]  of bool;    
+A4_Mode:array [0..15]  of bool;    
+A5_Mode:array [0..15]  of bool;    
+A6_Mode:array [0..15]  of bool;    
+A7_Mode:array [0..15]  of bool;    
+A8_Mode:array [0..15]  of bool;    
+A9_Mode:array [0..15]  of bool;    
+A10_Mode:array [0..15]  of bool;    
+A11_Mode:array [0..15]  of bool;    
+A12_Mode:array [0..15]  of bool;    
+BigA_ModeRefuse:bool;    
+TubA_ModeRefuse:bool;    
+(*A1_ModeRefuse:BOOL;    
+A2_ModeRefuse:bool;    
+B3_ModeRefuse:bool;    
+B4_ModeRefuse:bool;    
+B5_ModeRefuse:bool;    
+B6_ModeRefuse:bool;    
+B7_ModeRefuse:bool;    
+B8_ModeRefuse:bool;    
+B9_ModeRefuse:bool;    
+B10_ModeRefuse:bool;    
+B11_ModeRefuse:bool;    
+B12_ModeRefuse:bool;  *)  
+BigA_All:ARRAY [0..15]  OF BOOL;    
+TubA_All:ARRAY [0..15]  OF BOOL;    
+A1_All:ARRAY [0..15]  OF BOOL;    
+A2_All:ARRAY [0..15]  OF BOOL;    
+A3_All:ARRAY [0..15]  OF BOOL;    
+A4_All:ARRAY [0..15]  OF BOOL;    
+A5_All:ARRAY [0..15]  OF BOOL;    
+A6_All:ARRAY [0..15]  OF BOOL;    
+A7_All:ARRAY [0..15]  OF BOOL;    
+A8_All:ARRAY [0..15]  OF BOOL;    
+A9_All:ARRAY [0..15]  OF BOOL;    
+A10_All:ARRAY [0..15]  OF BOOL;    
+A11_All:ARRAY [0..15]  OF BOOL;    
+A12_All:ARRAY [0..15]  OF BOOL;    
+FireAlarm:BOOL;    (*»ðÔÖÐÅºÅ*)
+BlockAlarm:BOOL;    (*×èÈûÐÅºÅ*)
+   BigA_Act_Mode : STRUCT         
+ BigA_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+   TubA_Act_Mode : STRUCT         
+ TubA_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A1_Act_Mode : STRUCT         
+ A1_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A2_Act_Mode : STRUCT         
+ A2_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A3_Act_Mode : STRUCT         
+ A3_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A4_Act_Mode : STRUCT         
+ A4_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A5_Act_Mode : STRUCT         
+ A5_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A6_Act_Mode : STRUCT         
+ A6_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A7_Act_Mode : STRUCT         
+ A7_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A8_Act_Mode : STRUCT         
+ A8_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A9_Act_Mode : STRUCT         
+ A9_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A10_Act_Mode : STRUCT         
+ A10_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A11_Act_Mode : STRUCT         
+ A11_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+A12_Act_Mode : STRUCT         
+ A12_Mode_Num:INT;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;  
+    END_STRUCT ; 
+    H_P_ALL_Ctrl:WORD;     
+    
+END_STRUCT            
+BEGIN            
+END_DATA_BLOCK            
+

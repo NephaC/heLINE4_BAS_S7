@@ -1,0 +1,129 @@
+DATA_BLOCK DB6003
+TITLE =            
+VERSION : 0.1
+
+
+  STRUCT     
+   DPH_K4_A1_SCtrl : WORD ;    
+   DPH_A_SCtrl : WORD ;    
+   DPF_YL_SCtrl : WORD ;    
+   DPF_YL1_SCtrl : WORD ;    
+
+
+
+   AT_AYSB1_SCtrl : WORD ;    
+   AT_AYSB2_SCtrl : WORD ;
+   AT_AYSB3_SCtrl : WORD ;
+   AT_AYSB4_SCtrl : WORD ;
+   AT_QJFSB_SCtrl : WORD ;    
+   AT_FSB_SCtrl : WORD ;    
+   AT_YL_SCtrl : WORD ;    
+   KT_A1_SCtrl : WORD ;    
+   HPF_A1_SCtrl : WORD ;    
+   UOF_A1_SCtrl : WORD ;    
+   TVF_A1_SCtrl : WORD ;    
+   TVF_A2_SCtrl : WORD ;    
+
+
+   K4_DTS_A1_SCtrl : WORD ;    
+   K4_DTS_A2_SCtrl : WORD ;
+   K4_DTS_A3_SCtrl : WORD ;
+
+DTS_A1_SCtrl : WORD ;
+DTS_A2_SCtrl : WORD ;
+DTS_A3_SCtrl : WORD ;
+DTS_A4_SCtrl : WORD ;
+DTS_A5_SCtrl : WORD ;
+DTS_A6_SCtrl : WORD ;
+DT_RFS_A1_SCtrl : WORD ;    
+
+ T6_D_A1_SCtrl : WORD ;    
+ T6_D_A2_SCtrl : WORD ;
+ T7_D_A1_SCtrl : WORD ;
+
+DM_A1_SCtrl : WORD ;    
+DM_A2_SCtrl : WORD ;
+DM_A3_SCtrl : WORD ;
+DM_A4_SCtrl : WORD ;
+DM_A5_SCtrl : WORD ;
+DM_A6_SCtrl : WORD ;
+DM_A7_SCtrl : WORD ;
+DM_A8_SCtrl : WORD ;
+
+U0F_DT_A1_SCtrl : WORD ;
+U0F_DT_A2_SCtrl : WORD ;
+U0F_DT_A3_SCtrl : WORD ;
+U0F_DT_A4_SCtrl : WORD ;
+
+
+   YL_D_1 : WORD ;    
+   YL_D_2 : WORD ;
+
+   YL_DT_1 : WORD ;    
+   YL_DT_2 : WORD ;
+
+
+   RFS_A1_SCtrl : WORD ;    
+   T6_XSF_A1_SCtrl : WORD ;    
+   T6_XPF_A1_SCtrl : WORD ;    
+   T7_XPF_A1_SCtrl : WORD ;    
+   K4_XK_A1_SCtrl : WORD ;    
+   K4_HPF_A1_SCtrl : WORD ;    
+
+
+
+   WLE_1_SCtrl : WORD ;    
+   WLE_2_SCtrl : WORD ;    
+   WLE_3_SCtrl : WORD ;    
+   WLE_4_SCtrl : WORD ;    
+
+
+
+
+
+
+
+
+
+
+   YL_DATA : ARRAY  [0 .. 151 ] OF WORD ;    
+
+
+
+
+
+   KT_A1_KpTm : INT ;    
+   KT_A1_KiTm : INT ;    
+   KT_A1_SPTm : INT ;    
+   KT_A1_OMS : INT ;    
+
+   HPF_A1_KpTm : INT ;    
+   HPF_A1_KiTm : INT ;    
+   HPF_A1_SPTm : INT ;    
+   HPF_A1_OMS : INT ;    
+
+   UOF_A1_KpTm : INT ;    
+   UOF_A1_KiTm : INT ;    
+   UOF_A1_SPTm : INT ;    
+   UOF_A1_OMS : INT ;    
+
+
+   DPF_K4_A1_KpTm : INT ;    
+   DPF_K4_A1_KiTm : INT ;    
+   DPF_K4_A1_SPTm : INT ;    
+   DPF_K4_A1_OMS : INT ;    
+
+   DPF_A_KpTm : INT ;    
+   DPF_A_KiTm : INT ;    
+   DPF_A_SPTm : INT ;    
+   DPF_A_OMS : INT ;    
+
+
+
+  END_STRUCT ;    
+BEGIN
+END_DATA_BLOCK
+
+
+
+

@@ -1,0 +1,329 @@
+DATA_BLOCK "SLAVE_TO_HMI"
+TITLE =
+VERSION : 0.0
+
+
+  STRUCT     
+   AN_DPF_A1_ToHMI : WORD ;    
+   adbAN_DPF_A1_PFB : INT ;    
+   AN_K1_DPF_A1_ToHMI : WORD ;    
+   adbAN_K1_DPF_A1_PFB : INT ;    
+   YL_DPF_ToHMI : WORD ;    
+   YL_DPF_PFB : INT ;    
+   XV_225_A1_ToHMI : WORD ;    
+   XV_225_A2_ToHMI : WORD ;    
+   AT_A06_ToHMI : WORD ;    
+   AT_A06_Level : INT ;    
+   AT_A07_ToHMI : WORD ;    
+   AT_A07_Level : INT ;    
+   AT_A14_ToHMI : WORD ;    
+   AT_A14_Level : INT ;    
+   YL_PSB_ToHMI : WORD ;    
+   YL_PSB_Level : INT ;    
+   AT_A10_ToHMI1 : WORD ;    
+   AT_A10_ToHMI2 : WORD ;    
+   AT_A10_Level : INT ;    
+   AT_A10_RT : REAL ;    
+   AT_A10_FltNo : INT ;    
+   AT_A11_ToHMI1 : WORD ;    
+   AT_A11_ToHMI2 : WORD ;    
+   AT_A11_Level : INT ;    
+   AT_A11_RT : REAL ;    
+   AT_A11_FltNo : INT ;    
+   AT_A12_ToHMI1 : WORD ;    
+   AT_A12_ToHMI2 : WORD ;    
+   AT_A12_Level : INT ;    
+   AT_A12_RT : REAL ;    
+   AT_A12_FltNo : INT ;    
+   AT_A13_ToHMI1 : WORD ;    
+   AT_A13_ToHMI2 : WORD ;    
+   AT_A13_Level : INT ;    
+   AT_A13_RT : REAL ;    
+   AT_A13_FltNo : INT ;    
+   YL_YSB_ToHMI1 : WORD ;    
+   YL_YSB_ToHMI2 : WORD ;    
+   YL_YSB_Level : INT ;    
+   YL_YSB_RT : REAL ;    
+   YL_YSB_FltNo : INT ;    
+   C_225_A101_CO2 : REAL ;    
+   C_225_A102_CO2 : REAL ;    
+   YL_CO2 : REAL ;    
+   H_225_A101_Humi : REAL ;    
+   H_225_A101_Temp : REAL ;    
+   H_225_A102_Humi : REAL ;    
+   H_225_A102_Temp : REAL ;    
+   K1_H_A1_Humi : REAL ;    
+   K1_H_A1_Temp : REAL ;    
+   H_225_A104_Humi : REAL ;    
+   H_225_A104_Temp : REAL ;    
+   H_225_A105_Humi : REAL ;    
+   H_225_A105_Temp : REAL ;    
+   H_225_A103_Humi : REAL ;    
+   H_225_A103_Temp : REAL ;    
+   H_225_A108_Humi : REAL ;    
+   H_225_A108_Temp : REAL ;    
+   K1_T_A1_Humi : REAL ;    
+   K1_T_A1_Temp : REAL ;    
+   H_225_A106_Humi : REAL ;    
+   H_225_A106_Temp : REAL ;    
+   H_225_A107_Humi : REAL ;    
+   H_225_A107_Temp : REAL ;    
+   T_UPS_Temp : REAL ;    
+   YL_TH1_Humi : REAL ;    
+   YL_TH1_Temp : REAL ;    
+   YL_TH2_Humi : REAL ;    
+   YL_TH2_Temp : REAL ;    
+   YL_TH3_Humi : REAL ;    
+   YL_TH3_Temp : REAL ;    
+   YL_TH4_Humi : REAL ;    
+   YL_TH4_Temp : REAL ;    
+   YL_TH5_Humi : REAL ;    
+   YL_TH5_Temp : REAL ;    
+   KT_A1_ToHMI1 : WORD ;    
+   KT_A1_ToHMI2 : WORD ;    
+   KT_A1_A_Pcurr : INT ;    //A相电流
+   KT_A1_B_Pcurr : INT ;    //B相电流
+   KT_A1_C_Pcurr : INT ;    //C相电流
+   KT_A1_A_Pvolt : INT ;    //A相电压
+   KT_A1_B_Pvolt : INT ;    //B相电压
+   KT_A1_C_Pvolt : INT ;    //C相电压
+   KT_A1_A_WindT : INT ;    //A相绕组温度
+   KT_A1_B_WindT : INT ;    //B相绕组温度
+   KT_A1_C_WindT : INT ;    //C相绕组温度
+   KT_A1_FAxleT : INT ;    //前轴承温度
+   KT_A1_RAxleT : INT ;    //后轴承温度
+   KT_A1_VFFB : INT ;    //频率反馈
+   KT_A1_RT : REAL ;    //累计运行时间
+   KT_A1_FltNo : INT ;    //故障统计次数
+   YL_KT_A1_1 : WORD ;    
+   YL_KT_A1_2 : WORD ;    
+   YL_KT_A1_3 : WORD ;    
+   YL_KT_A1_4 : WORD ;    
+   YL_KT_A1_5 : WORD ;    
+   HPF_A1_ToHMI1 : WORD ;    
+   HPF_A1_ToHMI2 : WORD ;    
+   HPF_A1_A_Pcurr : INT ;    //A相电流
+   HPF_A1_B_Pcurr : INT ;    //B相电流
+   HPF_A1_C_Pcurr : INT ;    //C相电流
+   HPF_A1_A_Pvolt : INT ;    //A相电压
+   HPF_A1_B_Pvolt : INT ;    //B相电压
+   HPF_A1_C_Pvolt : INT ;    //C相电压
+   HPF_A1_Comm_Word : INT ;    //通讯状态字
+   HPF_A1_VFFB : INT ;    //频率反馈
+   HPF_A1_RT : REAL ;    //累计运行时间
+   HPF_A1_FltNo : INT ;    //故障统计次数
+   YL_HPF_A1_1 : WORD ;    
+   YL_HPF_A1_2 : WORD ;    
+   YL_HPF_A1_3 : WORD ;    
+   YL_HPF_A1_4 : WORD ;    
+   YL_HPF_A1_5 : WORD ;    
+   TEF_A1_ToHMI1 : WORD ;    
+   TEF_A1_ToHMI2 : WORD ;    
+   TEF_A1_A_Pcurr : INT ;    //A相电流
+   TEF_A1_B_Pcurr : INT ;    //B相电流
+   TEF_A1_C_Pcurr : INT ;    //C相电流
+   TEF_A1_A_Pvolt : INT ;    //A相电压
+   TEF_A1_B_Pvolt : INT ;    //B相电压
+   TEF_A1_C_Pvolt : INT ;    //C相电压
+   TEF_A1_FAxleT : INT ;    //前轴承温度
+   TEF_A1_RAxleT : INT ;    //后轴承温度
+   TEF_A1_A_WindT : INT ;    //A相绕组温度
+   TEF_A1_B_WindT : INT ;    //B相绕组温度
+   TEF_A1_C_WindT : INT ;    //C相绕组温度
+   TEF_A1_C_X_Vibr : INT ;    //X轴震动报警值
+   TEF_A1_C_Y_Vibr : INT ;    //X轴震动报警值
+   TEF_A1_Comm_Word : INT ;    //通讯状态字
+   TEF_A1_VFFB : INT ;    //频率反馈
+   TEF_A1_RT : REAL ;    //累计运行时间
+   TEF_A1_FltNo : INT ;    //故障统计次数
+   YL_TEF_A1_1 : WORD ;    
+   YL_TEF_A1_2 : WORD ;    
+   YL_TEF_A1_3 : WORD ;    
+   YL_TEF_A1_4 : WORD ;    
+   YL_TEF_A1_5 : WORD ;    
+   TVF_A1_ToHMI1 : WORD ;    
+   TVF_A1_ToHMI2 : WORD ;    
+   TVF_A1_A_Pcurr : INT ;    //A相电流
+   TVF_A1_B_Pcurr : INT ;    //B相电流
+   TVF_A1_C_Pcurr : INT ;    //C相电流
+   TVF_A1_A_Pvolt : INT ;    //A相电压
+   TVF_A1_B_Pvolt : INT ;    //B相电压
+   TVF_A1_C_Pvolt : INT ;    //C相电压
+   TVF_A1_FAxleT : INT ;    //前轴承温度
+   TVF_A1_RAxleT : INT ;    //后轴承温度
+   TVF_A1_A_WindT : INT ;    //绕组温度
+   TVF_A1_B_WindT : INT ;    //绕组温度
+   TVF_A1_C_WindT : INT ;    //绕组温度
+   TVF_A1_C_X_Vibr : INT ;    //振动检测值X
+   TVF_A1_C_Y_Vibr : INT ;    //振动检测值Y
+   TVF_A1_RT : REAL ;    //累计运行时间
+   TVF_A1_FltNo : INT ;    //故障统计次数
+   YL_TVF_A1_1 : WORD ;    
+   YL_TVF_A1_2 : WORD ;    
+   YL_TVF_A1_3 : WORD ;    
+   YL_TVF_A1_4 : WORD ;    
+   YL_TVF_A1_5 : WORD ;    
+   TVF_A2_ToHMI1 : WORD ;    
+   TVF_A2_ToHMI2 : WORD ;    
+   TVF_A2_A_Pcurr : INT ;    //A相电流
+   TVF_A2_B_Pcurr : INT ;    //B相电流
+   TVF_A2_C_Pcurr : INT ;    //C相电流
+   TVF_A2_A_Pvolt : INT ;    //A相电压
+   TVF_A2_B_Pvolt : INT ;    //B相电压
+   TVF_A2_C_Pvolt : INT ;    //C相电压
+   TVF_A2_FAxleT : INT ;    //前轴承温度
+   TVF_A2_RAxleT : INT ;    //后轴承温度
+   TVF_A2_A_WindT : INT ;    //绕组温度
+   TVF_A2_B_WindT : INT ;    //绕组温度
+   TVF_A2_C_WindT : INT ;    //绕组温度
+   TVF_A2_C_X_Vibr : INT ;    //振动检测值X
+   TVF_A2_C_Y_Vibr : INT ;    //振动检测值Y
+   TVF_A2_RT : REAL ;    //累计运行时间
+   TVF_A2_FltNo : INT ;    //故障统计次数
+   YL_TVF_A2_1 : WORD ;    
+   YL_TVF_A2_2 : WORD ;    
+   YL_TVF_A2_3 : WORD ;    
+   YL_TVF_A2_4 : WORD ;    
+   YL_TVF_A2_5 : WORD ;    
+   DZ_225_A1_ToHMI : WORD ;    
+   DZ_225_A2_ToHMI : WORD ;    
+   DZ_225_A3_ToHMI : WORD ;    
+   DZ_225_A4_ToHMI : WORD ;    
+   DZ_225_A5_ToHMI : WORD ;    
+   DZ_225_A6_ToHMI : WORD ;    
+   DZ_225_A7_ToHMI : WORD ;    
+   DZ_225_A8_ToHMI : WORD ;    
+   YL_DZ_1 : WORD ;    
+   YL_DZ_2 : WORD ;    
+   YL_DZ_3 : WORD ;    
+   YL_DZ_4 : WORD ;    
+   YL_DZ_5 : WORD ;    
+   D_A1_ToHMI : WORD ;    
+   D_A2_ToHMI : WORD ;    
+   D_A3_ToHMI : WORD ;    
+   D_A5_ToHMI : WORD ;    
+   K1_D_A1_ToHMI : WORD ;    
+   K1_D_A2_ToHMI : WORD ;    
+   T1_D_A1_ToHMI : WORD ;    
+   T1_D_A2_ToHMI : WORD ;    
+   YL_D_1 : WORD ;    
+   YL_D_2 : WORD ;    
+   YL_D_3 : WORD ;    
+   YL_D_4 : WORD ;    
+   YL_D_5 : WORD ;    
+   DT_225_A1_ToHMI : WORD ;    
+   DT_225_A2_ToHMI : WORD ;    
+   DT_225_A3_ToHMI : WORD ;    
+   DT_225_A4_ToHMI : WORD ;    
+   DT_A1_ToHMI : WORD ;    
+   DT_A2_ToHMI : WORD ;    
+   DT_A3_ToHMI : WORD ;    
+   DT_A4_ToHMI : WORD ;    
+   DT_A5_ToHMI : WORD ;    
+   DT_A6_ToHMI : WORD ;    
+   DT_A7_ToHMI : WORD ;    
+   DT_A8_ToHMI : WORD ;    
+   K1_DT_A1_ToHMI : WORD ;    
+   K1_DT_A2_ToHMI : WORD ;    
+   K1_DT_A3_ToHMI : WORD ;    
+   YL_DT_1 : WORD ;    
+   YL_DT_2 : WORD ;    
+   YL_DT_3 : WORD ;    
+   YL_DT_4 : WORD ;    
+   YL_DT_5 : WORD ;    
+   XXF_A1_ToHMI : WORD ;    //小风机 
+   XXF_A1_Pcurr : INT ;    
+   XXF_A1_RT : REAL ;    
+   XXF_A1_FltNo : INT ;    
+   K1_KT_A1_ToHMI : WORD ;    
+   K1_KT_A1_Pcurr : INT ;    
+   K1_KT_A1_RT : REAL ;    
+   K1_KT_A1_FltNo : INT ;    
+   K1_HPF_A1_ToHMI : WORD ;    
+   K1_HPF_A1_Pcurr : INT ;    
+   K1_HPF_A1_RT : REAL ;    
+   K1_HPF_A1_FltNo : INT ;    
+   T1_SF_A1_ToHMI : WORD ;    
+   T1_SF_A1_Pcurr : INT ;    
+   T1_SF_A1_RT : REAL ;    
+   T1_SF_A1_FltNo : INT ;    
+   T1_PF_A1_ToHMI : WORD ;    
+   T1_PF_A1_Pcurr : INT ;    
+   T1_PF_A1_RT : REAL ;    
+   T1_PF_A1_FltNo : INT ;    
+   RF_A1_ToHMI : WORD ;    
+   RF_A1_Pcurr : INT ;    
+   RF_A1_RT : REAL ;    
+   RF_A1_FltNo : INT ;    
+   YL_IMCC_FJ_1_ToHMI : WORD ;    
+   YL_IMCC_FJ_1_Pcurr : WORD ;    
+   YL_IMCC_FJ_1_RT : WORD ;    
+   YL_IMCC_FJ_1_FltNo : WORD ;    
+   YL_IMCC_FJ_2_ToHMI : WORD ;    
+   YL_IMCC_FJ_2_Pcurr : WORD ;    
+   YL_IMCC_FJ_2_RT : WORD ;    
+   YL_IMCC_FJ_2_FltNo : WORD ;    
+   YL_IMCC_FJ_3_ToHMI : WORD ;    
+   YL_IMCC_FJ_3_Pcurr : WORD ;    
+   YL_IMCC_FJ_3_RT : WORD ;    
+   YL_IMCC_FJ_3_FltNo : WORD ;    
+   YL_IMCC_FJ_4_ToHMI : WORD ;    
+   YL_IMCC_FJ_4_Pcurr : WORD ;    
+   YL_IMCC_FJ_4_RT : WORD ;    
+   YL_IMCC_FJ_4_FltNo : WORD ;    
+   YL_IMCC_FJ_5_ToHMI : WORD ;    
+   YL_IMCC_FJ_5_Pcurr : WORD ;    
+   YL_IMCC_FJ_5_RT : WORD ;    
+   YL_IMCC_FJ_5_FltNo : WORD ;    
+   ZNYB_01_CA_L : WORD ;    
+   ZNYB_01_CA_H : WORD ;    
+   ZNYB_02_CA_L : WORD ;    
+   ZNYB_02_CA_H : WORD ;    
+   ZNYB_03_CA_L : WORD ;    
+   ZNYB_03_CA_H : WORD ;    
+   YL_ZNYB_CA_L : WORD ;    
+   YL_ZNYB_CA_H : WORD ;    
+   FHF_ToHMI1 : WORD ;    
+   FHF_ToHMI2 : WORD ;    
+   FHF_ToHMI3 : WORD ;    
+   FHF_ToHMI4 : WORD ;    
+   FHF_ToHMI5 : WORD ;    
+   FHF_ToHMI6 : WORD ;    
+   FHF_ToHMI7 : WORD ;    
+   FHF_ToHMI8 : WORD ;    
+   FHF_ToHMI9 : WORD ;    
+   FHF_ToHMI10 : WORD ;    
+   RFM_ToHMI : WORD ;    
+   JH_YC_KT_A1_ToHMI : WORD ;    
+   JH_YC_K1_KT_A1_ToHMI : WORD ;    
+   E325_05_KD_ToHMI : WORD ;    
+   E325_06_KD_ToHMI : WORD ;    
+   E325_07_KE_ToHMI : WORD ;    
+   E325_01_N_ToHMI : WORD ;    
+   E325_02_N_ToHMI : WORD ;    
+   YL_FT1_ToHMI : WORD ;    
+   YL_FT2_ToHMI : WORD ;    
+   YL_FT3_ToHMI : WORD ;    
+   H325_01_N_ToHMI : WORD ;    
+   H325_01_N_Floor : WORD ;    
+   EPS_ToHMI : ARRAY  [0 .. 19 ] OF WORD  := W#16#0;    
+   EPS_ToHMI1 : WORD ;    
+   EPS_ToHMI2 : WORD ;    
+   EPS_1_ToHMI1 : WORD ;    
+   EPS_2_ToHMI1 : WORD ;    
+   EPS_3_ToHMI1 : WORD ;    
+   EPS_4_ToHMI1 : WORD ;    
+   ABD_ToHMI : ARRAY  [0 .. 4 ] OF WORD  := W#16#0;
+   AN_DPF_A1_PFB : real ;    
+   AN_K1_DPF_A1_PFB : real ;    
+   UPS_ToHMI1 : WORD ;    
+   UPS_TOHMI :ARRAY[0..11]OF INT ;    
+  
+
+END_STRUCT            
+BEGIN   
+         
+END_DATA_BLOCK      
+
+
+      

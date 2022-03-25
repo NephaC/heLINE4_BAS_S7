@@ -1,0 +1,36 @@
+DATA_BLOCK DB7003            
+TITLE =            
+VERSION : 0.1            
+  STRUCT             
+ Mode_Index:ARRAY  [0..40]    OF INT;              
+  END_STRUCT ;            
+BEGIN            
+Mode_Index[0] :=    11    ;    (*BigA_Mode_Index*)
+Mode_Index[1] :=    12    ;    (*BigB_Mode_Index*)
+Mode_Index[2] :=    16    ;    (*TubA_Mode_Index*)
+Mode_Index[3] :=    17    ;    (*TubB_Mode_Index*)
+Mode_Index[4] :=    21    ;    (*A1_Mode_Index*)
+Mode_Index[5] :=    22    ;    (*A2_Mode_Index*)
+Mode_Index[6] :=    23    ;    (*A3_Mode_Index*)
+Mode_Index[7] :=    24    ;    (*A4_Mode_Index*)
+Mode_Index[8] :=    25    ;    (*A5_Mode_Index*)
+Mode_Index[9] :=    26    ;    (*A6_Mode_Index*)
+Mode_Index[10] :=    27    ;    (*A7_Mode_Index*)
+Mode_Index[11] :=    28    ;    (*A8_Mode_Index*)
+Mode_Index[12] :=    29    ;    (*A9_Mode_Index*)
+Mode_Index[13] :=    30    ;    (*A10_Mode_Index*)
+Mode_Index[14] :=    31    ;    (*A11_Mode_Index*)
+Mode_Index[15] :=    32    ;    (*A12_Mode_Index*)
+Mode_Index[16] :=    41    ;    (*B1_Mode_Index*)
+Mode_Index[17] :=    42    ;    (*B2_Mode_Index*)
+Mode_Index[18] :=    43    ;    (*B3_Mode_Index*)
+Mode_Index[19] :=    44    ;    (*B4_Mode_Index*)
+Mode_Index[20] :=    45    ;    (*B5_Mode_Index*)
+Mode_Index[21] :=    46    ;    (*B6_Mode_Index*)
+Mode_Index[22] :=    47    ;    (*B7_Mode_Index*)
+Mode_Index[23] :=    48    ;    (*B8_Mode_Index*)
+Mode_Index[24] :=    49    ;    (*B9_Mode_Index*)
+Mode_Index[25] :=    50    ;    (*B10_Mode_Index*)
+Mode_Index[26] :=    51    ;    (*B11_Mode_Index*)
+Mode_Index[27] :=    52    ;    (*B12_Mode_Index*)
+END_DATA_BLOCK            

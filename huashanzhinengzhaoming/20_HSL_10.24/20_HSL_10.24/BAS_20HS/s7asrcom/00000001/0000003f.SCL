@@ -1,0 +1,132 @@
+
+FUNCTION_BLOCK FB1111
+
+VAR_INPUT
+    SCtrl:WORD;         (*[0]单控[1]模控[2]单控开阀[3]单控关阀[5]超时复位[11]运行次数清零[12]故障清零[13]运行时间清零[14]挂检修牌[15]摘检修牌*)    
+    H_P_ALL_Ctrl:WORD;  (*全局命令*)
+    DI_LR:BOOL;         (*远程就地状态*)
+    DI_Opd:BOOL;        (*开状态反馈*)
+    DI_Cld:BOOL;        (*关状态反馈*)
+    DI_Flt:BOOL;        (*故障状态反馈*)
+    Stop:BOOL;          (*连锁条件判断*)
+    FireAlarm:BOOL;     (*火灾状态信号*)
+    BlockAlarm:BOOL;    (*阻塞模式状态信号*)
+    MCtrl:ARRAY [0..3]  OF  BOOL;//（**）
+    Mode:ARRAY [0..15]  OF  BOOL;//（*模式拆解*）
+    ALL:ARRAY [0..15]  OF  BOOL;//（**）
+    PT1:TIMER;                  // 超时设定
+END_VAR
+
+VAR_IN_OUT
+    
+    // I/O Parameters
+END_VAR
+
+VAR_OUTPUT
+    DO_Opn:BOOL;//开控制输出
+    DO_Cls:BOOL;//关控制输出
+    ToHMI:word; //反馈上位信息  
+END_VAR
+VAR_TEMP
+   SFlag:BOOL;//单控标志
+   SingTout:BOOL;//
+   Timeout:BOOL;//
+   DI_Temp:ARRAY [0..15]  OF  BOOL;//（*DI输入临时变量*）
+   Ctrl:ARRAY [0..15]  OF  BOOL;//（*控制中间输入临时变量*）
+   DO_Temp:ARRAY [0..15]  OF  BOOL;//（*DO输出临时变量*）
+   H_P_ALL_Ctrl_Temp:ARRAY [0..15]  OF  BOOL;//（*输入临时变量*）
+   SCtrl_Temp:ARRAY [0..15]  OF  BOOL;//（*上位控制指令临时变量*）
+   Latch:ARRAY [0..7]  OF  BOOL;//0-单控开阀锁定；1-单控关阀锁定
+   McFlag:BOOL;//挂检修牌
+   QTout:BOOL;//
+   Refuse:BOOL;//模式不符
+END_VAR
+VAR
+ ton1:SFB4;//延时上电
+ ton2:SFB4;//延时上电
+END_VAR
+FC54(WORD1:=SCtrl,bool1:=SCtrl_Temp);
+FC54(WORD1:=H_P_ALL_Ctrl,bool1:=H_P_ALL_Ctrl_Temp);
+
+DI_Temp[0]:=DI_LR;
+DI_Temp[1]:=DI_Opd;
+DI_Temp[2]:=DI_Cld;
+DI_Temp[3]:=DI_Flt;
+//单控、模式控制切换
+
+    IF     SCtrl_Temp[0] OR ALL[0]  OR  H_P_All_Ctrl_Temp[3]  THEN
+           SFlag:=true;     
+    ELSIF SCtrl_Temp[1] OR ALL[1]  OR  ALL[2]  OR H_P_All_Ctrl_Temp[4] OR H_P_All_Ctrl_Temp[5]  OR   FireAlarm  OR   BlockAlarm  THEN
+           SFlag:=false;         
+    END_IF; 
+    //开阀、关阀指令
+   IF    ( (SFlag  AND  SCtrl_Temp[2])  OR ( NOT  SFlag AND   MCtrl[0]) ) THEN
+          Ctrl[0]:=true;
+          Ctrl[1]:=false;
+   ELSIF  ((SFlag  AND  SCtrl_Temp[3]) OR  (NOT  SFlag AND   MCtrl[1]))  THEN
+           Ctrl[0]:=false;
+           Ctrl[1]:=true;
+   ELSE    Ctrl[0]:=false;
+           Ctrl[1]:=false;
+   END_IF;
+   //模式不符判断
+   IF ((MCtrl[0] AND  NOT  DI_Temp[1]) OR  (MCtrl[1] AND  NOT  DI_Temp[2])) THEN 
+        Refuse:=true;
+    ELSE Refuse:=false;
+   END_IF;
+   //单控开阀锁定
+   IF  Latch[0] OR ( SFlag AND SCtrl_Temp[2] AND  NOT  SCtrl_Temp[3]) THEN
+       Latch[0]:=true;
+   END_IF;
+   IF   DI_Temp[1] OR  NOT  SFlag  OR   SCtrl_Temp[3] OR  SingTout  THEN 
+        Latch[0]:=false;
+   END_IF;
+   //单控关阀锁定
+    IF  Latch[1] OR ( SFlag AND SCtrl_Temp[3] AND  NOT  SCtrl_Temp[2]) THEN
+       Latch[1]:=true;
+   END_IF;
+   IF   DI_Temp[2] OR  NOT  SFlag  OR   SCtrl_Temp[2] OR  SingTout  THEN 
+        Latch[1]:=false;
+   END_IF;
+   //摘挂检修牌
+     IF  SCtrl_Temp[14]  AND NOT  SCtrl_Temp[15]  THEN
+         McFlag:=true;
+    END_IF; 
+    IF  SCtrl_Temp[15]  AND NOT  SCtrl_Temp[14]  THEN
+         McFlag:=false;
+    END_IF ;
+    //开控制命令输出
+    IF  Ctrl[0]  AND   NOT   DI_Temp[1] AND   DI_Temp[0] AND  NOT   DI_Temp[3]  AND  NOT   DO_Temp[1]  AND   NOT  Ctrl[1] AND   NOT  McFlag  THEN
+         DO_Temp[0]:=true;
+    ELSIF     DI_Temp[1] OR   NOT DI_Temp[0] OR    DI_Temp[3]  OR     DO_Temp[1]  OR  Ctrl[1]  OR   McFlag    THEN
+           DO_Temp[0]:=false;
+    END_IF;
+    //关控制命令输出
+    IF  Ctrl[1]  AND  Stop AND   NOT   DI_Temp[2] AND   DI_Temp[0] AND  NOT   DI_Temp[3]  AND  NOT   DO_Temp[0]  AND NOT  Ctrl[0]  AND  NOT  McFlag  THEN
+         DO_Temp[1]:=true;
+    ELSIF    NOT stop OR  DI_Temp[2] OR   NOT DI_Temp[0] OR    DI_Temp[3]  OR     DO_Temp[1]  OR  Ctrl[1] OR   McFlag   THEN
+           DO_Temp[1]:=false;
+    END_IF; 
+    //上位状态整理
+    FC51(
+    Bit_0:=SFlag,
+    Bit_1:=NOT SFlag,
+    Bit_2:=MCtrl[0],
+    Bit_3:=MCtrl[1],
+    Bit_4:=McFlag,
+    Bit_5:=false,
+    Bit_6:=Timeout,
+    Bit_7:=Refuse,
+    Bit_8:= DI_Temp[0],
+    Bit_9:= DI_Temp[1],
+    Bit_10:= DI_Temp[2],
+    Bit_11:= Stop,
+    Bit_12:=DI_Temp[3],
+    Bit_13:=DO_Temp[0],
+    Bit_14:=DO_Temp[1],
+    Bit_15:=Refuse,  
+    Word1:=ToHMI
+      );
+    DO_Opn:=DO_Temp[0];
+    DO_Cls:=DO_Temp[1];   
+END_FUNCTION_BLOCK

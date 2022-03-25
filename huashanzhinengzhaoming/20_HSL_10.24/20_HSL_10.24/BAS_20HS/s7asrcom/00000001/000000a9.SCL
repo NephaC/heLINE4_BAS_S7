@@ -1,0 +1,134 @@
+DATA_BLOCK "MAIN_HMI_SCtrl"
+TITLE =            
+VERSION : 0.1
+
+
+  STRUCT     
+   SDPH_B_SCtrl : WORD ;    
+   SDPH_K1_B1_SCtrl : WORD ;    
+   SDPH_K2_B1_SCtrl : WORD ;    
+   SDPH_K3_B1_SCtrl : WORD ;    
+   SDPF_YL_SCtrl : WORD ;    
+
+
+   AP_FSB_SCtrl : WORD ;    
+   AT_BYSB1_SCtrl : WORD ;    
+   AT_BYSB2_SCtrl : WORD ;    
+   AT_BYSB3_SCtrl : WORD ;    
+   AT_BYSB4_SCtrl : WORD ;
+   AT_YL1_SCtrl : WORD ;    
+   AT_YL2_SCtrl : WORD ;    
+   AT_YL3_SCtrl : WORD ;
+   KT_B1_SCtrl : WORD ;    
+   HPF_B1_SCtrl : WORD ;    
+   UOF_B1_SCtrl : WORD ;    
+   TVF_B1_SCtrl : WORD ;    
+   TVF_B2_SCtrl : WORD ;    
+
+   SK1_DTS_B1_SCtrl : WORD ;    
+   SK1_DTS_B2_SCtrl : WORD ;
+   SK1_DTS_B3_SCtrl : WORD ;
+   SK2_DTS_B1_SCtrl : WORD ;    
+   SK2_DTS_B2_SCtrl : WORD ;
+   SK2_DTS_B3_SCtrl : WORD ;
+   SK3_DTS_B1_SCtrl : WORD ;    
+   SK3_DTS_B2_SCtrl : WORD ;
+   SK3_DTS_B3_SCtrl : WORD ;
+
+
+
+SDTS_B1_SCtrl : WORD ;
+SDTS_B2_SCtrl : WORD ;
+SDTS_B3_SCtrl : WORD ;
+SDTS_B4_SCtrl : WORD ;
+SDTS_B5_SCtrl : WORD ;
+SDTS_B6_SCtrl : WORD ;
+SDT_RFS_B1_SCtrl : WORD ;
+
+
+ ST1_D_B1_SCtrl : WORD ;    
+ ST1_D_B2_SCtrl : WORD ;    
+ ST4_D_B1_SCtrl : WORD ;    
+ ST5_D_B1_SCtrl : WORD ;    
+
+
+SDM_B1_SCtrl : WORD ;    
+SDM_B2_SCtrl : WORD ;
+SDM_B3_SCtrl : WORD ;
+SDM_B4_SCtrl : WORD ;
+SDM_B5_SCtrl : WORD ;
+SDM_B6_SCtrl : WORD ;
+SDM_B7_SCtrl : WORD ;
+SDM_B8_SCtrl : WORD ;
+
+SU0F_DT_B1_SCtrl : WORD ;
+SU0F_DT_B2_SCtrl : WORD ;
+SU0F_DT_B3_SCtrl : WORD ;
+SU0F_DT_B4_SCtrl : WORD ;
+
+
+
+   T1_XSF_B1_SCtrl : WORD ;    
+   RFP_B1_SCtrl : WORD ;    
+   K1_HPF_B1_SCtrl : WORD ;    
+   K2_HPF_B1_SCtrl : WORD ;
+   K3_HPF_B1_SCtrl : WORD ;
+   T5_XPF_B1_SCtrl : WORD ;    
+   T1_XPF_B1_SCtrl : WORD ;    
+   T4_XPF_B1_SCtrl : WORD ;    
+   K1_XK_B1_SCtrl : WORD ;    
+   K2_XK_B2_SCtrl : WORD ;
+   K3_XK_B3_SCtrl : WORD ;
+   VRV_SCtrl : WORD ;    
+   WLE_1_SCtrl : WORD ;    
+   WLE_2_SCtrl : WORD ;    
+   WLE_3_SCtrl : WORD ;    
+   WLE_4_SCtrl : WORD ;    
+   LSQK_SCtrl : WORD ;    
+   ZNZM_SCtrl : WORD ;    
+   ZNZM_SENES_CTRL : WORD ;    
+   TIME_SET : ARRAY  [0 .. 6 ] OF WORD ;    
+   XFDF_B1_SCtrl : WORD ;    
+   XFDF_B2_SCtrl : WORD ;    
+
+   YL_DATA : ARRAY  [0 .. 151 ] OF WORD ;    
+   KT_B1_KpTm : INT ;    
+   KT_B1_KiTm : INT ;    
+   KT_B1_SPTm : INT ;    
+   KT_B1_OMS : INT ;    
+
+   HPF_B1_KpTm : INT ;    
+   HPF_B1_KiTm : INT ;    
+   HPF_B1_SPTm : INT ;    
+   HPF_B1_OMS : INT ;    
+
+   UOF_B1_KpTm : INT ;    
+   UOF_B1_KiTm : INT ;    
+   UOF_B1_SPTm : INT ;    
+   UOF_B1_OMS : INT ;    
+
+
+   SDPF_K1_B1_KpTm : INT ;    
+   SDPF_K1_B1_KiTm : INT ;    
+   SDPF_K1_B1_SPTm : INT ;    
+   SDPF_K1_B1_OMS : INT ;    
+
+   SDPF_K2_B1_KpTm : INT ;    
+   SDPF_K2_B1_KiTm : INT ;    
+   SDPF_K2_B1_SPTm : INT ;    
+   SDPF_K2_B1_OMS : INT ;    
+
+   SDPF_K3_B1_KpTm : INT ;    
+   SDPF_K3_B1_KiTm : INT ;    
+   SDPF_K3_B1_SPTm : INT ;    
+   SDPF_K3_B1_OMS : INT ;    
+
+   SDPF_B_KpTm : INT ;    
+   SDPF_B_KiTm : INT ;    
+   SDPF_B_SPTm : INT ;    
+   SDPF_B_OMS : INT ;    
+
+
+  END_STRUCT ;    
+BEGIN
+END_DATA_BLOCK

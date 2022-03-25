@@ -1,0 +1,342 @@
+
+FUNCTION_BLOCK  FB233
+VAR_OUTPUT
+    IBP_A:BOOL;      //IBP盘自动
+    IBP_M:BOOL;      //IBP盘手动  
+    EXECUTED_MODE:INT;   //执行的IBP盘模式号
+    RECORD:ARRAY[0..127]OF bool;       //对IBP盘面进行的操作记录   //新修改
+    END_VAR 
+
+VAR
+ Lamp:ARRAY[0..127] OF BOOL;
+ Light: ARRAY[0..63] OF BOOL;
+ i:INT;
+ n:INT;
+ Mode:ARRAY[0..63] OF INT;
+ IBP_AUTO:BOOL;
+ IBP_MANUAL:BOOL;
+END_VAR
+
+Mode[0]:=1647;//模式号初始化   需根据具体模式号填写   预留部分模式号填0
+Mode[1]:=1648;
+Mode[2]:=1611;
+Mode[3]:=1614;
+Mode[4]:=1651;
+Mode[5]:=1652;
+Mode[6]:=1613;
+Mode[7]:=1616;
+Mode[8]:=1650;
+Mode[9]:=1649;
+Mode[10]:=1612;
+Mode[11]:=1615;
+Mode[12]:=1654;
+Mode[13]:=1653;
+Mode[14]:=0;
+Mode[15]:=0;
+Mode[16]:=1141;
+Mode[17]:=1142;
+Mode[18]:=1143;
+Mode[19]:=1144;
+Mode[20]:=4141;
+Mode[21]:=4142;
+Mode[22]:=4143;
+Mode[23]:=4144;
+Mode[24]:=4145;
+Mode[25]:=4146;
+Mode[26]:=4147;
+Mode[27]:=4148;
+Mode[28]:=4149;
+Mode[29]:=4150;
+Mode[30]:=4151;
+Mode[31]:=4152;
+Mode[32]:=4153;
+Mode[33]:=4154;
+Mode[34]:=4155;
+Mode[35]:=4156;
+Mode[36]:=4157;
+Mode[37]:=0;
+Mode[38]:=2142;
+Mode[39]:=2141;
+Mode[40]:=4159;
+Mode[41]:=4160;
+Mode[42]:=4161;
+Mode[43]:=0;
+Mode[44]:=0;
+Mode[45]:=0;
+Mode[46]:=0;
+Mode[47]:=2274;
+Mode[48]:=2275;
+Mode[49]:=0;
+Mode[50]:=0;
+Mode[51]:=0;
+Mode[52]:=0;
+Mode[53]:=0;
+Mode[54]:=0;
+Mode[55]:=0;
+Mode[56]:=0;
+Mode[57]:=0;
+Mode[58]:=0;
+Mode[59]:=0;
+Mode[60]:=0;
+Mode[61]:=0;
+Mode[62]:=0;
+Mode[63]:=0;
+
+Lamp[0]:=I0.0;  //指示灯反馈
+Lamp[1]:=I0.1;
+Lamp[2]:=I0.2;
+Lamp[3]:=I0.3;
+Lamp[4]:=I0.4;
+Lamp[5]:=I0.5;
+Lamp[6]:=I0.6;
+Lamp[7]:=I0.7;
+Lamp[8]:=I1.0;
+Lamp[9]:=I1.1;
+Lamp[10]:=I1.2;
+Lamp[11]:=I1.3;
+Lamp[12]:=I1.4;
+Lamp[13]:=I1.5;
+Lamp[14]:=I1.6;
+Lamp[15]:=I1.7;
+Lamp[16]:=I2.0;
+Lamp[17]:=I2.1;
+Lamp[18]:=I2.2;
+Lamp[19]:=I2.3;
+Lamp[20]:=I2.4;
+Lamp[21]:=I2.5;
+Lamp[22]:=I2.6;
+Lamp[23]:=I2.7;
+Lamp[24]:=I3.0;
+Lamp[25]:=I3.1;
+Lamp[26]:=I3.2;
+Lamp[27]:=I3.3;
+Lamp[28]:=I3.4;
+Lamp[29]:=I3.5;
+Lamp[30]:=I3.6;
+Lamp[31]:=I3.7;
+Lamp[32]:=I4.0;
+Lamp[33]:=I4.1;
+Lamp[34]:=I4.2;
+Lamp[35]:=I4.3;
+Lamp[36]:=I4.4;
+Lamp[37]:=I4.5;
+Lamp[38]:=I4.6;
+Lamp[39]:=I4.7;
+Lamp[40]:=I5.0;
+Lamp[41]:=I5.1;
+Lamp[42]:=I5.2;
+Lamp[43]:=I5.3;
+Lamp[44]:=I5.4;
+Lamp[45]:=I5.5;
+Lamp[46]:=I5.6;
+Lamp[47]:=I5.7;
+Lamp[48]:=I6.0;
+Lamp[49]:=I6.1;
+Lamp[50]:=I6.2;
+Lamp[51]:=I6.3;
+Lamp[52]:=I6.4;
+Lamp[53]:=I6.5;
+Lamp[54]:=I6.6;
+Lamp[55]:=I6.7;
+Lamp[56]:=I7.0;
+Lamp[57]:=I7.1;
+Lamp[58]:=I7.2;
+Lamp[59]:=I7.3;
+Lamp[60]:=I7.4;
+Lamp[61]:=I7.5;
+Lamp[62]:=I7.6;
+Lamp[63]:=I7.7;
+Lamp[64]:=I8.0;
+Lamp[65]:=I8.1;
+Lamp[66]:=I8.2;
+Lamp[67]:=I8.3;
+Lamp[68]:=I8.4;
+Lamp[69]:=I8.5;
+Lamp[70]:=I8.6;
+Lamp[71]:=I8.7;
+Lamp[72]:=I9.0;
+Lamp[73]:=I9.1;
+Lamp[74]:=I9.2;
+Lamp[75]:=I9.3;
+Lamp[76]:=I9.4;
+Lamp[77]:=I9.5;
+Lamp[78]:=I9.6;
+Lamp[79]:=I9.7;
+Lamp[80]:=I10.0;
+Lamp[81]:=I10.1;
+Lamp[82]:=I10.2;
+Lamp[83]:=I10.3;
+Lamp[84]:=I10.4;
+Lamp[85]:=I10.5;
+Lamp[86]:=I10.6;
+Lamp[87]:=I10.7;
+Lamp[88]:=I11.0;
+Lamp[89]:=I11.1;
+Lamp[90]:=I11.2;
+Lamp[91]:=I11.3;
+Lamp[92]:=I11.4;
+Lamp[93]:=I11.5;
+Lamp[94]:=I11.6;
+Lamp[95]:=I11.7;
+Lamp[96]:=I12.0;
+Lamp[97]:=I12.1;
+Lamp[98]:=I12.2;
+Lamp[99]:=I12.3;
+Lamp[100]:=I12.4;
+Lamp[101]:=I12.5;
+Lamp[102]:=I12.6;
+Lamp[103]:=I12.7;
+Lamp[104]:=I13.0;
+Lamp[105]:=I13.1;
+Lamp[106]:=I13.2;
+Lamp[107]:=I13.3;
+Lamp[108]:=I13.4;
+Lamp[109]:=I13.5;
+Lamp[110]:=I13.6;
+Lamp[111]:=I13.7;
+Lamp[112]:=I14.0;
+Lamp[113]:=I14.1;
+Lamp[114]:=I14.2;
+Lamp[115]:=I14.3;
+Lamp[116]:=I14.4;
+Lamp[117]:=I14.5;
+Lamp[118]:=I14.6;
+Lamp[119]:=I14.7;
+Lamp[120]:=I15.0;
+Lamp[121]:=I15.1;
+Lamp[122]:=I15.2;
+Lamp[123]:=I15.3;
+Lamp[124]:=I15.4;
+Lamp[125]:=I15.5;
+Lamp[126]:=I15.6;
+Lamp[127]:=I15.7;
+     
+  
+  //IBP盘手自动处理部分//
+IBP_AUTO:=Lamp[14];           //自动模式对应的指示灯号  根据实际情况修改
+IBP_MANUAL:=Lamp[15];         //手动模式对应的指示灯号  根据实际情况修改
+IF IBP_AUTO AND NOT IBP_MANUAL THEN   //IBP盘手自动判断
+    IBP_A:=TRUE;
+    IBP_M:=FALSE;
+ELSE
+    IBP_A:=FALSE;
+   IBP_M:=TRUE;
+END_IF;
+  //IBP_A:=IBP_AUTO;
+  //IBP_M:=IBP_MANUAL;
+
+  //初始化部分//
+EXECUTED_MODE:=0;             //模式号初始化
+FOR i:=0 TO 127 BY 1 DO     // 新修改
+    RECORD[i]:=0;
+END_FOR;  //初始化记录
+
+FOR n:=0 TO 63 BY 1 DO       //初始化点灯
+  Light[n]:=false;
+  END_FOR;
+  
+ IF  Lamp[72] THEN        //IBP盘试灯部分
+    FOR i:=0 TO 63 BY 1 DO
+        Light[i]:=true;
+    END_FOR;
+    END_IF;
+       
+    
+    
+   // 新修改
+    
+  //操作记录及点灯部分//
+IF IBP_MANUAL  THEN               //IBP处于手动状态下才可执行IBP盘模式    
+   FOR i:= 0 TO 63  BY 1 DO
+     IF Lamp[i]=true AND Mode[i]<>0 THEN
+        EXECUTED_MODE:=Mode[i];
+        RECORD[i]:=true ;                   //模式部分操作记录
+        Light[i]:=true;               //点亮指示灯   只有模式部分
+    END_IF;
+END_FOR;
+END_IF;
+
+ FOR i:=64 TO 127 BY 1 DO
+   IF Lamp[i]=true THEN
+            RECORD[i]:=true;                //电扶梯等设备操作记录
+   END_IF;
+  END_FOR;
+  RECORD[14]:=Lamp[14];
+RECORD[15]:=Lamp[15];
+
+  //新修改 
+  
+Q0.0:=Light[0];  //点亮指示灯
+Q0.1:=Light[1];
+Q0.2:=Light[2];
+Q0.3:=Light[3];
+Q0.4:=Light[4];
+Q0.5:=Light[5];
+Q0.6:=Light[6];
+Q0.7:=Light[7];
+Q1.0:=Light[8];
+Q1.1:=Light[9];
+Q1.2:=Light[10];
+Q1.3:=Light[11];
+Q1.4:=Light[12];
+Q1.5:=Light[13];
+Q1.6:=Lamp[14];  //根据IBP盘上无效位填写 LAMP号
+Q1.7:=Lamp[15];  //根据IBP盘上有效位填写 LAMP号
+Q2.0:=Light[16];
+Q2.1:=Light[17];
+Q2.2:=Light[18];
+Q2.3:=Light[19];
+Q2.4:=Light[20];
+Q2.5:=Light[21];
+Q2.6:=Light[22];
+Q2.7:=Light[23];
+Q3.0:=Light[24];
+Q3.1:=Light[25];
+Q3.2:=Light[26];
+Q3.3:=Light[27];
+Q3.4:=Light[28];
+Q3.5:=Light[29];
+Q3.6:=Light[30];
+Q3.7:=Light[31];
+Q4.0:=Light[32];
+Q4.1:=Light[33];
+Q4.2:=Light[34];
+Q4.3:=Light[35];
+Q4.4:=Light[36];
+Q4.5:=Light[37];
+Q4.6:=Light[38];
+Q4.7:=Light[39];
+Q5.0:=Light[40];
+Q5.1:=Light[41];
+Q5.2:=Light[42];
+Q5.3:=Light[43];
+Q5.4:=Light[44];
+Q5.5:=Light[45];
+Q5.6:=Light[46];
+Q5.7:=Light[47];
+Q6.0:=Light[48];
+Q6.1:=Light[49];
+Q6.2:=Light[50];
+Q6.3:=Light[51];
+Q6.4:=Light[52];
+Q6.5:=Light[53];
+Q6.6:=Light[54];
+Q6.7:=Light[55];
+Q7.0:=Light[56];
+Q7.1:=Light[57];
+Q7.2:=Light[58];
+Q7.3:=Light[59];
+Q7.4:=Light[60];
+Q7.5:=Light[61];
+Q7.6:=Light[62];
+Q7.7:=Light[63];
+   OK:=TRUE;
+END_FUNCTION_BLOCK
+
+
+
+
+
+
+
+

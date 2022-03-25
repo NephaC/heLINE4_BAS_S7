@@ -1,0 +1,69 @@
+
+FUNCTION FC3008 : void
+
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+
+DB7005.BigA_Mode     :=    DB7004.BigA_Mode ;
+DB7005.TubA_Mode     :=    DB7004.TubA_Mode     ;
+DB7005.A1_Mode     :=    DB7004.A1_Mode     ;
+DB7005.A2_Mode     :=    DB7004.A2_Mode     ;
+DB7005.A3_Mode     :=    DB7004.A3_Mode     ;
+DB7005.A4_Mode     :=    DB7004.A4_Mode     ;
+DB7005.A5_Mode     :=    DB7004.A5_Mode     ;
+DB7005.A6_Mode     :=    DB7004.A6_Mode     ;
+DB7005.A7_Mode     :=    DB7004.A7_Mode     ;
+DB7005.A8_Mode     :=    DB7004.A8_Mode     ;
+DB7005.A9_Mode     :=    DB7004.A9_Mode     ;
+DB7005.A10_Mode     :=    DB7004.A10_Mode     ;
+DB7005.A11_Mode     :=    DB7004.A11_Mode     ;
+DB7005.A12_Mode     :=    DB7004.A12_Mode     ;
+(*DB7005.BigA_ModeRefuse     :=    DB7004.BigA_ModeRefuse     ;//小端模式不符由小端传至大端
+DB7005.TubA_ModeRefuse     :=    DB7004.TubA_ModeRefuse     ;
+DB7005.A1_ModeRefuse     :=    DB7004.A1_ModeRefuse     ;
+DB7005.A2_ModeRefuse     :=    DB7004.A2_ModeRefuse     ;
+DB7005.A3_ModeRefuse     :=    DB7004.A3_ModeRefuse     ;
+DB7005.A4_ModeRefuse     :=    DB7004.A4_ModeRefuse     ;
+DB7005.A5_ModeRefuse     :=    DB7004.A5_ModeRefuse     ;
+DB7005.A6_ModeRefuse     :=    DB7004.A6_ModeRefuse     ;
+DB7005.A7_ModeRefuse     :=    DB7004.A7_ModeRefuse     ;
+DB7005.A8_ModeRefuse     :=    DB7004.A8_ModeRefuse     ;
+DB7005.A9_ModeRefuse     :=    DB7004.A9_ModeRefuse     ;
+DB7005.A10_ModeRefuse     :=    DB7004.A10_ModeRefuse     ;
+DB7005.A11_ModeRefuse     :=    DB7004.A11_ModeRefuse     ;
+DB7005.A12_ModeRefuse     :=    DB7004.A12_ModeRefuse     ;*)
+DB7005.BigA_All     :=    DB7004.BigA_All     ;
+DB7005.TubA_All     :=    DB7004.TubA_All     ;
+DB7005.A1_All     :=    DB7004.A1_All     ;
+DB7005.A2_All     :=    DB7004.A2_All     ;
+DB7005.A3_All     :=    DB7004.A3_All     ;
+DB7005.A4_All     :=    DB7004.A4_All     ;
+DB7005.A5_All     :=    DB7004.A5_All     ;
+DB7005.A6_All     :=    DB7004.A6_All     ;
+DB7005.A7_All     :=    DB7004.A7_All     ;
+DB7005.A8_All     :=    DB7004.A8_All     ;
+DB7005.A9_All     :=    DB7004.A9_All     ;
+DB7005.A10_All     :=    DB7004.A10_All     ;
+DB7005.A11_All     :=    DB7004.A11_All     ;
+DB7005.A12_All     :=    DB7004.A12_All     ;
+DB7005.FireAlarm    :=    DB7004.FireAlarm   OR 0 ;
+DB7005.BlockAlarm    :=    DB7004.BlockAlarm  OR 0  ;
+DB7005.BigA_Act_Mode         :=    DB7002.BigA_Act_Mode         ;
+DB7005.TubA_Act_Mode         :=    DB7002.TubA_Act_Mode         ;
+DB7005.A1_Act_Mode         :=    DB7002.A1_Act_Mode         ;
+DB7005.A2_Act_Mode         :=    DB7002.A2_Act_Mode         ;
+DB7005.A3_Act_Mode      :=    DB7002.A3_Act_Mode      ;
+DB7005.A4_Act_Mode      :=    DB7002.A4_Act_Mode      ;
+DB7005.A5_Act_Mode      :=    DB7002.A5_Act_Mode      ;
+DB7005.A6_Act_Mode      :=    DB7002.A6_Act_Mode      ;
+DB7005.A7_Act_Mode      :=    DB7002.A7_Act_Mode      ;
+DB7005.A8_Act_Mode      :=    DB7002.A8_Act_Mode      ;
+DB7005.A9_Act_Mode      :=    DB7002.A9_Act_Mode      ;
+DB7005.A10_Act_Mode      :=    DB7002.A10_Act_Mode      ;
+DB7005.A11_Act_Mode      :=    DB7002.A11_Act_Mode      ;
+DB7005.A12_Act_Mode      :=    DB7002.A12_Act_Mode      ;
+DB7005.H_P_ALL_Ctrl      :=    DB7004.H_P_ALL_Ctrl     ;
+
+END_FUNCTION

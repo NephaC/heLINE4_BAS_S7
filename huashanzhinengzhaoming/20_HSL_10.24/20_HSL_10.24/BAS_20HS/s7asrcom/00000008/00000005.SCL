@@ -1,0 +1,98 @@
+
+FUNCTION_BLOCK FB2644
+
+
+
+VAR_INPUT
+    FAS_MODE:INT;
+    MODE_STATUS:ARRAY[0..40] OF INT;
+    
+END_VAR
+
+VAR_OUTPUT
+    ACT_STAT:WORD;
+    STAT:WORD;
+    end_var
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+
+LABEL
+    END;
+END_LABEL
+
+VAR
+  system_judge:INT;  // Static Variables
+system_no:INT;
+END_VAR
+(*初始化部分*)
+  STAT:=0   ;
+  ACT_STAT:=0;
+  system_judge:=0;
+  system_no:=0;
+  
+  
+    
+   IF fas_mode<>0 THEN
+     system_judge:=fas_mode / 100;  //得出FAS所传模式号对应系统号
+  IF    system_judge<>0 THEN
+
+ CASE system_judge  OF
+        11:system_no:=0;                             //通过模式号前两位判断执行模式所属小系统，以及小系统对应的ActStat数组的索引号
+        12:system_no:=1;                             //丰乐河与创新大道不同
+        16:system_no:=2;
+        17:system_no:=3;
+        21:system_no:=4;
+        22:system_no:=5;
+        23:system_no:=6;
+        24:system_no:=7;
+        25:system_no:=8;
+        26:system_no:=9;
+        27:system_no:=10;
+        28:system_no:=11;
+        29:system_no:=12;
+        30:system_no:=13;
+        31:system_no:=14;
+        32:system_no:=15;
+        41:system_no:=16;
+        42:system_no:=17;
+        43:system_no:=18;
+        44:system_no:=19;
+        45:system_no:=20;
+        46:system_no:=21;
+        47:system_no:=22;
+        48:system_no:=23;
+        49:system_no:=24;
+        50:system_no:=25;
+        51:system_no:=26;
+        52:system_no:=27;
+        
+    ELSE:
+         STAT:=2;   //模式号错误
+         GOTO end;
+         
+    END_CASE; 
+     
+ELSE
+    STAT:=2;   //模式号错误
+    GOTO end;
+END_IF;
+ 
+   ELSE
+        STAT:=1;                  //当前未执行火灾模式
+        GOTO END;
+        END_IF;
+   
+ 
+END:IF STAT<>0 THEN
+    OK:=true;
+     ACT_STAT:=INT_TO_WORD(DB6005.ActSTAT[system_no]);
+    ELSE
+     OK:=false;
+    END_IF;
+      
+    
+   
+   
+ END_FUNCTION_BLOCK              

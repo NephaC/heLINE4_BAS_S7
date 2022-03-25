@@ -1,0 +1,203 @@
+
+FUNCTION_BLOCK FB3007
+
+VAR_TEMP
+    // Temporary Variables
+
+END_VAR
+
+VAR_outPut
+    // Temporary Variables
+ P_H_Run_Code:ARRAY [0..40]  OF  INT;
+ P_H_Run_Mod:ARRAY [0..40]  OF  INT;
+ PT_Mode:ARRAY [0..40] OF  TIME;
+ PT01:TIME;
+ PT02:TIME;
+ PT03:TIME;
+ PT04:TIME;
+ PT05:TIME;
+ PT06:TIME;
+ PT07:TIME;
+ PT08:TIME;
+ PT09:TIME;
+ PT10:TIME;
+ PT11:TIME;
+ PT12:TIME;
+ PT13:TIME;
+ PT14:TIME;
+ PT15:TIME;
+ PT16:TIME;
+ PT17:TIME;
+ PT18:TIME;
+ PT19:TIME;
+ PT20:TIME;
+ PT21:TIME;
+ PT22:TIME;
+ PT23:TIME;
+ PT24:TIME;
+ PT25:TIME;
+ PT26:TIME;
+ PT27:TIME;
+ PT28:TIME;
+
+ 
+END_VAR
+VAR
+    I:INT;
+    J:INT;
+    N:INT;
+    ton1:ton;// Static Variables
+    Ton2:ton;
+    ton3:ton;
+    Ton4:ton;
+    ton5:ton;
+    ton6:ton;
+    DevA_SingCtrl:BOOL;
+    DevB_SingCtrl:BOOL;
+    Dev_SingCtrl:BOOL; //新增
+    H_P_Equ_TSP:ARRAY [0..40] OF  TIME;
+    H_P_Mod_TSP:ARRAY [0..40] OF  TIME;
+    GrpCtrl_Exist:BOOL;
+END_VAR
+
+(*初始化单控时间*)
+FOR I:=0 TO 40 DO
+    IF H_P_Equ_TSP[I] <=T#0S THEN
+       H_P_Equ_TSP[I]:=T#90S;
+    END_IF;
+END_FOR;
+
+PT01:=    H_P_Equ_TSP[0]    ;
+PT02:=    H_P_Equ_TSP[1]    ;
+PT03:=    H_P_Equ_TSP[2]    ;
+PT04:=    H_P_Equ_TSP[3]    ;
+PT05:=    H_P_Equ_TSP[4]    ;
+PT06:=    H_P_Equ_TSP[5]    ;
+PT07:=    H_P_Equ_TSP[6]    ;
+PT08:=    H_P_Equ_TSP[7]    ;
+PT09:=    H_P_Equ_TSP[8]    ;
+PT10:=    H_P_Equ_TSP[9]    ;
+PT11:=    H_P_Equ_TSP[10]    ;
+PT12:=    H_P_Equ_TSP[11]    ;
+PT13:=    H_P_Equ_TSP[12]    ;
+PT14:=    H_P_Equ_TSP[13]    ;
+PT15:=    H_P_Equ_TSP[14]    ;
+PT16:=    H_P_Equ_TSP[15]    ;
+PT17:=    H_P_Equ_TSP[16]    ;
+PT18:=    H_P_Equ_TSP[17]    ;
+PT19:=    H_P_Equ_TSP[18]    ;
+PT20:=    H_P_Equ_TSP[19]    ;
+PT21:=    H_P_Equ_TSP[20]    ;
+PT22:=    H_P_Equ_TSP[21]    ;
+PT23:=    H_P_Equ_TSP[22]    ;
+PT24:=    H_P_Equ_TSP[23]    ;
+PT25:=    H_P_Equ_TSP[24]    ;
+PT26:=    H_P_Equ_TSP[25]    ;
+PT27:=    H_P_Equ_TSP[26]    ;
+PT28:=    H_P_Equ_TSP[27]    ;
+(*初始化模式控制时间*)
+FOR I:=0 TO 40 DO
+    IF H_P_Mod_TSP[I] <=T#0S THEN
+       H_P_Mod_TSP[I]:=T#50S;
+    END_IF;
+END_FOR;
+FOR I:=0 TO 40 DO
+    PT_Mode[I]:=H_P_Mod_TSP[I];
+END_FOR;
+//(*初始化PID调节参数*)
+//IF Cold_Warm_Start THEN
+ //   FOR I:=0 TO 38 DO
+//    CASE (I MOD 3) OF
+ //     0:H_P_Man_AngB[I]:=7;    H_P_Man_AngA[I]:=7;                 (*Kp*)
+ //     1:H_P_Man_AngB[I]:=150;    H_P_Man_AngA[I]:=150;             (*KI*)
+ //     2:H_P_Man_AngB[I]:=265;    H_P_Man_AngA[I]:=265;             (*Sp*)
+//    END_CASE;
+//    END_FOR;
+//END_IF;
+
+
+(*  大端设备单控--DO，复位程序 *)
+//DevA_SingCtrl := FALSE;
+//FOR I:=0 TO 250 BY 1 DO (* 可以根据每个站变量使用情况填写具体数值，例如200、300 *) 
+ //   IF DB6001.DBW[2*I]<>0 THEN
+  //      DevA_SingCtrl := TRUE;
+   //     EXIT;
+   // END_IF;
+//END_FOR;
+//Ton1(IN := DevA_SingCtrl,PT := t#3s);
+//IF Ton1.Q THEN  
+ //  FOR I:=0 TO 250 BY 1 DO 
+  //     DB6001.DBW[2*I]:=0;
+   //END_FOR;   
+//END_IF;
+
+(* 设备单控--DO，复位程序 *)
+
+(*新修改  大小端控制点集中在DB6040中  控制命令复位统一在大端处理*)
+Dev_SingCtrl := FALSE;
+FOR J:=0 TO 600  BY 1 DO  
+   IF  DB6040.DBW[2*J]<>0 THEN        
+    Dev_SingCtrl := TRUE;    
+    EXIT;
+    END_IF;
+END_FOR;
+
+Ton2(IN := Dev_SingCtrl,PT := t#3s);
+IF Ton2.Q THEN
+    FOR I:=0 TO 600 BY 1 DO 
+         DB6040.DBW[2*J]:=0;
+   END_FOR;     
+END_IF;
+
+
+//ton3(in:= DB7004.H_P_All_Ctrl <> 16#0000,PT :=T#3S);
+//IF ton3.Q THEN
+  //  DB7004.H_P_All_Ctrl := 16#0000;
+//END_IF;
+(*模式指令复位处理*)
+//ton4(in:= DB7004.H_P_Man_Mod <> 16#0000,PT :=T#3S);
+//IF ton4.Q THEN
+  //  DB7004.H_P_Man_Mod := 16#0000;
+//END_IF;
+
+//ton5(in:= DB7004.H_P_OCC_Code <> 16#0000,PT :=T#3S);
+//IF ton5.Q THEN
+ //   DB7004.H_P_OCC_Code := 16#0000;
+//END_IF;
+
+(*系统群控复位处理*)
+//GrpCtrl_Exist:=FALSE;
+//FOR I:=0 TO 59 DO
+ //   IF DB7004.H_P_Man_Grp[I] <>0 THEN
+   //   GrpCtrl_Exist:=TRUE;
+     //  EXIT;
+   //END_IF;
+//END_FOR;
+
+//Ton6(IN := GrpCtrl_Exist,PT:=t#2S);
+//IF Ton6.Q THEN
+  //  FOR I:=0  TO 40 BY 1 DO
+    // DB7004.H_P_Man_Grp[I] := 16#0000;
+     //END_FOR;
+//END_IF;
+
+(*电子IBP盘操作复位处理*)
+
+//LCD_SingCtrl := FALSE;
+//FOR I:=0 TO LENGTH_ARWORD(L_P_Man_Dev) BY 1 DO 
+  //  IF L_P_Man_Dev[I]<>0 THEN
+ //       LCD_SingCtrl := TRUE;
+ //       EXIT;
+ //   END_IF;
+//END_FOR;
+
+//TON_6 (IN := LCD_SingCtrl,PT:=t#2S);
+//IF TON_6.Q THEN
+//   MOVE_WORD_ARWORD (IN := 0,OUT => L_P_Man_Dev);
+//END_IF;
+(*PLC到HMI变量赋值*)
+
+
+END_FUNCTION_BLOCK
+
+

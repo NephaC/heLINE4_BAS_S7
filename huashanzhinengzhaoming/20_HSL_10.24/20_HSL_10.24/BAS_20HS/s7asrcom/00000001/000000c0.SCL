@@ -1,0 +1,625 @@
+
+FUNCTION_BLOCK FB3019
+
+VAR_TEMP
+   
+END_VAR
+VAR_INPUT  
+ BigB_Act_Mode : STRUCT         
+ BigB_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;        
+    WORD6 : WORD ;        
+    WORD7 : WORD ;     
+   END_STRUCT ;        
+    TubB_Act_Mode : STRUCT         
+ TubB_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ; 
+    WORD6 : WORD ;        
+    WORD7 : WORD ;          
+   END_STRUCT ;        
+   B1_Act_Mode : STRUCT         
+ B1_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+B2_Act_Mode : STRUCT         
+ B2_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;  
+    WORD6 : WORD ;        
+    WORD7 : WORD ;         
+   END_STRUCT ;        
+B3_Act_Mode : STRUCT         
+ B3_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;    
+    WORD6 : WORD ;        
+    WORD7 : WORD ;       
+   END_STRUCT ;        
+B4_Act_Mode : STRUCT         
+ B4_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+B5_Act_Mode : STRUCT         
+ B5_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;    
+    WORD6 : WORD ;        
+    WORD7 : WORD ;       
+   END_STRUCT ;        
+B6_Act_Mode : STRUCT         
+ B6_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;    
+    WORD6 : WORD ;        
+    WORD7 : WORD ;       
+   END_STRUCT ;        
+B7_Act_Mode : STRUCT         
+ B7_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;  
+    WORD6 : WORD ;        
+    WORD7 : WORD ;         
+   END_STRUCT ;        
+B8_Act_Mode : STRUCT         
+ B8_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ; 
+    WORD6 : WORD ;        
+    WORD7 : WORD ;          
+   END_STRUCT ;        
+B9_Act_Mode : STRUCT         
+ B9_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+B10_Act_Mode : STRUCT         
+ B10_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;  
+    WORD6 : WORD ;        
+    WORD7 : WORD ;         
+   END_STRUCT ;        
+B11_Act_Mode : STRUCT         
+ B11_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;   
+    WORD6 : WORD ;        
+    WORD7 : WORD ;        
+   END_STRUCT ;        
+B12_Act_Mode : STRUCT         
+ B12_Mode_Num:int;        
+    WORD0 : WORD ;        
+    WORD1 : WORD ;        
+    WORD2 : WORD ;        
+    WORD3 : WORD ;        
+    WORD4 : WORD ;        
+    WORD5 : WORD ;
+    WORD6 : WORD ;        
+    WORD7 : WORD ;           
+   END_STRUCT ;        
+ 
+    
+END_VAR
+
+VAR_OUTPUT
+     //B端大系统设备分解 
+
+   
+     KT_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+    
+     DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B4_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+     DTS_B5_MCtrl:ARRAY  [0..3]  OF  BOOL;    
+     DTS_B6_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+      
+    //B端隧道系统分解  
+    TVF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;
+    TVF_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;     
+    UOF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    DM_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B4_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B5_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B6_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B7_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    DM_B8_MCtrl:ARRAY  [0..3]  OF  BOOL;  
+    UOF_DT_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    UOF_DT_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    UOF_DT_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    UOF_DT_B4_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+ 
+ 
+  //B1端小系统分解  
+    K1_XK_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;      
+    K1_HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    K1_DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K1_DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K1_DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;  
+      //B2端小系统分解  
+    K2_XK_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;      
+    K2_HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    K2_DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K2_DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K2_DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;     
+    //B3端小系统分解  
+     
+    K3_XK_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;  
+    K3_HPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+     
+    K3_DTS_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K3_DTS_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    K3_DTS_B3_MCtrl:ARRAY  [0..3]  OF  BOOL;         
+
+
+    //B4端小系统分解  
+ 
+    T1_XPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    T1_XSF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL; 
+    T1_D_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;   
+    T1_D_B2_MCtrl:ARRAY  [0..3]  OF  BOOL;                
+  
+    //B5端小系统分解   
+    T4_XPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;
+    T4_D_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;  
+     //B6端小系统分解   
+     T5_XPF_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;
+     T5_D_B1_MCtrl:ARRAY  [0..3]  OF  BOOL;        
+    
+ 
+    
+        
+     END_VAR
+VAR
+    BigB_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    BigB_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    BigB_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    BigB_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    TubB_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubB_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubB_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubB_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    TubB_Word4_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    B1_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    B1_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    B1_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    B1_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    B2_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    B2_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    B2_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    B2_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    B3_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    B3_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    B3_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    B3_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    B4_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    B4_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    B4_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    B4_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    B5_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    B5_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    B5_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    B5_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+    B6_Word0_Temp:ARRAY  [0..15]  OF  BOOL;
+    B6_Word1_Temp:ARRAY  [0..15]  OF  BOOL;
+    B6_Word2_Temp:ARRAY  [0..15]  OF  BOOL;
+    B6_Word3_Temp:ARRAY  [0..15]  OF  BOOL;
+    
+
+    
+    
+    
+       
+  
+              
+
+END_VAR     
+HF3_W_T_B_FC54(WORD1 :=  BigB_Act_Mode.WORD0
+               ,bool1 := BigB_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  BigB_Act_Mode.WORD1
+               ,bool1 := BigB_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  BigB_Act_Mode.WORD2
+               ,bool1 := BigB_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  BigB_Act_Mode.WORD3
+               ,bool1 := BigB_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  TubB_Act_Mode.WORD0
+               ,bool1 := TubB_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubB_Act_Mode.WORD1
+               ,bool1 := TubB_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubB_Act_Mode.WORD2
+               ,bool1 := TubB_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubB_Act_Mode.WORD3
+               ,bool1 := TubB_Word3_Temp);
+HF3_W_T_B_FC54(WORD1 :=  TubB_Act_Mode.WORD4
+               ,bool1 := TubB_Word4_Temp);
+               
+               
+               
+
+HF3_W_T_B_FC54(WORD1 :=  B1_Act_Mode.WORD0
+               ,bool1 := B1_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B1_Act_Mode.WORD1
+               ,bool1 := B1_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B1_Act_Mode.WORD2
+               ,bool1 := B1_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B1_Act_Mode.WORD3
+               ,bool1 := B1_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  B2_Act_Mode.WORD0
+               ,bool1 := B2_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B2_Act_Mode.WORD1
+               ,bool1 := B2_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B2_Act_Mode.WORD2
+               ,bool1 := B2_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B2_Act_Mode.WORD3
+               ,bool1 := B2_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  B3_Act_Mode.WORD0
+               ,bool1 := B3_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B3_Act_Mode.WORD1
+               ,bool1 := B3_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B3_Act_Mode.WORD2
+               ,bool1 := B3_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B3_Act_Mode.WORD3
+               ,bool1 := B3_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  B4_Act_Mode.WORD0
+               ,bool1 := B4_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B4_Act_Mode.WORD1
+               ,bool1 := B4_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B4_Act_Mode.WORD2
+               ,bool1 := B4_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B4_Act_Mode.WORD3
+               ,bool1 := B4_Word3_Temp);
+
+HF3_W_T_B_FC54(WORD1 :=  B5_Act_Mode.WORD0
+               ,bool1 := B5_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B5_Act_Mode.WORD1
+               ,bool1 := B5_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B5_Act_Mode.WORD2
+               ,bool1 := B5_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B5_Act_Mode.WORD3
+               ,bool1 := B5_Word3_Temp);
+               
+HF3_W_T_B_FC54(WORD1 :=  B6_Act_Mode.WORD0
+               ,bool1 := B6_Word0_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B6_Act_Mode.WORD1
+               ,bool1 := B6_Word1_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B6_Act_Mode.WORD2
+               ,bool1 := B6_Word2_Temp);
+HF3_W_T_B_FC54(WORD1 :=  B6_Act_Mode.WORD3
+               ,bool1 := B6_Word3_Temp);               
+
+               
+               
+               
+
+
+
+
+       //大系统
+    
+
+     KT_B1_MCtrl[0]:=BigB_Word0_Temp[0];
+     KT_B1_MCtrl[1]:=BigB_Word0_Temp[1];
+     KT_B1_MCtrl[2]:=BigB_Word0_Temp[2];
+     KT_B1_MCtrl[3]:=BigB_Word0_Temp[3];
+
+     HPF_B1_MCtrl[0]:=BigB_Word0_Temp[4];
+     HPF_B1_MCtrl[1]:=BigB_Word0_Temp[5];
+     HPF_B1_MCtrl[2]:=BigB_Word0_Temp[6];
+     HPF_B1_MCtrl[3]:=BigB_Word0_Temp[7];
+
+
+     DTS_B1_MCtrl[0]:=BigB_Word0_Temp[8];
+     DTS_B1_MCtrl[1]:=BigB_Word0_Temp[9];
+     DTS_B1_MCtrl[2]:=BigB_Word0_Temp[10];
+     DTS_B1_MCtrl[3]:=BigB_Word0_Temp[11];
+
+     DTS_B2_MCtrl[0]:=BigB_Word0_Temp[12];
+     DTS_B2_MCtrl[1]:=BigB_Word0_Temp[13];
+     DTS_B2_MCtrl[2]:=BigB_Word0_Temp[14];
+     DTS_B2_MCtrl[3]:=BigB_Word0_Temp[15];
+
+     DTS_B3_MCtrl[0]:=BigB_Word1_Temp[0];
+     DTS_B3_MCtrl[1]:=BigB_Word1_Temp[1];
+     DTS_B3_MCtrl[2]:=BigB_Word1_Temp[2];
+     DTS_B3_MCtrl[3]:=BigB_Word1_Temp[3];
+
+     DTS_B4_MCtrl[0]:=BigB_Word1_Temp[4];
+     DTS_B4_MCtrl[1]:=BigB_Word1_Temp[5];
+     DTS_B4_MCtrl[2]:=BigB_Word1_Temp[6];
+     DTS_B4_MCtrl[3]:=BigB_Word1_Temp[7];
+
+     DTS_B5_MCtrl[0]:=BigB_Word1_Temp[8];
+     DTS_B5_MCtrl[1]:=BigB_Word1_Temp[9];
+     DTS_B5_MCtrl[2]:=BigB_Word1_Temp[10];
+     DTS_B5_MCtrl[3]:=BigB_Word1_Temp[11];
+
+     DTS_B6_MCtrl[0]:=BigB_Word1_Temp[12];
+     DTS_B6_MCtrl[1]:=BigB_Word1_Temp[13];
+     DTS_B6_MCtrl[2]:=BigB_Word1_Temp[14];
+     DTS_B6_MCtrl[3]:=BigB_Word1_Temp[15];
+
+
+     
+
+
+
+         //隧道通风系统
+     TVF_B1_MCtrl[0]:=TubB_Word0_Temp[0];
+     TVF_B1_MCtrl[1]:=TubB_Word0_Temp[1];
+     TVF_B1_MCtrl[2]:=TubB_Word0_Temp[2];
+     TVF_B1_MCtrl[3]:=TubB_Word0_Temp[3];
+
+     TVF_B2_MCtrl[0]:=TubB_Word0_Temp[4];
+     TVF_B2_MCtrl[1]:=TubB_Word0_Temp[5];
+     TVF_B2_MCtrl[2]:=TubB_Word0_Temp[6];
+     TVF_B2_MCtrl[3]:=TubB_Word0_Temp[7];
+
+     UOF_B1_MCtrl[0]:=TubB_Word0_Temp[8];
+     UOF_B1_MCtrl[1]:=TubB_Word0_Temp[9];
+     UOF_B1_MCtrl[2]:=TubB_Word0_Temp[10];
+     UOF_B1_MCtrl[3]:=TubB_Word0_Temp[11];
+
+     DM_B1_MCtrl[0]:=TubB_Word0_Temp[12];
+     DM_B1_MCtrl[1]:=TubB_Word0_Temp[13];
+     DM_B1_MCtrl[2]:=TubB_Word0_Temp[14];
+     DM_B1_MCtrl[3]:=TubB_Word0_Temp[15];
+
+     DM_B2_MCtrl[0]:=TubB_Word1_Temp[0];
+     DM_B2_MCtrl[1]:=TubB_Word1_Temp[1];
+     DM_B2_MCtrl[2]:=TubB_Word1_Temp[2];
+     DM_B2_MCtrl[3]:=TubB_Word1_Temp[3];
+
+     DM_B3_MCtrl[0]:=TubB_Word1_Temp[4];
+     DM_B3_MCtrl[1]:=TubB_Word1_Temp[5];
+     DM_B3_MCtrl[2]:=TubB_Word1_Temp[6];
+     DM_B3_MCtrl[3]:=TubB_Word1_Temp[7];
+
+     DM_B4_MCtrl[0]:=TubB_Word1_Temp[8];
+     DM_B4_MCtrl[1]:=TubB_Word1_Temp[9];
+     DM_B4_MCtrl[2]:=TubB_Word1_Temp[10];
+     DM_B4_MCtrl[3]:=TubB_Word1_Temp[11];
+
+     DM_B5_MCtrl[0]:=TubB_Word1_Temp[12];
+     DM_B5_MCtrl[1]:=TubB_Word1_Temp[13];
+     DM_B5_MCtrl[2]:=TubB_Word1_Temp[14];
+     DM_B5_MCtrl[3]:=TubB_Word1_Temp[15];
+
+     DM_B6_MCtrl[0]:=TubB_Word2_Temp[0];
+     DM_B6_MCtrl[1]:=TubB_Word2_Temp[1];
+     DM_B6_MCtrl[2]:=TubB_Word2_Temp[2];
+     DM_B6_MCtrl[3]:=TubB_Word2_Temp[3];
+        
+     DM_B7_MCtrl[0]:=TubB_Word2_Temp[4];
+     DM_B7_MCtrl[1]:=TubB_Word2_Temp[5];
+     DM_B7_MCtrl[2]:=TubB_Word2_Temp[6];
+     DM_B7_MCtrl[3]:=TubB_Word2_Temp[7];
+        
+        
+     DM_B8_MCtrl[0]:=TubB_Word2_Temp[8];
+     DM_B8_MCtrl[1]:=TubB_Word2_Temp[9];
+     DM_B8_MCtrl[2]:=TubB_Word2_Temp[10];
+     DM_B8_MCtrl[3]:=TubB_Word2_Temp[11];
+
+
+
+     UOF_DT_B1_MCtrl[0]:=TubB_Word2_Temp[12];
+     UOF_DT_B1_MCtrl[1]:=TubB_Word2_Temp[13];
+     UOF_DT_B1_MCtrl[2]:=TubB_Word2_Temp[14];
+     UOF_DT_B1_MCtrl[3]:=TubB_Word2_Temp[15];
+
+     UOF_DT_B2_MCtrl[0]:=TubB_Word3_Temp[0];
+     UOF_DT_B2_MCtrl[1]:=TubB_Word3_Temp[1];
+     UOF_DT_B2_MCtrl[2]:=TubB_Word3_Temp[2];
+     UOF_DT_B2_MCtrl[3]:=TubB_Word3_Temp[3];
+
+     UOF_DT_B3_MCtrl[0]:=TubB_Word3_Temp[4];
+     UOF_DT_B3_MCtrl[1]:=TubB_Word3_Temp[5];
+     UOF_DT_B3_MCtrl[2]:=TubB_Word3_Temp[6];
+     UOF_DT_B3_MCtrl[3]:=TubB_Word3_Temp[7];
+
+     UOF_DT_B4_MCtrl[0]:=TubB_Word3_Temp[8];
+     UOF_DT_B4_MCtrl[1]:=TubB_Word3_Temp[9];
+     UOF_DT_B4_MCtrl[2]:=TubB_Word3_Temp[10];
+     UOF_DT_B4_MCtrl[3]:=TubB_Word3_Temp[11];
+         
+         //B1小系统
+     K1_XK_B1_MCtrl[0]:=B1_Word0_Temp[0];
+     K1_XK_B1_MCtrl[1]:=B1_Word0_Temp[1];
+     K1_XK_B1_MCtrl[2]:=B1_Word0_Temp[2];
+     K1_XK_B1_MCtrl[3]:=B1_Word0_Temp[3];
+
+     K1_HPF_B1_MCtrl[0]:=B1_Word0_Temp[4];
+     K1_HPF_B1_MCtrl[1]:=B1_Word0_Temp[5];
+     K1_HPF_B1_MCtrl[2]:=B1_Word0_Temp[6];
+     K1_HPF_B1_MCtrl[3]:=B1_Word0_Temp[7];
+
+     K1_DTS_B1_MCtrl[0]:=B1_Word0_Temp[8];
+     K1_DTS_B1_MCtrl[1]:=B1_Word0_Temp[9];
+     K1_DTS_B1_MCtrl[2]:=B1_Word0_Temp[10];
+     K1_DTS_B1_MCtrl[3]:=B1_Word0_Temp[11];
+
+     K1_DTS_B2_MCtrl[0]:=B1_Word0_Temp[12];
+     K1_DTS_B2_MCtrl[1]:=B1_Word0_Temp[13];
+     K1_DTS_B2_MCtrl[2]:=B1_Word0_Temp[14];
+     K1_DTS_B2_MCtrl[3]:=B1_Word0_Temp[15];
+
+     K1_DTS_B3_MCtrl[0]:=B1_Word1_Temp[0];
+     K1_DTS_B3_MCtrl[1]:=B1_Word1_Temp[1];
+     K1_DTS_B3_MCtrl[2]:=B1_Word1_Temp[2];
+     K1_DTS_B3_MCtrl[3]:=B1_Word1_Temp[3];
+          
+           //B2小系统
+     K2_XK_B1_MCtrl[0]:=B2_Word0_Temp[0];
+     K2_XK_B1_MCtrl[1]:=B2_Word0_Temp[1];
+     K2_XK_B1_MCtrl[2]:=B2_Word0_Temp[2];
+     K2_XK_B1_MCtrl[3]:=B2_Word0_Temp[3];
+
+     K2_HPF_B1_MCtrl[0]:=B2_Word0_Temp[4];
+     K2_HPF_B1_MCtrl[1]:=B2_Word0_Temp[5];
+     K2_HPF_B1_MCtrl[2]:=B2_Word0_Temp[6];
+     K2_HPF_B1_MCtrl[3]:=B2_Word0_Temp[7];
+
+     K2_DTS_B1_MCtrl[0]:=B2_Word0_Temp[8];
+     K2_DTS_B1_MCtrl[1]:=B2_Word0_Temp[9];
+     K2_DTS_B1_MCtrl[2]:=B2_Word0_Temp[10];
+     K2_DTS_B1_MCtrl[3]:=B2_Word0_Temp[11];
+
+     K2_DTS_B2_MCtrl[0]:=B2_Word0_Temp[12];
+     K2_DTS_B2_MCtrl[1]:=B2_Word0_Temp[13];
+     K2_DTS_B2_MCtrl[2]:=B2_Word0_Temp[14];
+     K2_DTS_B2_MCtrl[3]:=B2_Word0_Temp[15];
+
+     K2_DTS_B3_MCtrl[0]:=B2_Word1_Temp[0];
+     K2_DTS_B3_MCtrl[1]:=B2_Word1_Temp[1];
+     K2_DTS_B3_MCtrl[2]:=B2_Word1_Temp[2];
+     K2_DTS_B3_MCtrl[3]:=B2_Word1_Temp[3];
+          
+
+          //B3小系统
+     K3_XK_B1_MCtrl[0]:=B3_Word0_Temp[0];
+     K3_XK_B1_MCtrl[1]:=B3_Word0_Temp[1];
+     K3_XK_B1_MCtrl[2]:=B3_Word0_Temp[2];
+     K3_XK_B1_MCtrl[3]:=B3_Word0_Temp[3];
+
+     K3_HPF_B1_MCtrl[0]:=B3_Word0_Temp[4];
+     K3_HPF_B1_MCtrl[1]:=B3_Word0_Temp[5];
+     K3_HPF_B1_MCtrl[2]:=B3_Word0_Temp[6];
+     K3_HPF_B1_MCtrl[3]:=B3_Word0_Temp[7];
+
+     K3_DTS_B1_MCtrl[0]:=B3_Word0_Temp[8];
+     K3_DTS_B1_MCtrl[1]:=B3_Word0_Temp[9];
+     K3_DTS_B1_MCtrl[2]:=B3_Word0_Temp[10];
+     K3_DTS_B1_MCtrl[3]:=B3_Word0_Temp[11];
+
+     K3_DTS_B2_MCtrl[0]:=B3_Word0_Temp[12];
+     K3_DTS_B2_MCtrl[1]:=B3_Word0_Temp[13];
+     K3_DTS_B2_MCtrl[2]:=B3_Word0_Temp[14];
+     K3_DTS_B2_MCtrl[3]:=B3_Word0_Temp[15];
+
+     K3_DTS_B3_MCtrl[0]:=B3_Word1_Temp[0];
+     K3_DTS_B3_MCtrl[1]:=B3_Word1_Temp[1];
+     K3_DTS_B3_MCtrl[2]:=B3_Word1_Temp[2];
+     K3_DTS_B3_MCtrl[3]:=B3_Word1_Temp[3];
+     
+     
+     //B4小系统
+     T1_XPF_B1_MCtrl[0]:=B4_Word0_Temp[0];
+     T1_XPF_B1_MCtrl[1]:=B4_Word0_Temp[1];
+     T1_XPF_B1_MCtrl[2]:=B4_Word0_Temp[2];
+     T1_XPF_B1_MCtrl[3]:=B4_Word0_Temp[3];
+
+     T1_XSF_B1_MCtrl[0]:=B4_Word0_Temp[4];
+     T1_XSF_B1_MCtrl[1]:=B4_Word0_Temp[5];
+     T1_XSF_B1_MCtrl[2]:=B4_Word0_Temp[6];
+     T1_XSF_B1_MCtrl[3]:=B4_Word0_Temp[7];
+
+     T1_D_B1_MCtrl[0]:=B4_Word0_Temp[8];
+     T1_D_B1_MCtrl[1]:=B4_Word0_Temp[9];
+     T1_D_B1_MCtrl[2]:=B4_Word0_Temp[10];
+     T1_D_B1_MCtrl[3]:=B4_Word0_Temp[11];
+
+     T1_D_B2_MCtrl[0]:=B4_Word0_Temp[12];
+     T1_D_B2_MCtrl[1]:=B4_Word0_Temp[13];
+     T1_D_B2_MCtrl[2]:=B4_Word0_Temp[14];
+     T1_D_B2_MCtrl[3]:=B4_Word0_Temp[15];
+
+      //B5小系统
+     T4_XPF_B1_MCtrl[0]:=B5_Word0_Temp[0];
+     T4_XPF_B1_MCtrl[1]:=B5_Word0_Temp[1];
+     T4_XPF_B1_MCtrl[2]:=B5_Word0_Temp[2];
+     T4_XPF_B1_MCtrl[3]:=B5_Word0_Temp[3];
+
+     T4_D_B1_MCtrl[0]:=B5_Word0_Temp[4];
+     T4_D_B1_MCtrl[1]:=B5_Word0_Temp[5];
+     T4_D_B1_MCtrl[2]:=B5_Word0_Temp[6];
+     T4_D_B1_MCtrl[3]:=B5_Word0_Temp[7];
+
+            //B6小系统
+     T5_XPF_B1_MCtrl[0]:=B6_Word0_Temp[0];
+     T5_XPF_B1_MCtrl[1]:=B6_Word0_Temp[1];
+     T5_XPF_B1_MCtrl[2]:=B6_Word0_Temp[2];
+     T5_XPF_B1_MCtrl[3]:=B6_Word0_Temp[3];
+
+     T5_D_B1_MCtrl[0]:=B6_Word0_Temp[4];
+     T5_D_B1_MCtrl[1]:=B6_Word0_Temp[5];
+     T5_D_B1_MCtrl[2]:=B6_Word0_Temp[6];
+     T5_D_B1_MCtrl[3]:=B6_Word0_Temp[7];
+
+   
+END_FUNCTION_BLOCK

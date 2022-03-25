@@ -1,0 +1,57 @@
+
+FUNCTION_BLOCK FB2612
+
+TITLE = 'UPS Status'
+//
+// UPS Status Obtain
+//
+VERSION: '1.0'
+AUTHOR: SUNWIN_G
+NAME: UPS_Read
+FAMILY: SUNWIN
+
+VAR_INPUT
+    DB_NO:INT;
+END_VAR
+
+VAR_OUTPUT
+    AI_Status:ARRAY[0..11] OF INT;
+    DI_Status:WORD;
+    END_VAR
+VAR
+I,J:INT;
+    // Static Variables
+BOOL_Arr:ARRAY [0..15] OF BOOL;
+END_VAR
+I:=0;
+J:=0;
+FOR I:=0 TO 11 BY 1 DO    //Ä£ÄâÁ¿
+    AI_Status[I]:=WORD_TO_INT(WORD_TO_BLOCK_DB(INT_TO_WORD(DB_NO)).DW[2*I+2]);
+END_FOR;
+
+FOR J:=0 TO 15 BY 1 DO  //ÀëÉ¢Á¿
+    BOOL_Arr[J]:=WORD_TO_BLOCK_DB(INT_TO_WORD(DB_NO)).DX[28+J/8,J MOD 8];
+END_FOR;
+
+ FC51(Bit_0 :=  BOOL_Arr[0]// IN: BOOL
+                           ,Bit_1 :=BOOL_Arr[1]  // IN: BOOL
+                           ,Bit_2 :=BOOL_Arr[2] // IN: BOOL
+                           ,Bit_3 :=BOOL_Arr[3]  // IN: BOOL
+                           ,Bit_4 :=BOOL_Arr[4]   // IN: BOOL
+                           ,Bit_5 :=BOOL_Arr[5]  // IN: BOOL
+                           ,Bit_6 :=BOOL_Arr[6]   // IN: BOOL
+                           ,Bit_7 :=BOOL_Arr[7]   // IN: BOOL
+                           ,Bit_8 :=BOOL_Arr[8]  // IN: BOOL
+                           ,Bit_9 :=BOOL_Arr[9]   // IN: BOOL
+                           ,Bit_10 :=BOOL_Arr[10]   // IN: BOOL
+                           ,Bit_11 :=BOOL_Arr[11] // IN: BOOL
+                           ,Bit_12 :=BOOL_Arr[12]   // IN: BOOL
+                           ,Bit_13 :=BOOL_Arr[13]   // IN: BOOL
+                           ,Bit_14 :=BOOL_Arr[14]  // IN: BOOL
+                           ,Bit_15 :=BOOL_Arr[15]   // IN: BOOL
+                           ,Word1 := DI_Status // OUT: WORD
+                           ); // VOID
+
+
+END_FUNCTION_BLOCK
+

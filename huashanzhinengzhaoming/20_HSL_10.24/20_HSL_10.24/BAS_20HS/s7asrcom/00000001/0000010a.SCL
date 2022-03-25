@@ -1,0 +1,270 @@
+//create working DB
+DATA_BLOCK DB2051
+STRUCT
+START_SEQ:BYTE:=16#1;
+END_SEQ:BYTE:=16#4;
+SND_COMM_DB:WORD:=16#804;
+WRT_COMM_DB:WORD:=16#805;
+WRT_COMP_DB:WORD:=16#806;
+DAT_RECV_DB:WORD:=16#807;
+ACT_1:BOOL:=TRUE;
+Mode_1:BOOL:=FALSE;
+SND_DB_1:INT:=2052;
+SND_ADD_1:INT:=0;
+SND_LEN_1:INT:=6;
+RCV_DB_1:INT:=2055;
+RCV_ADD_1:INT:=0;
+RCV_LEN_1:INT:=36;
+WD_TIME_1:INT:=3000;
+ACT_2:BOOL:=TRUE;
+Mode_2:BOOL:=FALSE;
+SND_DB_2:INT:=2052;
+SND_ADD_2:INT:=8;
+SND_LEN_2:INT:=6;
+RCV_DB_2:INT:=2055;
+RCV_ADD_2:INT:=36;
+RCV_LEN_2:INT:=242;
+WD_TIME_2:INT:=3000;
+ACT_3:BOOL:=TRUE;
+Mode_3:BOOL:=TRUE;
+SND_DB_3:INT:=2054;
+SND_ADD_3:INT:=0;
+SND_LEN_3:INT:=10;
+RCV_DB_3:INT:=2055;
+RCV_ADD_3:INT:=278;
+RCV_LEN_3:INT:=2;
+WD_TIME_3:INT:=3000;
+ACT_4:BOOL:=TRUE;
+Mode_4:BOOL:=TRUE;
+SND_DB_4:INT:=2054;
+SND_ADD_4:INT:=12;
+SND_LEN_4:INT:=12;
+RCV_DB_4:INT:=2055;
+RCV_ADD_4:INT:=280;
+RCV_LEN_4:INT:=2;
+WD_TIME_4:INT:=3000;
+VBVer:WORD:=16#2B;   //配置文件版本号
+END_STRUCT
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+//create SND_COMMAND DB
+DATA_BLOCK DB2052
+STRUCT
+SlaveID_1:BYTE:=16#1;
+FC_1:BYTE:=16#3;
+START_ADD_1:WORD:=16#0;
+DATA_NUM_1:WORD:=16#11;
+CRC_1:WORD:=16#0;
+SlaveID_2:BYTE:=16#1;
+FC_2:BYTE:=16#3;
+START_ADD_2:WORD:=16#12C;
+DATA_NUM_2:WORD:=16#78;
+CRC_2:WORD:=16#0;
+END_STRUCT
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+//create WRT_COMMAND DB
+DATA_BLOCK DB2053
+STRUCT
+SlaveID_3:BYTE:=16#1;
+FC_3:BYTE:=16#10;
+START_ADD_3:WORD:=16#1E;
+DATA_NUM_3:WORD:=16#1;
+DATA_BYTE_3:WORD:=16#2;
+DATA_3_1:WORD:=16#0;    //地址40031
+CRC_3:WORD:=16#0;
+SlaveID_4:BYTE:=16#1;
+FC_4:BYTE:=16#10;
+START_ADD_4:WORD:=16#1F;
+DATA_NUM_4:WORD:=16#2;
+DATA_BYTE_4:WORD:=16#4;
+DATA_4_1:WORD:=16#0;    //地址40032
+DATA_4_2:WORD:=16#0;    //地址40033
+CRC_4:WORD:=16#0;
+END_STRUCT
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+//create WRT_COMPARE_COMMAND DB
+DATA_BLOCK DB2054
+STRUCT
+SlaveID_3:BYTE:=16#1;
+FC_3:BYTE:=16#10;
+START_ADD_3:WORD:=16#1E;
+DATA_NUM_3:WORD:=16#1;
+DATA_BYTE_3:WORD:=16#2;
+DATA_NUM_3_1:WORD:=16#0;
+CRC_3:WORD:=16#0;
+SlaveID_4:BYTE:=16#1;
+FC_4:BYTE:=16#10;
+START_ADD_4:WORD:=16#1F;
+DATA_NUM_4:WORD:=16#2;
+DATA_BYTE_4:WORD:=16#4;
+DATA_NUM_4_1:WORD:=16#0;
+DATA_NUM_4_2:WORD:=16#0;
+CRC_4:WORD:=16#0;
+END_STRUCT
+BEGIN
+END_DATA_BLOCK
+
+
+
+
+//create DAT_COMMAND DB
+DATA_BLOCK DB2055
+STRUCT
+Command_1_STATUS:WORD:=16#0;     //第1条命令的状态，0=正常，1=无响应，2=站号错误，3=命令错误，4=CRC校验错误
+Command_1_DATA_1:WORD:=16#0;    //地址40001
+Command_1_DATA_2:WORD:=16#0;    //地址40002
+Command_1_DATA_3:WORD:=16#0;    //地址40003
+Command_1_DATA_4:WORD:=16#0;    //地址40004
+Command_1_DATA_5:WORD:=16#0;    //地址40005
+Command_1_DATA_6:WORD:=16#0;    //地址40006
+Command_1_DATA_7:WORD:=16#0;    //地址40007
+Command_1_DATA_8:WORD:=16#0;    //地址40008
+Command_1_DATA_9:WORD:=16#0;    //地址40009
+Command_1_DATA_10:WORD:=16#0;    //地址40010
+Command_1_DATA_11:WORD:=16#0;    //地址40011
+Command_1_DATA_12:WORD:=16#0;    //地址40012
+Command_1_DATA_13:WORD:=16#0;    //地址40013
+Command_1_DATA_14:WORD:=16#0;    //地址40014
+Command_1_DATA_15:WORD:=16#0;    //地址40015
+Command_1_DATA_16:WORD:=16#0;    //地址40016
+Command_1_DATA_17:WORD:=16#0;    //地址40017
+Command_2_STATUS:WORD:=16#0;     //第2条命令的状态，0=正常，1=无响应，2=站号错误，3=命令错误，4=CRC校验错误
+Command_2_DATA_1:WORD:=16#0;    //地址40301
+Command_2_DATA_2:WORD:=16#0;    //地址40302
+Command_2_DATA_3:WORD:=16#0;    //地址40303
+Command_2_DATA_4:WORD:=16#0;    //地址40304
+Command_2_DATA_5:WORD:=16#0;    //地址40305
+Command_2_DATA_6:WORD:=16#0;    //地址40306
+Command_2_DATA_7:WORD:=16#0;    //地址40307
+Command_2_DATA_8:WORD:=16#0;    //地址40308
+Command_2_DATA_9:WORD:=16#0;    //地址40309
+Command_2_DATA_10:WORD:=16#0;    //地址40310
+Command_2_DATA_11:WORD:=16#0;    //地址40311
+Command_2_DATA_12:WORD:=16#0;    //地址40312
+Command_2_DATA_13:WORD:=16#0;    //地址40313
+Command_2_DATA_14:WORD:=16#0;    //地址40314
+Command_2_DATA_15:WORD:=16#0;    //地址40315
+Command_2_DATA_16:WORD:=16#0;    //地址40316
+Command_2_DATA_17:WORD:=16#0;    //地址40317
+Command_2_DATA_18:WORD:=16#0;    //地址40318
+Command_2_DATA_19:WORD:=16#0;    //地址40319
+Command_2_DATA_20:WORD:=16#0;    //地址40320
+Command_2_DATA_21:WORD:=16#0;    //地址40321
+Command_2_DATA_22:WORD:=16#0;    //地址40322
+Command_2_DATA_23:WORD:=16#0;    //地址40323
+Command_2_DATA_24:WORD:=16#0;    //地址40324
+Command_2_DATA_25:WORD:=16#0;    //地址40325
+Command_2_DATA_26:WORD:=16#0;    //地址40326
+Command_2_DATA_27:WORD:=16#0;    //地址40327
+Command_2_DATA_28:WORD:=16#0;    //地址40328
+Command_2_DATA_29:WORD:=16#0;    //地址40329
+Command_2_DATA_30:WORD:=16#0;    //地址40330
+Command_2_DATA_31:WORD:=16#0;    //地址40331
+Command_2_DATA_32:WORD:=16#0;    //地址40332
+Command_2_DATA_33:WORD:=16#0;    //地址40333
+Command_2_DATA_34:WORD:=16#0;    //地址40334
+Command_2_DATA_35:WORD:=16#0;    //地址40335
+Command_2_DATA_36:WORD:=16#0;    //地址40336
+Command_2_DATA_37:WORD:=16#0;    //地址40337
+Command_2_DATA_38:WORD:=16#0;    //地址40338
+Command_2_DATA_39:WORD:=16#0;    //地址40339
+Command_2_DATA_40:WORD:=16#0;    //地址40340
+Command_2_DATA_41:WORD:=16#0;    //地址40341
+Command_2_DATA_42:WORD:=16#0;    //地址40342
+Command_2_DATA_43:WORD:=16#0;    //地址40343
+Command_2_DATA_44:WORD:=16#0;    //地址40344
+Command_2_DATA_45:WORD:=16#0;    //地址40345
+Command_2_DATA_46:WORD:=16#0;    //地址40346
+Command_2_DATA_47:WORD:=16#0;    //地址40347
+Command_2_DATA_48:WORD:=16#0;    //地址40348
+Command_2_DATA_49:WORD:=16#0;    //地址40349
+Command_2_DATA_50:WORD:=16#0;    //地址40350
+Command_2_DATA_51:WORD:=16#0;    //地址40351
+Command_2_DATA_52:WORD:=16#0;    //地址40352
+Command_2_DATA_53:WORD:=16#0;    //地址40353
+Command_2_DATA_54:WORD:=16#0;    //地址40354
+Command_2_DATA_55:WORD:=16#0;    //地址40355
+Command_2_DATA_56:WORD:=16#0;    //地址40356
+Command_2_DATA_57:WORD:=16#0;    //地址40357
+Command_2_DATA_58:WORD:=16#0;    //地址40358
+Command_2_DATA_59:WORD:=16#0;    //地址40359
+Command_2_DATA_60:WORD:=16#0;    //地址40360
+Command_2_DATA_61:WORD:=16#0;    //地址40361
+Command_2_DATA_62:WORD:=16#0;    //地址40362
+Command_2_DATA_63:WORD:=16#0;    //地址40363
+Command_2_DATA_64:WORD:=16#0;    //地址40364
+Command_2_DATA_65:WORD:=16#0;    //地址40365
+Command_2_DATA_66:WORD:=16#0;    //地址40366
+Command_2_DATA_67:WORD:=16#0;    //地址40367
+Command_2_DATA_68:WORD:=16#0;    //地址40368
+Command_2_DATA_69:WORD:=16#0;    //地址40369
+Command_2_DATA_70:WORD:=16#0;    //地址40370
+Command_2_DATA_71:WORD:=16#0;    //地址40371
+Command_2_DATA_72:WORD:=16#0;    //地址40372
+Command_2_DATA_73:WORD:=16#0;    //地址40373
+Command_2_DATA_74:WORD:=16#0;    //地址40374
+Command_2_DATA_75:WORD:=16#0;    //地址40375
+Command_2_DATA_76:WORD:=16#0;    //地址40376
+Command_2_DATA_77:WORD:=16#0;    //地址40377
+Command_2_DATA_78:WORD:=16#0;    //地址40378
+Command_2_DATA_79:WORD:=16#0;    //地址40379
+Command_2_DATA_80:WORD:=16#0;    //地址40380
+Command_2_DATA_81:WORD:=16#0;    //地址40381
+Command_2_DATA_82:WORD:=16#0;    //地址40382
+Command_2_DATA_83:WORD:=16#0;    //地址40383
+Command_2_DATA_84:WORD:=16#0;    //地址40384
+Command_2_DATA_85:WORD:=16#0;    //地址40385
+Command_2_DATA_86:WORD:=16#0;    //地址40386
+Command_2_DATA_87:WORD:=16#0;    //地址40387
+Command_2_DATA_88:WORD:=16#0;    //地址40388
+Command_2_DATA_89:WORD:=16#0;    //地址40389
+Command_2_DATA_90:WORD:=16#0;    //地址40390
+Command_2_DATA_91:WORD:=16#0;    //地址40391
+Command_2_DATA_92:WORD:=16#0;    //地址40392
+Command_2_DATA_93:WORD:=16#0;    //地址40393
+Command_2_DATA_94:WORD:=16#0;    //地址40394
+Command_2_DATA_95:WORD:=16#0;    //地址40395
+Command_2_DATA_96:WORD:=16#0;    //地址40396
+Command_2_DATA_97:WORD:=16#0;    //地址40397
+Command_2_DATA_98:WORD:=16#0;    //地址40398
+Command_2_DATA_99:WORD:=16#0;    //地址40399
+Command_2_DATA_100:WORD:=16#0;    //地址40400
+Command_2_DATA_101:WORD:=16#0;    //地址40401
+Command_2_DATA_102:WORD:=16#0;    //地址40402
+Command_2_DATA_103:WORD:=16#0;    //地址40403
+Command_2_DATA_104:WORD:=16#0;    //地址40404
+Command_2_DATA_105:WORD:=16#0;    //地址40405
+Command_2_DATA_106:WORD:=16#0;    //地址40406
+Command_2_DATA_107:WORD:=16#0;    //地址40407
+Command_2_DATA_108:WORD:=16#0;    //地址40408
+Command_2_DATA_109:WORD:=16#0;    //地址40409
+Command_2_DATA_110:WORD:=16#0;    //地址40410
+Command_2_DATA_111:WORD:=16#0;    //地址40411
+Command_2_DATA_112:WORD:=16#0;    //地址40412
+Command_2_DATA_113:WORD:=16#0;    //地址40413
+Command_2_DATA_114:WORD:=16#0;    //地址40414
+Command_2_DATA_115:WORD:=16#0;    //地址40415
+Command_2_DATA_116:WORD:=16#0;    //地址40416
+Command_2_DATA_117:WORD:=16#0;    //地址40417
+Command_2_DATA_118:WORD:=16#0;    //地址40418
+Command_2_DATA_119:WORD:=16#0;    //地址40419
+Command_2_DATA_120:WORD:=16#0;    //地址40420
+Command_3_STATUS:WORD:=16#0;     //第3条命令的状态，0=正常，1=无响应，2=站号错误，3=命令错误，4=CRC校验错误
+Command_4_STATUS:WORD:=16#0;     //第4条命令的状态，0=正常，1=无响应，2=站号错误，3=命令错误，4=CRC校验错误
+END_STRUCT
+BEGIN
+END_DATA_BLOCK
